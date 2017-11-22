@@ -1,5 +1,5 @@
 
-export const fetchGroups = () => {
+export const fetchAllGroups = () => {
     return $.ajax({
         url: '/api/groups',
         method: 'GET',

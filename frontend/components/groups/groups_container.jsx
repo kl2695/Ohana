@@ -1,21 +1,20 @@
 
 import { connect } from "react-redux";
 import GroupIndex from './group_index';
-import { login, logout, signup } from "../../actions/session_actions";
-import { clearSessionErrors } from "../../actions/error_actions";
+import { requestAllGroups } from "../actions/group_actions";
+import { selectAllGroups } from "../reducers/selectors";
 
 
 const mapStateToProps = state => ({
     currentUser: state.session.currentUser,
-    errors: state.errors.session
+    errors: state.errors.groups, 
+    groups: selectAllGroups(state)
 });
 
 const mapDispatchToProps = dispatch => {
 
     return {
-        login: user => dispatch(login(user)),
-        signup: user => dispatch(signup(user)),
-        clearSessionErrors: () => dispatch(clearSessionErrors())
+        requestAllGroups: () => dispatch(requestAllGroups())
     };
 };
 

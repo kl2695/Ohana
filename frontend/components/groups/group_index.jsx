@@ -4,6 +4,11 @@ import { Grid, Image } from 'semantic-ui-react';
 class GroupIndex extends React.Component{
     constructor(props){
         super(props);
+        this.state = this.props.groups;
+    }
+
+    componentDidMount(){
+        
     }
     
     render(){

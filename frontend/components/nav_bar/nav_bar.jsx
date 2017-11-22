@@ -20,7 +20,7 @@ class NavBar extends React.Component {
             
             const {activeItem} = this.state; 
                 return(
-                        <Menu className="nav-bar" pointing tabular borderless icon>
+                    <Menu className='nav-bar' inverted color='blue' tabular borderless icon>
                             <div className="right-nav-bar">
                                 <Menu.Item 
                                     name='moments'

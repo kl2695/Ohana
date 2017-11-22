@@ -1,9 +1,13 @@
 
+.vsc-initialized{
+    background-color: #e9ebee;
+}
 .session_form-container{
     display: flex; 
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    height: 100%
 }
 
 .login-header{
@@ -13,21 +17,22 @@
     display: block;
     margin-bottom: 20px; 
     width: 100%; 
-    background-color: #14A1D6;
+    background-color: #2185d0;
 }
 
-/* .signup-container{
+.signup-container{
     border: 1px solid lightgray; 
     border-radius: 3px; 
-    box-shadow: 2px 2px 2px 2px grey; 
+    box-shadow: 2px 2px 2px 2px lightgrey; 
+    background-color: #ffffffd6;
     width: 400px; 
-    height: 400px; 
+    height: 600px; 
     display: flex; 
     flex-direction: column; 
     align-items: center;
     padding: 20px; 
-    transform: translateY(30%);
-} */
+    transform: translateY(10%);
+} 
 
 
 .input-list{
@@ -48,8 +53,4 @@
     position: absolute; 
     bottom: 40px; 
     right: 100px;
-}
-
-body{
-    
 }
