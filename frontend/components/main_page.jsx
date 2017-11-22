@@ -3,7 +3,7 @@ import SessionFormContainer from "./session/session_form_container";
 import NavBarContainer from "./nav_bar/nav_bar_container";
 import ProfileContainer from "./profile/profile_container";
 import GroupsContainer from "./groups/groups_container";
-import AllContainer from "./all/all_container";
+import MomentsContainer from "./moments/moments_container";
 
 import { AuthRoute } from "../util/route_util";
 
@@ -24,7 +24,7 @@ const MainPage = (props) => {
             <Switch>
                 <Route exact path="/profile" component={ProfileContainer} />
                 <Route exact path="/groups" component={GroupsContainer} />
-                <Route exact path="/all" component={AllContainer} />
+                <Route exact path="/moments" component={MomentsContainer} />
             </Switch>
 
         </div>

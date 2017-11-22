@@ -16,7 +16,7 @@
     background-color: #14A1D6;
 }
 
-.signup-container{
+/* .signup-container{
     border: 1px solid lightgray; 
     border-radius: 3px; 
     box-shadow: 2px 2px 2px 2px grey; 
@@ -27,7 +27,7 @@
     align-items: center;
     padding: 20px; 
     transform: translateY(30%);
-}
+} */
 
 
 .input-list{
@@ -51,4 +51,5 @@
 }
 
 body{
+    
 }

@@ -1,6 +1,6 @@
 
 import { connect } from "react-redux";
-import GroupIndex from './group_index';
+import MomentsIndex from './moments_index';
 import { login, logout, signup } from "../../actions/session_actions";
 import { clearSessionErrors } from "../../actions/error_actions";
 
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(GroupIndex);
+)(MomentsIndex);

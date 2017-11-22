@@ -1,6 +1,12 @@
 import React from 'react'; 
 import { Link, withRouter } from 'react-router-dom'; 
-import { Button, Input } from 'semantic-ui-react';
+import { 
+    Button, 
+    Input, 
+    Form, 
+    Checkbox,
+    Image
+} from 'semantic-ui-react';
 
 class SessionForm extends React.Component {
     constructor(props){
@@ -41,13 +47,17 @@ class SessionForm extends React.Component {
         }
         
         return(
+
+
+            
             <div className="session_form-container">
+
                 <div className="login-header">
                     {errors}
                     <form onSubmit onSubmit={this.handleLogin}>
                             <Input className="input" placeholder="Username" onChange={this.handleInput('username')} type="text" />
                             <Input className="input" placeholder="Password" onChange={this.handleInput('password')} type="text" />
-                        <Button onSubmit={this.handleLogin} color='red'>Log In</Button>
+                        <Button onSubmit={this.handleLogin} color="red">Log In</Button>
                     </form>
                 </div>
 
@@ -55,21 +65,33 @@ class SessionForm extends React.Component {
 
                     <h1>Create a New Account</h1>
 
-                    <form onSubmit={this.handleSignup}>
+                    <Form onSubmit={this.handleSignup}>
+                        <Form.Field>
+                            <label>First Name</label>
+                            <Input className="input" placeholder="First Name" onChange={this.handleInput('firstName')} type="text" />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Last Name</label>
+                            <Input className="input" placeholder="Last Name" onChange={this.handleInput('lastName')} type="text" />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Email</label>
+                            <Input className="input" placeholder="Email" onChange={this.handleInput('email')} type="text" />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Username</label>
+                            <Input className="input" placeholder="Username" onChange={this.handleInput('username')} type="text" />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Password</label>
+                            <Input className="input" placeholder="Password" onChange={this.handleInput('password')} type="text" />
+                        </Form.Field>
+                        <Form.Field>
+                            <Checkbox label='I agree to the Terms and Conditions' />
+                        </Form.Field>
+                        <Button color="red"type='submit'>Create Account</Button>
+                    </Form>
 
-                        <ul className="input-list">
-                            <li><Input className="input" placeholder="First Name"onChange={this.handleInput('firstName')} type="text" /></li>
-                            <li><Input className="input" placeholder="Last Name" onChange={this.handleInput('lastName')} type="text" /></li>
-                            <li><Input className="input" placeholder="Email" onChange={this.handleInput('email')} type="text" /></li>
-
-                            <li><Input className="input"placeholder="Username"onChange={this.handleInput('username')} type="text" /></li>
-                        
-                            <li><Input className="input"placeholder="Password"onChange={this.handleInput('password')} type="text" /></li>
-                        </ul>
-                        
-                        <Button onSubmit={this.handleSignup} color='red' className="signup-button">Sign Up</Button>
-
-                    </form>
                 </div>
             </div>
         );
