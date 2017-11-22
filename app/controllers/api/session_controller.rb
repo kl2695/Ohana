@@ -7,7 +7,7 @@ class Api::SessionController < ApplicationController
 
     if @user
       login(@user)
-      redirect_to api_users_url 
+      redirect_to api_user_url(@user.id)
     else 
       render json: ["Invalid username or password"], status: 401
     end 

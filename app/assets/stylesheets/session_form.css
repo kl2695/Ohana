@@ -1,0 +1,54 @@
+
+.session_form-container{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login-header{
+    display: flex; 
+    justify-content: flex-end; 
+    padding: 20px; 
+    display: block;
+    margin-bottom: 20px; 
+    width: 100%; 
+    background-color: #14A1D6;
+}
+
+.signup-container{
+    border: 1px solid lightgray; 
+    border-radius: 3px; 
+    box-shadow: 2px 2px 2px 2px grey; 
+    width: 400px; 
+    height: 400px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    padding: 20px; 
+    transform: translateY(30%);
+}
+
+
+.input-list{
+    list-style: none;
+    display:flex; 
+    flex-direction: column; 
+    align-items: center;
+    position: relative;
+}
+
+.input{
+    margin: 4px; 
+    border-radius: 4px; 
+    border: 1px solid lightgray; 
+}
+
+.signup-button{
+    position: absolute; 
+    bottom: 40px; 
+    right: 100px;
+}
+
+body{
+}
