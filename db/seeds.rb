@@ -14,3 +14,11 @@ kevin.save
 50.times do |x|
   User.create({username: Faker::Internet.user_name, email: Faker::Internet.email, first_name: Faker::Name.name, last_name: Faker::Name.name, password: Faker::Internet.password(6,10)})
 end
+
+20.times do |x|
+  Group.create({name: Faker::Team.name})
+end 
+
+200.times do |x|
+  GroupLink.create({group_id: rand(1..20), user_id: rand(1..50)} )
+end 

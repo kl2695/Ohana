@@ -5,6 +5,29 @@ validates :password, length: {minimum: 6, allow_nil: true}
 
 after_initialize :ensure_session_token 
 
+
+has_many :moments, 
+primary_key: :id, 
+foreign_key: :user_id, 
+class_name: :Moment 
+
+has_many :messages, 
+primary_key: :id, 
+foreign_key: :user_id, 
+class_name: :Message 
+
+has_many :group_links, 
+primary_key: :id, 
+foreign_key: :user_id, 
+class_name: :GroupLink 
+
+has_many :groups, 
+through: :group_links, 
+source: :Group 
+
+
+
+
 attr_reader :password 
 
 def self.find_by_credentials(username, password)

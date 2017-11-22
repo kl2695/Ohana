@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 20171120181643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "group_links", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_links_on_group_id"
+    t.index ["user_id"], name: "index_group_links_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
     t.string "picture"
@@ -44,19 +53,10 @@ ActiveRecord::Schema.define(version: 20171120181643) do
     t.index ["user_id"], name: "index_moments_on_user_id"
   end
 
-  create_table "user_groups_joins", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_user_groups_joins_on_group_id"
-    t.index ["user_id"], name: "index_user_groups_joins_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", null: false
-    t.string "img_url"
+    t.string "img_url", default: ""
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "password_digest", null: false
