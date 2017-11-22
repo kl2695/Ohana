@@ -1,8 +1,8 @@
 
 import { connect } from "react-redux";
 import GroupIndex from './group_index';
-import { requestAllGroups } from "../actions/group_actions";
-import { selectAllGroups } from "../reducers/selectors";
+import { requestAllGroups } from "../../actions/group_actions";
+import { selectAllGroups } from "../../reducers/selectors";
 
 
 const mapStateToProps = state => ({

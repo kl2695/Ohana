@@ -6,6 +6,8 @@ const groupsReducer = (state = {}, action) => {
     let newState = {}; 
     switch (action.type) {
         case RECEIVE_ALL_GROUPS: 
+            console.log("im fetching all the groups");
+            console.log(action.groups);
             return action.groups; 
         case RECEIVE_CURRENT_GROUP:
             return action.group; 

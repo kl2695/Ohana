@@ -34,7 +34,7 @@ export const removeGroup = group => ({
 export const requestAllGroups = () => dispatch => {
     return GroupApiUtil.fetchAllGroups()
         .fail(errors => dispatch(receiveGroupErrors(errors.responseJSON)))
-        .then(group => dispatch(receiveAllGroups(group)));
+        .then(groups => dispatch(receiveAllGroups(groups)));
 };
 
 export const requestGroup = (formGroup) => dispatch => {

@@ -1,11 +1,15 @@
 .nav-bar{
     display:flex; 
     justify-content: flex-end;
-    
 }
 
 .right-nav-bar{
     display:flex; 
+    
 }
 
+.link {
+    margin-right: 30px;
+    background-color: red; 
+}
 
