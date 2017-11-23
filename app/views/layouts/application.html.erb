@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AngelInvest</title>
-    <%= csrf_meta_tags %>
+    <title>Ohana</title>
 
+    <script src="https://static.filestackapi.com/v3/filestack.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
     <%= javascript_include_tag 'application' %>
+
+
+    <%= csrf_meta_tags %>
+
+
     <% if current_user %>
       <script>
         window.currentUser = {

@@ -58,6 +58,7 @@ class SessionForm extends React.Component {
                         <Input className='input'size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
                         <Input className='input'size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
                         <Button onSubmit={this.handleLogin} size='small'color='red'>Log In</Button>
+                        <Button onSubmit={this.handleLogin} size='small'c  olor='red'>Log In</Button>
                     </form>
                 </div>
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import { Menu, Button, Icon, Dropdown } from 'semantic-ui-react';
+import { Menu, Button, Icon, Dropdown, Modal, Image } from 'semantic-ui-react';
+import ReactFilestack from 'filestack-react';
+import GroupForm from '../groups/group_form/group_form';
 
 class NavBar extends React.Component {
             constructor(props){
@@ -12,12 +14,18 @@ class NavBar extends React.Component {
             handleItemClick(e,{name}){
                 e.preventDefault();
                 this.setState({activeItem: name});
-                this.props.history.push(`${name}`);
+                this.props.history.push(`/${name}`);
             }
 
             render(){
 
-            
+               const basicOptions = {
+            accept: 'image/*',
+            fromSources: ['facebook', 'gmail', 'github'],
+            maxSize: 1024 * 1024,
+            maxFiles: 3,
+        };
+
             const {activeItem} = this.state; 
                 return(
                     <Menu className='nav-bar' inverted color='blue' tabular borderless icon>
@@ -49,9 +57,9 @@ class NavBar extends React.Component {
                         <Dropdown text={this.props.currentUser.username}pointing className='link item'>
                             <Dropdown.Menu>
                                 <Dropdown.Header>Personal</Dropdown.Header>
-
-                                
-                                        <Dropdown.Item>Create a Group</Dropdown.Item>
+                                        <Dropdown.Item >
+                                            <GroupForm />
+                                        </Dropdown.Item>
                                         <Dropdown.Item>Post a Moment</Dropdown.Item>
                                         <Dropdown.Item>Send a Message</Dropdown.Item>
                                         <Dropdown.Divider />
@@ -70,5 +78,6 @@ class NavBar extends React.Component {
             }
 
 }
+
 
 export default NavBar; 

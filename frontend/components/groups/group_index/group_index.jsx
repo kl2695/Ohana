@@ -5,12 +5,12 @@ import GroupIndexItem from './group_index_item';
 class GroupIndex extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
+        this.state = {groups: []
         };
     }
 
-    componentDidMount(){
-        (this.props.requestAllGroups()); 
+    componentWillMount(){
+        this.props.requestAllGroups(); 
     }
 
     componentWillReceiveProps(newProps){
@@ -19,12 +19,14 @@ class GroupIndex extends React.Component{
     
     render(){
         let groups;
-        if(this.props.groups){
 
-            groups = this.props.groups.map(group => (
+        console.log("im in show!");
+
+        if(this.state.groups.length > 4){ 
+            groups = this.state.groups.map(group => (
                 <Grid.Row>
                     <Grid.Column className="tile"width={3}>
-                        <GroupIndexItem group={group} /> 
+                        <GroupIndexItem group={group} groupId={group.id} /> 
                     </Grid.Column>
     
                     <Grid.Column width={7}>
@@ -37,7 +39,7 @@ class GroupIndex extends React.Component{
                 </Grid.Row>
             ));
         }else{
-            groups = {};
+            groups = [];
         }
         return(
             <Grid divided='vertically'>

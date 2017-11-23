@@ -1,8 +1,9 @@
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import GroupIndex from './group_index';
-import { requestAllGroups } from "../../actions/group_actions";
-import { selectAllGroups } from "../../reducers/selectors";
+import { requestAllGroups } from "../../../actions/group_actions";
+import { selectAllGroups } from "../../../reducers/selectors";
 
 
 const mapStateToProps = state => ({
@@ -18,7 +19,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(GroupIndex);
+)(GroupIndex));

@@ -10,6 +10,9 @@ require 'faker'
 
 kevin = User.new(username: 'kzlee51', email: 'kzlee51@gmail.com', first_name: 'kevin', last_name: 'lee', password: 'password')
 kevin.save
+demo = User.new(username: 'demo', email: 'demo@gmail.com', first_name: 'demo', last_name: 'demo', password: 'password')
+demo.save
+
 
 50.times do |x|
   User.create({username: Faker::Internet.user_name, email: Faker::Internet.email, first_name: Faker::Name.name, last_name: Faker::Name.name, password: Faker::Internet.password(6,10)})

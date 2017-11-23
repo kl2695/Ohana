@@ -1,30 +1,34 @@
 import React from 'react';
-import SessionFormContainer from "./session/session_form_container";
-import NavBarContainer from "./nav_bar/nav_bar_container";
-import ProfileContainer from "./profile/profile_container";
-import GroupsContainer from "./groups/groups_container";
-import MomentsContainer from "./moments/moments_container";
+import SessionFormContainer from './session/session_form_container';
+import NavBarContainer from './nav_bar/nav_bar_container';
+import ProfileContainer from './profile/profile_container';
+import GroupsIndexContainer from './groups/group_index/groups_index_container';
+import GroupShowContainer from './groups/group_show/group_show_container';
+import GroupFormContainer from './groups/group_form/group_form_container';
+import MomentsContainer from './moments/moments_container';
 
-import { AuthRoute } from "../util/route_util";
+import { AuthRoute } from '../util/route_util';
 
 import {
     Switch, Route
 
-} from "react-router-dom";
+} from 'react-router-dom';
 
 
 
 const MainPage = (props) => {
 
     return (
-        <div className="main-page">
+        <div className='main-page'>
 
             <NavBarContainer />
 
             <Switch>
-                <Route exact path="/profile" component={ProfileContainer} />
-                <Route exact path="/groups" component={GroupsContainer} />
-                <Route exact path="/moments" component={MomentsContainer} />
+                <Route exact path='/profile' component={ProfileContainer} />
+                <Route exact path='/groups' component={GroupsIndexContainer} />
+                <Route exact path='/groups/new' component={GroupFormContainer} />
+                <Route exact path='/groups/:groupId' component={GroupShowContainer} />
+                <Route exact path='/moments' component={MomentsContainer} />
             </Switch>
 
         </div>

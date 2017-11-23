@@ -1,4 +1,5 @@
 
+
 export const fetchAllGroups = () => {
     return $.ajax({
         url: '/api/groups',
@@ -6,11 +7,10 @@ export const fetchAllGroups = () => {
     });
 };
 
-export const fetchGroup = group => {
+export const fetchGroup = groupId => {
     return $.ajax({
-        url: `/api/groups/${group.id}`,
-        method: 'POST',
-        data: { group },
+        url: `/api/groups/${groupId}`,
+        method: 'GET',
     });
 };
 
@@ -34,5 +34,4 @@ export const deleteGroup = group => {
         method: 'DELETE',
     });
 };
-
 

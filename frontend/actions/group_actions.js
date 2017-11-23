@@ -37,8 +37,8 @@ export const requestAllGroups = () => dispatch => {
         .then(groups => dispatch(receiveAllGroups(groups)));
 };
 
-export const requestGroup = (formGroup) => dispatch => {
-    return GroupApiUtil.login(formGroup)
+export const requestGroup = (groupId) => dispatch => {
+    return GroupApiUtil.fetchGroup(groupId)
         .fail(errors => dispatch(receiveGroupErrors(errors.responseJSON)))
         .then(group => dispatch(receiveCurrentGroup(group)));
 };
