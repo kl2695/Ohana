@@ -19,7 +19,7 @@ class GroupShow extends React.Component{
     }
 
     onSuccess(){
-        console.log('Success!');
+       
     }
     
     render(){

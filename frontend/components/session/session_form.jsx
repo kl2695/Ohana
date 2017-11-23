@@ -19,16 +19,26 @@ class SessionForm extends React.Component {
             email: '',
         }; 
         this.handleLogin = this.handleLogin.bind(this); 
+        this.handleDemoLogin = this.handleDemoLogin.bind(this); 
         this.handleSignup = this.handleSignup.bind(this); 
     }
 
     handleSignup(event) {
+        event.preventDefault(); 
         this.props.signup(this.state)
-        .then(() => this.props.history.push('/'));
+        .then(() => this.props.history.push('/'))
+        .then(() => this.props.clearSessionErrors());
     }
 
     handleLogin(event) {
+        event.preventDefault(); 
         this.props.login(this.state)
+        .then(() => this.props.history.push('/'))
+        .then(() => this.props.clearSessionErrors());
+    }
+    handleDemoLogin(event) {
+        event.preventDefault(); 
+        this.props.login({username: 'demo', password: 'password'})
         .then(() => this.props.history.push('/'))
         .then(() => this.props.clearSessionErrors());
     }
@@ -54,11 +64,11 @@ class SessionForm extends React.Component {
 
                 <div className='login-header'>
                     {errors}
-                    <form onSubmit onSubmit={this.handleLogin}>
+                    <form>
                         <Input className='input'size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
                         <Input className='input'size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                        <Button onSubmit={this.handleLogin} size='small'color='red'>Log In</Button>
-                        <Button onSubmit={this.handleLogin} size='small'c  olor='red'>Log In</Button>
+                        <Button onClick={this.handleLogin} size='small'color='red'>Log In</Button>
+                        <Button onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
                     </form>
                 </div>
 

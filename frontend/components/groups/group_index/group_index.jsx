@@ -20,7 +20,6 @@ class GroupIndex extends React.Component{
     render(){
         let groups;
 
-        console.log("im in show!");
 
         if(this.state.groups.length > 4){ 
             groups = this.state.groups.map(group => (

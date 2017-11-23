@@ -5,6 +5,7 @@ class Api::SessionController < ApplicationController
       params[:user][:password]
     )
 
+
     if @user
       login(@user)
       redirect_to api_user_url(@user.id)
