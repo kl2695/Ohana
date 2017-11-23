@@ -25,3 +25,6 @@ end
 200.times do |x|
   GroupLink.create({group_id: rand(1..20), user_id: rand(1..50)} )
 end 
+200.times do |x|
+  Moment.create({group_id: rand(1..20), user_id: rand(1..50), body: Faker::RickAndMorty.quote} )
+end 

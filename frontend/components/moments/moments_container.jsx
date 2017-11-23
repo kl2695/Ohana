@@ -1,21 +1,21 @@
 
 import { connect } from "react-redux";
 import MomentsIndex from './moments_index';
-import { login, logout, signup } from "../../actions/session_actions";
+import { requestAllMoments } from "../../actions/moment_actions";
 import { clearSessionErrors } from "../../actions/error_actions";
+import {selectAllMoments} from '../../reducers/selectors';
 
 
 const mapStateToProps = state => ({
     currentUser: state.session.currentUser,
-    errors: state.errors.session
+    errors: state.errors.session, 
+    moments: selectAllMoments(state),
 });
 
 const mapDispatchToProps = dispatch => {
 
     return {
-        login: user => dispatch(login(user)),
-        signup: user => dispatch(signup(user)),
-        clearSessionErrors: () => dispatch(clearSessionErrors())
+        requestAllMoments: moments => dispatch(requestAllMoments(moments))
     };
 };
 

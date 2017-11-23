@@ -6,3 +6,11 @@ export const selectAllGroups = state => {
     return groups;
 
 };
+export const selectAllMoments = state => {
+    const moments = Object.keys(state.entities.moments).map(momentId => {
+     
+        return state.entities.moments[momentId];
+    });
+    return moments;
+
+};

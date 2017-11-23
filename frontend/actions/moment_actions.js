@@ -1,6 +1,6 @@
 
 import * as MomentApiUtil from "../util/moment_api_util";
-import { receiveSessionErrors, receiveGroupErrors, receiveMomentErrors } from "./error_actions";
+import { receiveSessionErrors, receiveMomentErrors } from "./error_actions";
 
 export const RECEIVE_ALL_MOMENTS = 'RECEIVE_ALL_MOMENTS';
 export const RECEIVE_CURRENT_GROUP = 'RECEIVE_CURRENT_GROUP';
@@ -31,30 +31,30 @@ export const removeMoment = moments => ({
     moments 
 });
 
-export const requestAllmoments = () => dispatch => {
-    return MomentApiUtil.fetchAllmoments()
-        .fail(errors => dispatch(receiveGroupErrors(errors.responseJSON)))
+export const requestAllMoments = () => dispatch => {
+    return MomentApiUtil.fetchAllMoments()
+        .fail(errors => dispatch(receiveMomentErrors(errors.responseJSON)))
         .then(moments => dispatch(receiveAllMoments(moments)));
 };
 
-export const requestGroup = (groupId) => dispatch => {
-    return MomentApiUtil.fetchGroup(groupId)
-        .fail(errors => dispatch(receiveGroupErrors(errors.responseJSON)))
+export const requestMoment = (momentId) => dispatch => {
+    return MomentApiUtil.fetchMoment(momentId)
+        .fail(errors => dispatch(receiveMomentErrors(errors.responseJSON)))
         .then(moment => dispatch(receiveCurrentMoment(moment)));
 };
 
-export const createmoment = (formmoment) => dispatch => {
-    return MomentApiUtil.createmoment(formmoment)
+export const createMoment = (formMoment) => dispatch => {
+    return MomentApiUtil.createMoment(formMoment)
         .fail(errors => dispatch(receiveMomentErrors(errors.responseJSON)))
         .then(moment => dispatch(receiveOneMoment(moment)));
 };
-export const updatemoment = (formmoment) => dispatch => {
-    return MomentApiUtil.updatemoment(formmoment)
+export const updateMoment = (formMoment) => dispatch => {
+    return MomentApiUtil.updateMoment(formMoment)
         .fail(errors => dispatch(receiveMomentErrors(errors.responseJSON))) 
         .then(moment => dispatch(receiveOneMoment(moment)));
 };
-export const deletemoment = (formmoment) => dispatch => {
-    return MomentApiUtil.deletemoment(formmoment)
+export const deleteMoment = (formMoment) => dispatch => {
+    return MomentApiUtil.deleteMoment(formMoment)
         .fail(errors => dispatch(receiveMomentErrors(errors.responseJSON)))
         .then(moment => dispatch(receiveOneMoment(moment)));
 };

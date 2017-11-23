@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :index, :show]
     resource :session, only: [:create, :destroy], controller: :session
     resources :groups, only: [:create, :index, :show, :update, :destroy]
+    resources :moments, only: [:create, :index, :show, :update, :destroy]
   end
 
 

@@ -1,6 +1,6 @@
 class Moment < ApplicationRecord 
 
-    validates :name, :user, :group, presence:true 
+    validates :body, :user, :group, presence:true 
     
 
     belongs_to :user, 
