@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171120181643) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
-    t.string "picture"
+    t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_groups_on_name"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171120181643) do
     t.integer "user_id", null: false
     t.integer "group_id"
     t.string "body", null: false
-    t.string "picture"
+    t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_moments_on_group_id"

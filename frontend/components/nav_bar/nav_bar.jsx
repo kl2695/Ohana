@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import { Menu, Button, Icon, Dropdown, Modal, Image } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
-import GroupForm from '../groups/group_form/group_form';
+import GroupFormContainer from '../groups/group_form/group_form_container';
+import createGroup from '../../actions/group_actions';
 
 class NavBar extends React.Component {
             constructor(props){
@@ -58,7 +59,7 @@ class NavBar extends React.Component {
                             <Dropdown.Menu>
                                 <Dropdown.Header>Personal</Dropdown.Header>
                                         <Dropdown.Item >
-                                            <GroupForm />
+                                            <GroupFormContainer/>
                                         </Dropdown.Item>
                                         <Dropdown.Item>Post a Moment</Dropdown.Item>
                                         <Dropdown.Item>Send a Message</Dropdown.Item>

@@ -1,0 +1,1 @@
+json.extract! group, :id, :body, :img_url, :user_id, :group_id

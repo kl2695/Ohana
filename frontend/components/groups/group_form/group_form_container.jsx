@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GroupForm from './group_form';
-import { requestGroup } from "../../../actions/group_actions";
+import { requestGroup, createGroup } from "../../../actions/group_actions";
 import { selectAllGroups } from "../../../reducers/selectors";
 
 
@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
 
     return {
+        createGroup: group => dispatch(createGroup(group))
     };
 };
 

@@ -21,9 +21,19 @@ class Api::GroupsController < ApplicationController
     render :show 
   end 
 
+  def update 
+    @group = Group.find_by(id: group_params[:id])
+    
+    if @group.update_attributes(group_params)
+      render :show 
+    else 
+      render json: @group.errors.full_messages, status: 422
+    end 
+  end 
+
 
   private 
   def group_params 
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:id, :name, :img_url)
   end 
 end

@@ -9,7 +9,7 @@ class Group < ApplicationRecord
 
     has_many :users, 
     through: :group_links, 
-    source: :ser 
+    source: :user 
 
     has_many :groups, 
     through: :group_links, 

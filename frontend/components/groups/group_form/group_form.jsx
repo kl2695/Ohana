@@ -1,46 +1,83 @@
 import React from 'react';
-import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react';
+import { Button, Header, Icon, Image, Modal, Input, Form } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
+import filestack from 'filestack-js';
 
 
-const GroupForm = () => {
+class GroupForm extends React.Component {
    
+        constructor(props){
+            super(props);
+            this.state = {
+                name: '',
+                img_url: ''
+            };
 
-       const basicOptions = {
+            this.handleSubmit = this.handleSubmit.bind(this);
+            this.handleInput = this.handleInput.bind(this); 
+            this.onSuccess = this.onSuccess.bind(this);        }
+
+        handleSubmit(event){
+             console.log(this.props);
+            this.props.createGroup(this.state)
+            .then(() => this.props.history.push('/groups'));
+           
+        }
+
+        handleInput(event){
+            event.preventDefault();
+            this.setState({name: event.target.value});
+        }
+
+        onSuccess (result){
+            const client = filestack.init('ASwBXjnOHQ9DwYJeadUdZz');
+            let cdnUrl = result.filesUploaded[0].url; 
+
+            client.storeURL(cdnUrl);
+
+            this.setState({img_url: cdnUrl});
+        }
+
+       render(){
+           const basicOptions = {
             accept: 'image/*',
-            fromSources: ['facebook', 'gmail', 'github'],
+            fromSources: ['local_file_system','facebook','googledrive','instagram','dropbox','imagesearch','webcam',],
             maxSize: 1024 * 1024,
             maxFiles: 3,
         };
 
-        
+
         return(
        
                 <Modal trigger={<p> Create A Group</p>}>
                     <Modal.Header>Create A Group</Modal.Header>
                         <Modal.Content>
                             <Modal.Description>
-                                <label>Name
-                                    <Input type='text'></Input>
-                                </label>
-                                <ReactFilestack
-                                    apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                                    buttonText="Upload Picture"
-                                    buttonClass="classname"
-                                    options={basicOptions}
-                                />
-
+                                <Form>
+                                    <label>Name
+                                        <Input onChange={this.handleInput} type='text'></Input>
+                                    </label>
+                                    <ReactFilestack
+                                        apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                                        buttonText="Upload Picture"
+                                        buttonClass="classname"
+                                        options={basicOptions}
+                                        onSuccess={this.onSuccess}
+                                        onError={(e) => console.log(e)}
+                                    />
+                                 </Form>
                             </Modal.Description>
                         </Modal.Content>
                     <Modal.Actions>
-                        <Button primary>
-                            Proceed <Icon name='right chevron' />
+                        <Button primary onClick={this.handleSubmit}>
+                            Create Group <Icon name='right chevron' />
                         </Button>
                     </Modal.Actions>
                 </Modal>
         
         );
-    };
+    }
+ }
 
 
 
