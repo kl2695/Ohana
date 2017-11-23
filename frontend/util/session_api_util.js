@@ -25,9 +25,3 @@ export const logout = () => {
 };
 
 
-
-
-
-window.logout = logout;
-window.login = login;
-window.signup = signup; 
