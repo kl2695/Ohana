@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy], controller: :session
     resources :groups, only: [:create, :index, :show, :update, :destroy]
     resources :moments, only: [:create, :index, :show, :update, :destroy]
+    resources :comments, only: [:create, :index, :update, :destroy]
   end
 
 

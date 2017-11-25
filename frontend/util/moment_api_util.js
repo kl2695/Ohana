@@ -14,6 +14,8 @@ export const fetchMoment = momentId => {
     });
 };
 
+
+
 export const createMoment = moment => {
     return $.ajax({
         url: '/api/moments',

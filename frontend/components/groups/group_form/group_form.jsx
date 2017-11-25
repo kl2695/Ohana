@@ -20,6 +20,7 @@ class GroupForm extends React.Component {
         handleSubmit(event){
              console.log(this.props);
             this.props.createGroup(this.state)
+            .then(() => React.unmountComponentAtNode(GroupForm))
             .then(() => this.props.history.push('/groups'));
            
         }

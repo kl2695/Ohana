@@ -14,3 +14,12 @@ export const selectAllMoments = state => {
     return moments;
 
 };
+
+export const selectMomentsByUserId = (state, ownProps) => {
+    const moments = Object.keys(state.entities.moments).map(momentId => {
+        let moment = state.entities.moments[momentId]; 
+        if(moment.user_id === ownProps.user.id){
+            return moment;
+        }
+    });
+};

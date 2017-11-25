@@ -3,9 +3,9 @@ import * as MomentApiUtil from "../util/moment_api_util";
 import { receiveSessionErrors, receiveMomentErrors } from "./error_actions";
 
 export const RECEIVE_ALL_MOMENTS = 'RECEIVE_ALL_MOMENTS';
-export const RECEIVE_CURRENT_GROUP = 'RECEIVE_CURRENT_GROUP';
-export const RECEIVE_ONE_GROUP = 'RECEIVE_ONE_GROUP';
-export const REMOVE_GROUP = 'REMOVE_GROUP';
+export const RECEIVE_CURRENT_MOMENT = 'RECEIVE_CURRENT_MOMENT';
+export const RECEIVE_ONE_MOMENT = 'RECEIVE_ONE_MOMENT';
+export const REMOVE_MOMENT = 'REMOVE_MOMENT';
 
 
 
@@ -16,19 +16,19 @@ export const receiveAllMoments = moments => ({
     type: RECEIVE_ALL_MOMENTS,
     moments,
 });
-export const receiveCurrentMoment = moments => ({
-    type: RECEIVE_CURRENT_GROUP,
-    moments,
+export const receiveCurrentMoment = moment => ({
+    type: RECEIVE_ONE_MOMENT,
+    moment,
 });
 
-export const receiveOneMoment = moments => ({
-    type: RECEIVE_ONE_GROUP, 
-    moments 
+export const receiveOneMoment = moment => ({
+    type: RECEIVE_ONE_MOMENT, 
+    moment
 });
 
-export const removeMoment = moments => ({
-    type: REMOVE_GROUP, 
-    moments 
+export const removeMoment = moment => ({
+    type: REMOVE_MOMENT, 
+    moment
 });
 
 export const requestAllMoments = () => dispatch => {
@@ -42,6 +42,7 @@ export const requestMoment = (momentId) => dispatch => {
         .fail(errors => dispatch(receiveMomentErrors(errors.responseJSON)))
         .then(moment => dispatch(receiveCurrentMoment(moment)));
 };
+
 
 export const createMoment = (formMoment) => dispatch => {
     return MomentApiUtil.createMoment(formMoment)

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, Button, Icon, Dropdown, Modal, Image } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import GroupFormContainer from '../groups/group_form/group_form_container';
+import MomentFormContainer from '../moments/moments_form/moments_form_container';
 import createGroup from '../../actions/group_actions';
 
 class NavBar extends React.Component {
@@ -61,7 +62,9 @@ class NavBar extends React.Component {
                                         <Dropdown.Item >
                                             <GroupFormContainer/>
                                         </Dropdown.Item>
-                                        <Dropdown.Item>Post a Moment</Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <MomentFormContainer/>
+                                        </Dropdown.Item>
                                         <Dropdown.Item>Send a Message</Dropdown.Item>
                                         <Dropdown.Divider />
                                         <Dropdown.Header>Settings</Dropdown.Header>

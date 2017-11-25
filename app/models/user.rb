@@ -25,6 +25,9 @@ has_many :groups,
 through: :group_links, 
 source: :Group 
 
+has_many :comments, 
+inverse_of: :author 
+
 
 
 

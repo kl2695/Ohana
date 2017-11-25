@@ -1,9 +1,9 @@
 
 import { connect } from "react-redux";
-import MomentsIndex from './moments_index';
-import { requestAllMoments } from "../../actions/moment_actions";
-import { clearSessionErrors } from "../../actions/error_actions";
-import {selectAllMoments} from '../../reducers/selectors';
+import CommentsIndex from './comments_index';
+import { requestAllMoments } from "../../../actions/comment_actions";
+import { clearSessionErrors } from "../../../actions/error_actions";
+import {selectAllMoments} from '../../../reducers/selectors';
 
 
 const mapStateToProps = state => ({
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(MomentsIndex);
+)(CommentsIndex);

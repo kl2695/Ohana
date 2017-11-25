@@ -2,7 +2,6 @@ class Api::MomentsController < ApplicationController
 
   def create
     @moment = Moment.new(moment_params)
-  
     if @moment.save
       render :show 
     else 

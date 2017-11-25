@@ -28,3 +28,9 @@ end
 200.times do |x|
   Moment.create({group_id: rand(1..20), user_id: rand(1..50), body: Faker::RickAndMorty.quote} )
 end 
+
+400.times do |x| 
+  Comment.create({user_id: rand(1..50), moment_id: rand(1..200), body: Faker::RickAndMorty.quote})
+end 
+
+
