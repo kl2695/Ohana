@@ -16,7 +16,7 @@ const App = (props) => {
        
        <Switch>
             <AuthRoute exact path="/signup" component={SessionFormContainer} />
-            <ProtectedRoute path="/" component={MainPage} />
+            <ProtectedRoute path="/" component={MainPage} user={props.user} />
        </Switch>
     
     

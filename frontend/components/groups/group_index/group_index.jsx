@@ -21,22 +21,28 @@ class GroupIndex extends React.Component{
         let groups;
 
 
-        if(this.state.groups.length > 4){ 
-            groups = this.state.groups.map(group => (
-                <Grid.Row>
-                    <Grid.Column className="tile"width={3}>
-                        <GroupIndexItem group={group} groupId={group.id} /> 
-                    </Grid.Column>
-    
-                    <Grid.Column width={7}>
-                        
-                    </Grid.Column>
-    
-                    <Grid.Column width={6}>
-                        
-                    </Grid.Column>
-                </Grid.Row>
-            ));
+        if(this.props.groups.length > 4){ 
+            this.props.groups.pop(); 
+            groups = this.props.groups.map(group => {
+                console.log(group);
+                if(group.userIds.includes(this.props.currentUser.id)){
+                    return (
+                    <Grid.Row>
+                        <Grid.Column className="tile"width={3}>
+                            <GroupIndexItem group={group} groupId={group.id} /> 
+                        </Grid.Column>
+        
+                        <Grid.Column width={7}>
+                            
+                        </Grid.Column>
+        
+                        <Grid.Column width={6}>
+                            
+                        </Grid.Column>
+                    </Grid.Row>
+                    );
+                }
+            });
         }else{
             groups = [];
         }

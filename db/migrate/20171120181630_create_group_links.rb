@@ -5,7 +5,6 @@ class CreateGroupLinks < ActiveRecord::Migration[5.1]
       t.integer :group_id, null: false 
       t.timestamps 
     end
-    add_index :group_links, :user_id 
-    add_index :group_links, :group_id 
+    add_index(:group_links, [:user_id, :group_id], unique:true) 
   end
 end

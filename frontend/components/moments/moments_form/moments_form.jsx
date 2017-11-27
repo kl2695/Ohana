@@ -16,15 +16,13 @@ class MomentsForm extends React.Component {
                 render_bool: true,
             };
 
-            console.log("im in moments form");
-
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleInput = this.handleInput.bind(this); 
             this.onSuccess = this.onSuccess.bind(this);   
         }
 
         componentDidMount(){
-            console.log(this.state);
+           
         }
 
         handleSubmit(event){

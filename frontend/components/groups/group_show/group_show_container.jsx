@@ -13,14 +13,17 @@ return {
     currentUser: state.session.currentUser,
     errors: state.errors.groups, 
     groupId: ownProps.match.params.groupId,
-    group: state.entities.groups[ownProps.match.params.groupId]
+    users: state.entities.users,
+    groups: state.entities.groups, 
+    moments: state.entities.moments 
     };
+
 };
 
 const mapDispatchToProps = dispatch => {
 
     return {
-        requestGroup: group => dispatch(requestGroup(group)), 
+        requestGroup: groupId => dispatch(requestGroup(groupId)), 
         updateGroup: group => dispatch(updateGroup(group))
     };
 };

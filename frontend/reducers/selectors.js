@@ -15,10 +15,10 @@ export const selectAllMoments = state => {
 
 };
 
-export const selectMomentsByUserId = (state, ownProps) => {
+export const selectMomentsByUserId = (state, userId) => {
     const moments = Object.keys(state.entities.moments).map(momentId => {
         let moment = state.entities.moments[momentId]; 
-        if(moment.user_id === ownProps.user.id){
+        if(moment.user_id === userId){
             return moment;
         }
     });

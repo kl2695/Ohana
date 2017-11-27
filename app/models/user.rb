@@ -23,7 +23,7 @@ class_name: :GroupLink
 
 has_many :groups, 
 through: :group_links, 
-source: :Group 
+source: :group 
 
 has_many :comments, 
 inverse_of: :author 

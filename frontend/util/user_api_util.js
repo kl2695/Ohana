@@ -6,11 +6,17 @@ export const fetchAllUsers = () => {
     });
 };
 
-export const fetchUser = user => {
+export const fetchUser = userId => {
     return $.ajax({
-        url: `/api/users/${user.id}`,
+        url: `/api/users/${userId}`,
         method: 'GET',
-        data: { user },
     });
 };
 
+export const updateUser = user => {
+    return $.ajax({
+        url: `/api/users/${user.id}`, 
+        method: 'PATCH', 
+        data: { user }
+    });
+};

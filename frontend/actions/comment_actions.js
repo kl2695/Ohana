@@ -44,7 +44,7 @@ export const requestComment = (commentId) => dispatch => {
 };
 
 export const createComment = (formComment) => dispatch => {
-    return CommentApiUtil.createcomment(formComment)
+    return CommentApiUtil.createComment(formComment)
         .fail(errors => dispatch(receiveCommentErrors(errors.responseJSON)))
         .then(comment => dispatch(receiveOneComment(comment)));
 };

@@ -49,8 +49,8 @@ class NavBar extends React.Component {
                                 </Menu.Item>
 
                                 <Menu.Item 
-                                    name='profile'
-                                    active={activeItem === 'profile'}
+                                    name={`users/${this.props.currentUser.id}`}
+                                active={activeItem === `users/${this.props.currentUser.id}`}
                                     onClick={this.handleItemClick}
                                 >
                                     <Icon circular name='user' />

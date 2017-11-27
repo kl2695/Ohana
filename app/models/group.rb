@@ -7,6 +7,8 @@ class Group < ApplicationRecord
     foreign_key: :group_id, 
     class_name: :GroupLink
 
+
+
     has_many :users, 
     through: :group_links, 
     source: :user 

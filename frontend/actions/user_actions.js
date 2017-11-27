@@ -19,7 +19,12 @@ export const requestAllUsers = () => dispatch => {
     return UserApiUtil.fetchAllUsers()
             .then(users => dispatch(receiveAllUsers(users)));
 };
-export const requestUser = formUser => dispatch => {
-    return UserApiUtil.fetchUser(formUser)
+export const requestUser = userId => dispatch => {
+    return UserApiUtil.fetchUser(userId)
+            .then(user => dispatch(receiveUser(user)));
+};
+
+export const updateUser = formUser => dispatch => {
+    return UserApiUtil.updateUser(formUser)
             .then(user => dispatch(receiveUser(user)));
 };

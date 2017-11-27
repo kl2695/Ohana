@@ -14,22 +14,22 @@ demo = User.new(username: 'demo', email: 'demo@gmail.com', first_name: 'demo', l
 demo.save
 
 
-50.times do |x|
+100.times do |x|
   User.create({username: Faker::Internet.user_name, email: Faker::Internet.email, first_name: Faker::Name.name, last_name: Faker::Name.name, password: Faker::Internet.password(6,10)})
 end
 
-20.times do |x|
+30.times do |x|
   Group.create({name: Faker::Team.name})
 end 
 
-200.times do |x|
+300.times do |x|
   GroupLink.create({group_id: rand(1..20), user_id: rand(1..50)} )
 end 
-200.times do |x|
+100.times do |x|
   Moment.create({group_id: rand(1..20), user_id: rand(1..50), body: Faker::RickAndMorty.quote} )
 end 
 
-400.times do |x| 
+200.times do |x| 
   Comment.create({user_id: rand(1..50), moment_id: rand(1..200), body: Faker::RickAndMorty.quote})
 end 
 

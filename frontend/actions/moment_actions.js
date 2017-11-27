@@ -12,9 +12,11 @@ export const REMOVE_MOMENT = 'REMOVE_MOMENT';
 
 
 
-export const receiveAllMoments = moments => ({
+export const receiveAllMoments = payload => ({
     type: RECEIVE_ALL_MOMENTS,
-    moments,
+    users: payload.users, 
+    moments: payload.moments, 
+    comments: payload.comments 
 });
 export const receiveCurrentMoment = moment => ({
     type: RECEIVE_ONE_MOMENT,
