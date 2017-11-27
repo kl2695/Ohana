@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Image, Header, Icon } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
+import MomentShow from '../../moments/moments_show/moment_show';
 
 
 class GroupShow extends React.Component{
@@ -48,42 +49,35 @@ class GroupShow extends React.Component{
             maxFiles: 3,
         };
 
+        let { usersArr, groups, moments } = this.props; 
+        console.log(this.props);
 
         let name;
         let imgUrl; 
-        let users;
         let names; 
-        let moments; 
-        let userMoments; 
-        if(this.props.groups.currentGroup !== 'none'){
+
+        if(this.props.usersArr.length > 0){
             let currentGroup = this.props.groups.currentGroup; 
     
-            name = currentGroup.name;
-            imgUrl = currentGroup.img_url; 
-            users = currentGroup.users;
-            // let userMomentIds = users.map(user => {
-            //     let momentIds = [].concat.apply([],user.moment_ids);
-            //     return momentIds; 
-            // }); 
+            name = groups.name;
+            imgUrl = groups.img_url; 
 
-            names = users.map(user => (
+            names = usersArr.map(user => (
                 <h2>{user.first_name} {user.last_name}</h2>
             ));
-            // userMoments = this.props.moments.map(moment => {
-            //     if(use)
-            // });
-            // moments = this.props.moments.map(moment => (
-            //     userMoments = this.props.moments.map(moment => {
-            //         if()
-            //     })
-            //     <MomentShow
-            //         user={this.props.user}
-            //         users={this.props.users}
-            //         moment={moment}
-            //         createComment={this.props.createComment}
-            //         currentUser={this.props.currentUser}
-            //     />
-            // ))
+
+            console.log(moments);
+            console.log(usersArr);
+            console.log(moments);
+            moments = moments.map(moment => (
+                <MomentShow
+                    users={this.props.users}
+                    moment={moment}
+                    createComment={this.props.createComment}
+                    currentUser={this.props.currentUser}
+                />
+            ));
+          
            
         }else{
             name = '';
@@ -108,6 +102,7 @@ class GroupShow extends React.Component{
                 />
                 <img src={imgUrl} alt="Image uploaded with Filestack" title="Image uploaded with Filestack"/>
                 {names}
+                {moments}
 
             </div>
         );

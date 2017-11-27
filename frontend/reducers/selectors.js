@@ -6,7 +6,7 @@ export const selectAllGroups = state => {
     return groups;
 
 };
-export const selectAllMoments = state => {
+export const selectMoments = state => {
     const moments = Object.keys(state.entities.moments).map(momentId => {
      
         return state.entities.moments[momentId];
@@ -15,11 +15,10 @@ export const selectAllMoments = state => {
 
 };
 
-export const selectMomentsByUserId = (state, userId) => {
-    const moments = Object.keys(state.entities.moments).map(momentId => {
-        let moment = state.entities.moments[momentId]; 
-        if(moment.user_id === userId){
-            return moment;
-        }
+export const selectUsers = state => {
+    const users = Object.keys(state.entities.users).map(userId => {
+        return state.entities.users[userId]; 
     });
+    return users; 
 };
+

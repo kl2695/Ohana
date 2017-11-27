@@ -4,17 +4,19 @@ import MomentsIndex from '../moments/moments_index/moments_index_container';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import { Image, Header, Icon } from 'semantic-ui-react';
+import { MomentShow } from '../moments/moments_show/moment_show';
 
 class ProfileShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
     }
     componentDidMount(){
-        this.props.requestAllUsers(); 
+        this.props.requestUser(this.props.userId); 
     }
 
 
@@ -32,13 +34,11 @@ class ProfileShow extends React.Component {
     onSuccess(result) {
         const client = filestack.init('ASwBXjnOHQ9DwYJeadUdZz');
         let cdnUrl = result.filesUploaded[0].url;
-        console.log('im here'); 
-        console.log(cdnUrl);
+ 
         client.storeURL(cdnUrl);
 
-        let user = this.props.user; 
+        let user = this.state; 
         user.img_url = cdnUrl; 
-        console.log(user);
         this.props.updateUser(user);
 
     }
@@ -52,8 +52,25 @@ class ProfileShow extends React.Component {
         };
 
         let imgUrl; 
-        if(this.props.user){
-            imgUrl = this.props.user.img_url;
+        let { groups, moments, users } = this.props; 
+        console.log(this.props);
+        console.log(this.state);
+        if(moments.length > 0){
+            console.log('users');
+            console.log(users);
+            console.log(this.props.match.params.userId);
+            imgUrl = users[this.props.match.params.userId].img_url;
+            console.log('imgurl'); 
+            console.log(imgUrl);
+            console.log(moments);
+            moments = moments.map(moment => (
+                <MomentShow
+                    users={this.props.users}
+                    moment={moment}
+                    createComment={this.props.createComment}
+                    currentUser={this.props.currentUser}
+                />
+            ));
         }else{
             imgUrl = '';
         }
@@ -70,7 +87,7 @@ class ProfileShow extends React.Component {
                         onSuccess={this.onSuccess}
                         onError={(e) => console.log(e)}
                     />
-                    <MomentsIndex user={this.props.user} users={this.props.users} moments={this.props.moments}/>
+                   {moments}
                 </div>
             </div>
         );

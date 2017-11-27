@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Image, Feed, Icon, Button, Embed } from 'semantic-ui-react';
 import CommentsIndex from '../../comments/comments_index/comments_index';
-import MomentShow from './moment_show';
+import MomentShow from '../moments_show/moment_show';
 
 class MomentIndex extends React.Component{
     constructor(props){

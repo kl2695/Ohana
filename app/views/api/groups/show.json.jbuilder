@@ -25,16 +25,12 @@ end
 json.moments do
     @group.users.each do |user| 
         user.moments.each do |moment| 
-            json.partial!('api/moments/moment', moment: moment)
-        end 
-end 
-end 
-
-json.comments @group.users.each do |user| 
-    user.moments.each do |moment|
-        moment.comments.each do |comment| 
-            json.partial!('api/comments/comment', comment: comment)
+            json.set! moment.id do 
+                json.partial!('api/moments/moment', moment: moment)
+            end
         end 
     end 
 end 
+
+
 

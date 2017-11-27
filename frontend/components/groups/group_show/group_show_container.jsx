@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GroupShow from './group_show';
 import { requestGroup, updateGroup } from "../../../actions/group_actions";
-import { selectAllGroups } from "../../../reducers/selectors";
+import { selectUsers, selectMoments } from "../../../reducers/selectors";
+import { createComment } from '../../../actions/comment_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,9 +14,10 @@ return {
     currentUser: state.session.currentUser,
     errors: state.errors.groups, 
     groupId: ownProps.match.params.groupId,
-    users: state.entities.users,
+    usersArr: selectUsers(state),
+    users: state.entities.users, 
     groups: state.entities.groups, 
-    moments: state.entities.moments 
+    moments: selectMoments(state)
     };
 
 };
@@ -24,7 +26,8 @@ const mapDispatchToProps = dispatch => {
 
     return {
         requestGroup: groupId => dispatch(requestGroup(groupId)), 
-        updateGroup: group => dispatch(updateGroup(group))
+        updateGroup: group => dispatch(updateGroup(group)), 
+        createComment: comment => dispatch(createComment(comment))
     };
 };
 

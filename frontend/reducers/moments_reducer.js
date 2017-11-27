@@ -1,5 +1,7 @@
 import { RECEIVE_ALL_MOMENTS, RECEIVE_CURRENT_MOMENT, RECEIVE_ONE_MOMENT, REMOVE_MOMENT } from "../actions/moment_actions";
 import merge from 'lodash/merge';
+import { RECEIVE_CURRENT_GROUP } from "../actions/group_actions";
+import { RECEIVE_USER } from '../actions/user_actions';
 
 const momentsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -15,6 +17,10 @@ const momentsReducer = (state = {}, action) => {
         case REMOVE_MOMENT:
             delete newState[action.moment.id]; 
             return merge({}, state, newState);
+        case RECEIVE_CURRENT_GROUP: 
+            return action.moments; 
+        case RECEIVE_USER: 
+            return action.moments; 
         default:
             return state;
     }

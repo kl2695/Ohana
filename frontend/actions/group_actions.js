@@ -12,13 +12,15 @@ export const REMOVE_GROUP = 'REMOVE_GROUP';
 
 
 
-export const receiveAllGroups = groups => ({
+export const receiveAllGroups = payload => ({
     type: RECEIVE_ALL_GROUPS,
-    groups,
+    groups: payload.groups 
 });
-export const receiveCurrentGroup = group => ({
+export const receiveCurrentGroup = payload => ({
     type: RECEIVE_CURRENT_GROUP,
-    group,
+    groups: payload.groups, 
+    users: payload.users, 
+    moments: payload.moments 
 });
 
 export const receiveOneGroup = group => ({

@@ -9,7 +9,8 @@ import { selectAllGroups } from "../../../reducers/selectors";
 const mapStateToProps = state => ({
     currentUser: state.session.currentUser,
     errors: state.errors.groups, 
-    groups: selectAllGroups(state)
+    groups: selectAllGroups(state), 
+    users: state.entities.users
 });
 
 const mapDispatchToProps = dispatch => {

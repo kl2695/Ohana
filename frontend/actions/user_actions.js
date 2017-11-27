@@ -8,9 +8,11 @@ export const receiveAllUsers = users => ({
     users
 });
 
-export const receiveUser = user => ({
+export const receiveUser = payload => ({
     type: RECEIVE_USER, 
-    user 
+    users: payload.users, 
+    groups: payload.groups, 
+    moments: payload.moments
 });
 
 

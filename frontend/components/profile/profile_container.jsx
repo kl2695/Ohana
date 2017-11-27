@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import ProfileShow from './profile_show';
 import {requestUser, requestAllUsers, updateUser} from '../../actions/user_actions';
-import {selectMomentsByUserId} from '../../reducers/selectors';
+import { selectMoments } from '../../reducers/selectors';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,10 +10,11 @@ const mapStateToProps = (state, ownProps) => {
     return {
 
     
-   moments: selectMomentsByUserId(state, ownProps.match.params.userId),
-   user: state.entities.users[ownProps.match.params.userId],
+   moments: selectMoments(state),
+   userId: ownProps.match.params.userId, 
    currentUser: state.session.currentUser, 
-   users: state.entities.users
+   users: state.entities.users, 
+   groups: state.entities.groups 
     };
 };
 

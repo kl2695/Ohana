@@ -1,18 +1,41 @@
-json.users do 
-    json.partial!('api/users/user', user: @user)
-end 
+users = [] 
 
-json.groups @user.groups.each do |group|
-    json.partial!('api/groups/group', group:group)
-end 
+@user.groups.each do |group| 
+    group.users.each do |user|
+        users << user 
+    end 
+end
 
-
-json.moments @user.moments.each do |moment| 
-    json.partial!('api/moments/moment', moment:moment)
-end 
-
-json.comments @user.moments.each do |moment|
+@user.moments.each do |moment| 
     moment.comments.each do |comment| 
-        json.partial!('api/comments/comment', comment:comment)
+        users << comment.author 
+    end 
+end
+
+
+
+json.users do 
+    users.each do |user| 
+        json.set! user.id do 
+            json.partial!('api/users/user', user: user)
+        end 
     end 
 end 
+
+json.groups do 
+    @user.groups.each do |group|
+        json.set! group.id do 
+            json.partial!('api/groups/group', group:group)
+        end 
+    end 
+end 
+
+
+json.moments do 
+    @user.moments.each do |moment| 
+        json.set! moment.id do 
+            json.partial!('api/moments/moment', moment:moment)
+        end
+    end 
+end 
+
