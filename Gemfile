@@ -24,13 +24,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'pry-rails'
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'redis', '~> 3.0'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'filestack-rails'
+gem 'socket.io-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

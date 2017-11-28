@@ -8,7 +8,8 @@ class Group < ApplicationRecord
     class_name: :GroupLink
 
 
-
+    has_many :messages, dependent: :destroy
+    
     has_many :users, 
     through: :group_links, 
     source: :user 

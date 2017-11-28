@@ -3,6 +3,7 @@
   <head>
     <title>Ohana</title>
 
+    
     <script src="https://static.filestackapi.com/v3/filestack.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
@@ -10,6 +11,7 @@
 
 
     <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
 
 
     <% if current_user %>
@@ -21,9 +23,13 @@
         };
       </script>
     <% end %>
+    <link rel="import" href="/index.html">
+
   </head>
 
   <body>
+  
     <%= yield %>
+
   </body>
 </html>

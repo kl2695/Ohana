@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GroupShow from './group_show';
 import { requestGroup, updateGroup } from "../../../actions/group_actions";
-import { selectUsers, selectMoments } from "../../../reducers/selectors";
+import { selectUsers, selectMoments, selectMessages } from "../../../reducers/selectors";
 import { createComment } from '../../../actions/comment_actions';
 import { createLike } from '../../../actions/like_actions';
 
@@ -18,7 +18,9 @@ return {
     usersArr: selectUsers(state),
     users: state.entities.users, 
     groups: state.entities.groups, 
-    moments: selectMoments(state)
+    moments: selectMoments(state), 
+    messages: state.entities.messages,
+    messagesArr: selectMessages(state),
     };
 
 };
