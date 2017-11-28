@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :groups, only: [:create, :index, :show, :update, :destroy]
     resources :moments, only: [:create, :index, :show, :update, :destroy]
     resources :comments, only: [:create, :index, :update, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
 
 

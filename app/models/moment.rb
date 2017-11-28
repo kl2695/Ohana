@@ -19,6 +19,11 @@ class Moment < ApplicationRecord
     foreign_key: :moment_id, 
     class_name: :Comment
 
+    has_many :likes, 
+    primary_key: :id, 
+    foreign_key: :moment_id, 
+    class_name: Like 
+
     def comments_by_parent
         comments_by_parent = Hash.new { |hash, key| hash[key] = [] }
 

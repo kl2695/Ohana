@@ -16,17 +16,13 @@ class ProfileShow extends React.Component {
         this.onSuccess = this.onSuccess.bind(this);
     }
 
-    componentWillMount(){ 
-    }
+
     componentDidMount(){
         this.props.requestUser(this.props.userId);
         this.setState(this.props.users[this.props.userId]);
-        console.log(this.props.users);
-        console.log(this.props.userId);
     }
 
     componentWillReceiveProps(newProps){
-        console.log(newProps);
         this.setState(newProps.users[newProps.match.params.userId]);
     }
 
@@ -48,7 +44,6 @@ class ProfileShow extends React.Component {
         client.storeURL(cdnUrl);
 
         let user = this.state; 
-        console.log(user);
         user.img_url = cdnUrl; 
         this.props.updateUser(user);
 
@@ -62,17 +57,20 @@ class ProfileShow extends React.Component {
             maxFiles: 3,
         };
 
-        let imgUrl; 
+        let imgUrl;
         let { groups, moments, users } = this.props; 
         
         if(moments.length > 0){
            
-            imgUrl = users[this.props.match.params.userId].img_url;
+            let baseUrl = users[this.props.match.params.userId].img_url;
+            imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
+            console.log(imgUrl);
             moments = moments.map(moment => (
                 <MomentShow
                     users={users}
                     moment={moment}
                     createComment={this.props.createComment}
+                    createLike={this.props.createLike}
                     currentUser={this.props.currentUser}
                 />
             ));

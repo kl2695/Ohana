@@ -4,6 +4,7 @@ import ProfileShow from './profile_show';
 import {requestUser, requestAllUsers, updateUser} from '../../actions/user_actions';
 import { selectMoments } from '../../reducers/selectors';
 import { createComment } from '../../actions/comment_actions';
+import { createLike } from '../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -23,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
    requestUser: userId => dispatch(requestUser(userId)), 
    requestAllUsers: () => dispatch(requestAllUsers()), 
    updateUser: user => dispatch(updateUser(user)), 
-   createComment: comment => dispatch(createComment(comment))
+   createComment: comment => dispatch(createComment(comment)), 
+   createLike: like => dispatch(createLike(like)),
 });
 
 export default withRouter(connect(

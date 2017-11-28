@@ -16,13 +16,16 @@ class GroupShow extends React.Component{
         this.onSuccess = this.onSuccess.bind(this);
     }
 
-    componentDidMount(){ 
+
+    componentDidMount() {
         this.props.requestGroup(this.props.groupId);
+        this.setState(this.props.groups);
+        
     }
 
-
-    componentWillReceiveProps(newProps){
-
+    componentWillReceiveProps(newProps) {
+        this.setState(newProps.groups);
+        console.log(this.state);
     }
 
     handleSubmit(event){
@@ -35,9 +38,10 @@ class GroupShow extends React.Component{
 
         client.storeURL(cdnUrl);
 
-        this.setState({img_url: cdnUrl});
-     
-        this.props.updateGroup(this.state);
+        let group = this.state; 
+        group.img_url = cdnUrl;
+        console.log(group);
+        this.props.updateGroup(group);
         
     }
     
@@ -56,16 +60,19 @@ class GroupShow extends React.Component{
         let name;
         let imgUrl; 
         let names; 
+        let header; 
 
         if(this.props.usersArr.length > 0){
             let currentGroup = this.props.groups.currentGroup; 
     
             name = groups.name;
-            imgUrl = groups.img_url; 
+            let baseUrl = groups.img_url; 
+            imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
 
             names = usersArr.map(user => (
                 <h2>{user.first_name} {user.last_name}</h2>
             ));
+
             moments = moments.map(moment => (
                 <MomentShow
                     users={this.props.users}
@@ -74,37 +81,56 @@ class GroupShow extends React.Component{
                     currentUser={this.props.currentUser}
                 />
             ));
-          
+            
+            if(groups.img_url !== null){
+                header = (
+                    <div className="profile">
+                        <img src={imgUrl} />
+                    </div>
+                );
+            }else{
+                header = (
+                    <Header className="profile" as='h1' icon textAlign='center'>
+                        <Icon name='users' circular />
+                        <Header.Content>
+                            {name}
+
+                        </Header.Content>
+                    </Header>
+                );
+            }
            
         }else{
             name = '';
-            imgUrl = '';
+            header = (
+                <Header className="profile"as='h1' icon textAlign='center'>
+                    <Icon name='users' circular />
+                    <Header.Content>
+                        {name}
+
+                    </Header.Content>
+                </Header>
+            
+            );
         }
 
         return(
             <div className='groupshow-container'>
-                <div>
-                    <Header className='groupshow-profile'as='h1' icon textAlign='center'>
-                        <Icon name='users' circular />
-                        <Header.Content>
-                            {name}
-                            <ReactFilestack
-                                apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                                buttonText="Update Group Picture"
-                                buttonClass="upload-button"
-                                options={basicOptions}
-                                onSuccess={this.onSuccess}
-                                onError={(e) => console.log(e)}
-                            />
-                        </Header.Content>
-                    </Header>
+                <div className="groupshow-left-bar">
+                    {header}
+                    <ReactFilestack
+                        apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                        buttonText="Update Group Picture"
+                        buttonClass="upload-button"
+                        options={basicOptions}
+                        onSuccess={this.onSuccess}
+                        onError={(e) => console.log(e)}
+                    />
+                    <SideBar class='groupshow-sidebar' names={names} />
                 </div>
-                <img src={imgUrl}/>
+
                 <div className="moments">
                     {moments}
-                </div>
-                <div className='groupshow-top-bar'>
-                    <SideBar class='groupshow-sidebar'names={names} />
                 </div>
             </div>
         );

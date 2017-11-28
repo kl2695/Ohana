@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Image, Icon, Comment, Header, Form, Button } from 'semantic-ui-react';
 class CommentsIndex extends React.Component {
     
@@ -19,39 +20,61 @@ class CommentsIndex extends React.Component {
     }
 
     handleSubmit(event){
-        this.props.createComment(this.state);
-        this.forceUpdate();
+        this.props.createComment(this.state)
+        .then(()=> this.clearBody()); 
+
     }
 
     handleInput(event){
         this.setState({body: event.target.value});
     }
 
-    render(){
+    clearBody(){
+        this.setState({body: ''}); 
+        console.log('im here'); 
+        console.log(this.state.body);
+    }
 
-    
-        let comments = this.props.comments.map(comment => (
-            <Comment>
-                <Comment.Avatar/>
-                <Comment.Content>
-                    <Comment.Author as='a'>{this.props.users[comment.user_id].username}</Comment.Author>
-                    <Comment.Metadata>
-                        <div>Today at 5:42PM</div>
-                    </Comment.Metadata>
-                    <Comment.Text>{comment.body}</Comment.Text>
-                    <Comment.Actions>
-                        <Comment.Action>Reply</Comment.Action>
-                    </Comment.Actions>
-                </Comment.Content>
-            </Comment>
-        ));
+    redirectToUser(event){
+        this.props.history.push()
+    }
+
+    render(){
+        let replyFormClass; 
+        if(this.props.display === true){
+            replyFormClass = '';
+        }else{
+            replyFormClass = "hidden";
+        }
+
+
+        let comments = this.props.comments.map(comment => {
+            let commentUser = this.props.users[comment.user_id]; 
+            return(
+
+            
+                <Comment>
+                    <Comment.Avatar/>
+                    <Comment.Content>
+                        <Comment.Author as={Link}to={`/users/${commentUser.id}`}>{commentUser.username}</Comment.Author>
+                        <Comment.Metadata>
+                            <div>Today at 5:42PM</div>
+                        </Comment.Metadata>
+                        <Comment.Text>{comment.body}</Comment.Text>
+                        <Comment.Actions>
+                            <Comment.Action>Reply</Comment.Action>
+                        </Comment.Actions>
+                    </Comment.Content>
+                </Comment>
+                );
+        });
 
         return (
             <Comment.Group minimal>
-                <Header as='h3' dividing>Comments</Header>
+                <Header as='h3' dividing></Header>
                 {comments}
-                <Form reply>
-                    <Form.TextArea onChange={this.handleInput}/>
+                <Form className={replyFormClass}reply>
+                    <Form.TextArea onChange={this.handleInput} value={this.state.body}/>
                     <Button onClick={this.handleSubmit}content='Add Reply' labelPosition='left' icon='edit' primary />
                 </Form>
                 </Comment.Group>

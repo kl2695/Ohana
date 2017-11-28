@@ -27,6 +27,7 @@
     padding:10px;
     display:flex; 
     flex-direction: column;
+    margin: 10px 0px; 
 }
 
 .feed-event{
@@ -41,3 +42,13 @@
     padding: 10px;
 }
 
+.hidden{
+    display:none
+}
+
+.thumbnail{
+    padding: 5px; 
+    border: 1px solid lightgray; 
+    background-color: white; 
+    margin: 0px 10px; 
+}

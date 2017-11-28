@@ -30,6 +30,7 @@ class MomentIndex extends React.Component{
                             users={this.props.users}
                             moment={moment}
                             createComment={this.props.createComment}
+                            createLike={this.props.createLike}
                             currentUser={this.props.currentUser}
                         />
                     

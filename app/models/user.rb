@@ -21,12 +21,18 @@ primary_key: :id,
 foreign_key: :user_id, 
 class_name: :GroupLink 
 
+has_many :likes, 
+primary_key: :id, 
+foreign_key: :user_id, 
+class_name: :Like 
+
 has_many :groups, 
 through: :group_links, 
 source: :group 
 
 has_many :comments, 
 inverse_of: :author 
+
 
 
 

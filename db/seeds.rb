@@ -18,19 +18,21 @@ demo.save
   User.create({username: Faker::Internet.user_name, email: Faker::Internet.email, first_name: Faker::Name.name, last_name: Faker::Name.name, password: Faker::Internet.password(6,10)})
 end
 
-30.times do |x|
+50.times do |x|
   Group.create({name: Faker::Team.name})
 end 
 
-300.times do |x|
-  GroupLink.create({group_id: rand(1..20), user_id: rand(1..50)} )
+200.times do |x|
+  GroupLink.create({group_id: rand(1..50), user_id: rand(1..100)} )
 end 
-100.times do |x|
-  Moment.create({group_id: rand(1..20), user_id: rand(1..50), body: Faker::RickAndMorty.quote} )
+200.times do |x|
+  Moment.create({group_id: rand(1..50), user_id: rand(1..100), body: Faker::RickAndMorty.quote} )
 end 
 
 200.times do |x| 
-  Comment.create({user_id: rand(1..50), moment_id: rand(1..200), body: Faker::RickAndMorty.quote})
+  Comment.create({user_id: rand(1..100), moment_id: rand(1..200), body: Faker::RickAndMorty.quote})
 end 
 
-
+1000.times do |x| 
+  Like.create({user_id: rand(1..100), moment_id: rand(1..200)})
+end 

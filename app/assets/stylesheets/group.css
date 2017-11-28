@@ -17,10 +17,37 @@
     box-shadow: 1px 1px 1px 1px lightblue;
 }
 
-.groupshow-sidebar{
-    background-color:red;
+.groupshow-left-bar{
+   display: flex; 
+   flex-direction: column; 
 }
 .upload-button{
     border-radius: 3px; 
     padding: 10px; 
+}
+
+
+.group-index-container{
+    display: flex; 
+    flex-direction: column;
+}
+
+.group-index-item-container{
+    display: flex; 
+    align-items: center; 
+    width: 100%; 
+    
+}
+
+
+.group-index-item-1{
+    width: 33%; 
+}
+
+.group-index-item-2{
+    width: 33%; 
+}
+
+.group-index-item-3{
+    width: 33%; 
 }
