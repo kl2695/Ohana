@@ -15,12 +15,12 @@ const MomentShow = (props) => {
             </Feed.Label>
             <Feed.Content>
                 <Feed.Summary>
-                    <Feed.User>{users[moment.user_id].username}</Feed.User> added you as a friend
-                    <Feed.Date>1 Hour Ago</Feed.Date>
+                    <Feed.User>{users[moment.user_id].username}</Feed.User>
+                    <Feed.Date></Feed.Date>
                 </Feed.Summary>
                 <Feed.Extra className="feed-content"text>
                     {moment.body}
-                    <img src={moment.img_url} alt="Image uploaded with Filestack" title="Image uploaded with Filestack" />
+                    <img src={moment.img_url}/>
                 </Feed.Extra>
                 <Divider />
                 <Feed.Meta>

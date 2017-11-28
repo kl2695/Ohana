@@ -15,10 +15,20 @@ class ProfileShow extends React.Component {
         this.handleInput = this.handleInput.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
     }
+
+    componentWillMount(){ 
+    }
     componentDidMount(){
-        this.props.requestUser(this.props.userId); 
+        this.props.requestUser(this.props.userId);
+        this.setState(this.props.users[this.props.userId]);
+        console.log(this.props.users);
+        console.log(this.props.userId);
     }
 
+    componentWillReceiveProps(newProps){
+        console.log(newProps);
+        this.setState(newProps.users[newProps.match.params.userId]);
+    }
 
 
     handleSubmit(event) {
@@ -38,6 +48,7 @@ class ProfileShow extends React.Component {
         client.storeURL(cdnUrl);
 
         let user = this.state; 
+        console.log(user);
         user.img_url = cdnUrl; 
         this.props.updateUser(user);
 
@@ -71,7 +82,7 @@ class ProfileShow extends React.Component {
         return (
                 <div className="profile-container">
                     <div className="profile profile-pic">
-                        <img src={imgUrl} alt="Image uploaded with Filestack" title="Image uploaded with Filestack" />
+                        <img src={imgUrl}/>
                         <ReactFilestack
                             apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
                             buttonText="Update Profile Picture"

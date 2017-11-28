@@ -42,10 +42,8 @@ class MomentIndex extends React.Component{
     }
             
         return(
-            <div className='moments'>
-                <Feed>
-                    {moments}    
-                </Feed>
+            <div className="moments">
+                {moments}
             </div>
         );
     }
