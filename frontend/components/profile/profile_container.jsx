@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import ProfileShow from './profile_show';
 import {requestUser, requestAllUsers, updateUser} from '../../actions/user_actions';
 import { selectMoments } from '../../reducers/selectors';
+import { createComment } from '../../actions/comment_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -21,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
    requestUser: userId => dispatch(requestUser(userId)), 
    requestAllUsers: () => dispatch(requestAllUsers()), 
-   updateUser: user => dispatch(updateUser(user))
+   updateUser: user => dispatch(updateUser(user)), 
+   createComment: comment => dispatch(createComment(comment))
 });
 
 export default withRouter(connect(

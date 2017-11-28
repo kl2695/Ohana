@@ -1,0 +1,26 @@
+.groupshow-container{
+    display:flex; 
+    justify-content: space-around;
+    margin: 0px 10px; 
+}
+
+
+.moment-show{
+    background-color:white;
+    border: 1px solid lightgray;
+}
+
+.groupshow-profile{
+    background-color: white; 
+    border: 1px solid lightgray; 
+    border-radius: 1px; 
+    box-shadow: 1px 1px 1px 1px lightblue;
+}
+
+.groupshow-sidebar{
+    background-color:red;
+}
+.upload-button{
+    border-radius: 3px; 
+    padding: 10px; 
+}

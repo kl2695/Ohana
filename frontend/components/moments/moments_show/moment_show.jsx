@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Feed, Icon, Button, Embed } from 'semantic-ui-react';
+import { Grid, Image, Feed, Icon, Button, Embed, Divider } from 'semantic-ui-react';
 import CommentsIndex from '../../comments/comments_index/comments_index';
 
 const MomentShow = (props) => {
 
-    const { user, users, moment, createComment, currentUser } = props; 
-    console.log(props);
+    const { users, moment, createComment, currentUser } = props; 
+  
 
     return (
-        <Feed.Event>
+        <Feed.Event className="feed-event">
             <Feed.Label>
 
             </Feed.Label>
@@ -18,19 +18,21 @@ const MomentShow = (props) => {
                     <Feed.User>{users[moment.user_id].username}</Feed.User> added you as a friend
                     <Feed.Date>1 Hour Ago</Feed.Date>
                 </Feed.Summary>
-                <Feed.Extra text>
+                <Feed.Extra className="feed-content"text>
                     {moment.body}
                     <img src={moment.img_url} alt="Image uploaded with Filestack" title="Image uploaded with Filestack" />
                 </Feed.Extra>
+                <Divider />
                 <Feed.Meta>
                     <Feed.Like>
                         <Icon name='like' />
                         4 Likes
                     </Feed.Like>
+                <Divider />
                 </Feed.Meta>
                 <Feed.Extra>
                     <Button>Like</Button>
-                    <Button>Comments</Button>
+                    <Button>Comment</Button>
                     <Button>Share</Button>
 
                     <CommentsIndex createComment={props.createComment}

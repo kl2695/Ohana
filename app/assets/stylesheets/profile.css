@@ -1,0 +1,16 @@
+.profile-container{
+    margin: 15px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+    position:relative;
+}
+
+.profile-pic{
+    position: absolute; 
+    left: 10px;
+}
+
+.profile-moments{
+
+}

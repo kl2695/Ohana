@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+.moments {
+    margin: 30px 10px;
+    padding:10px; 
+}
+
+.profile {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 1px 1px 1px 1px lightgray; 
+    padding:10px;
+    display:flex; 
+    flex-direction: column;
+}
+
+.feed-event{
+    margin: 30px 10px; 
+    border: 1px solid lightgray; 
+    border-radius: 1px; 
+    background-color: white; 
+    padding: 20px; 
+}
+.feed-content{
+    
+    padding: 10px;
+}
+

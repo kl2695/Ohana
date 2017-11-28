@@ -4,7 +4,7 @@ import MomentsIndex from '../moments/moments_index/moments_index_container';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import { Image, Header, Icon } from 'semantic-ui-react';
-import { MomentShow } from '../moments/moments_show/moment_show';
+import MomentShow from '../moments/moments_show/moment_show';
 
 class ProfileShow extends React.Component {
     constructor(props) {
@@ -53,19 +53,13 @@ class ProfileShow extends React.Component {
 
         let imgUrl; 
         let { groups, moments, users } = this.props; 
-        console.log(this.props);
-        console.log(this.state);
+        
         if(moments.length > 0){
-            console.log('users');
-            console.log(users);
-            console.log(this.props.match.params.userId);
+           
             imgUrl = users[this.props.match.params.userId].img_url;
-            console.log('imgurl'); 
-            console.log(imgUrl);
-            console.log(moments);
             moments = moments.map(moment => (
                 <MomentShow
-                    users={this.props.users}
+                    users={users}
                     moment={moment}
                     createComment={this.props.createComment}
                     currentUser={this.props.currentUser}
@@ -75,21 +69,22 @@ class ProfileShow extends React.Component {
             imgUrl = '';
         }
         return (
-            <div>
                 <div className="profile-container">
-
-                    <img src={imgUrl} alt="Image uploaded with Filestack" title="Image uploaded with Filestack" />
-                    <ReactFilestack
-                        apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                        buttonText="Update Profile Picture"
-                        buttonClass="classname"
-                        options={basicOptions}
-                        onSuccess={this.onSuccess}
-                        onError={(e) => console.log(e)}
-                    />
-                   {moments}
+                    <div className="profile profile-pic">
+                        <img src={imgUrl} alt="Image uploaded with Filestack" title="Image uploaded with Filestack" />
+                        <ReactFilestack
+                            apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                            buttonText="Update Profile Picture"
+                            buttonClass="classname"
+                            options={basicOptions}
+                            onSuccess={this.onSuccess}
+                            onError={(e) => console.log(e)}
+                        />
+                    </div>
+                    <div className="moments">
+                        {moments}
+                    </div>
                 </div>
-            </div>
         );
     }
 

@@ -22,7 +22,6 @@ class MomentIndex extends React.Component{
         let moments; 
             if(this.props.moments.length > 0){
 
-            console.log(this.props.moments);
             moments = this.props.moments.map(moment => {
 
                     return (
@@ -43,7 +42,7 @@ class MomentIndex extends React.Component{
     }
             
         return(
-            <div>
+            <div className='moments'>
                 <Feed>
                     {moments}    
                 </Feed>

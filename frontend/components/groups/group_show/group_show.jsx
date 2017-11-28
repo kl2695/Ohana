@@ -1,8 +1,9 @@
 import React from 'react';
-import { Grid, Image, Header, Icon } from 'semantic-ui-react';
+import { Grid, Image, Header, Feed, Icon } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../moments/moments_show/moment_show';
+import SideBar from './group_show_sidebar';
 
 
 class GroupShow extends React.Component{
@@ -65,10 +66,6 @@ class GroupShow extends React.Component{
             names = usersArr.map(user => (
                 <h2>{user.first_name} {user.last_name}</h2>
             ));
-
-            console.log(moments);
-            console.log(usersArr);
-            console.log(moments);
             moments = moments.map(moment => (
                 <MomentShow
                     users={this.props.users}
@@ -85,25 +82,30 @@ class GroupShow extends React.Component{
         }
 
         return(
-            <div>
-                <Header as='h1' icon textAlign='center'>
-                    <Icon name='users' circular />
-                    <Header.Content>
-                        {name}
-                    </Header.Content>
-                </Header>
-                <ReactFilestack
-                    apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                    buttonText="Update Group Picture"
-                    buttonClass="classname"
-                    options={basicOptions}
-                    onSuccess={this.onSuccess}
-                    onError={(e) => console.log(e)}
-                />
-                <img src={imgUrl} alt="Image uploaded with Filestack" title="Image uploaded with Filestack"/>
-                {names}
-                {moments}
-
+            <div className='groupshow-container'>
+                <div>
+                    <Header className='groupshow-profile'as='h1' icon textAlign='center'>
+                        <Icon name='users' circular />
+                        <Header.Content>
+                            {name}
+                            <ReactFilestack
+                                apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                                buttonText="Update Group Picture"
+                                buttonClass="upload-button"
+                                options={basicOptions}
+                                onSuccess={this.onSuccess}
+                                onError={(e) => console.log(e)}
+                            />
+                        </Header.Content>
+                    </Header>
+                </div>
+                <img src={imgUrl}/>
+                <div className="moments">
+                    {moments}
+                </div>
+                <div className='groupshow-top-bar'>
+                    <SideBar class='groupshow-sidebar'names={names} />
+                </div>
             </div>
         );
     }
