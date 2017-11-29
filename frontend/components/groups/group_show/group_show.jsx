@@ -1,11 +1,12 @@
 import React from 'react';
 import { Grid, Image, Header, Feed, Icon, Menu } from 'semantic-ui-react';
+import { Route } from 'react-router-dom';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../moments/moments_show/moment_show';
 import SideBar from './group_show_sidebar';
-import GroupShowMoments from './group_show_moments'; 
-import GroupShowMessages from './group_show_messages';
+import GroupShowMomentsContainer from './group_show_moments/group_show_moments_container'; 
+import GroupShowMessagesContainer from './group_show_messages/group_show_messages_container';
 
 
 class GroupShow extends React.Component{
@@ -14,7 +15,6 @@ class GroupShow extends React.Component{
         this.state = {};
      
 
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleItemClick = this.handleItemClick.bind(this);
     }
 
@@ -40,8 +40,9 @@ class GroupShow extends React.Component{
     
     render(){
 
-        const { usersArr, messagesArr } = this.props; 
+        const { usersArr, messagesArr, users, groups, moments, createComment, currentUser } = this.props; 
         const {activeItem} = this.state; 
+
 
         return(
 
@@ -63,25 +64,17 @@ class GroupShow extends React.Component{
                         </Menu.Item>
                     </div>
                 </Menu>
-
-                <Route 
-                    exact path='/groups/:groupId' 
-                    component={GroupShowMoments}
-                    users={this.props.users}
-                    usersArr={usersArr}
-                    groups={this.props.groups}
-                    moments={this.props.moments}
-                    createComment={this.props.createComment}
-                    currentUser={this.props.currentUser}
-                />
-                <Route 
-                    path='/groups/:groupId/messages'
-                    component={GroupShowMessages} 
-                    users={this.props.users}
-                    groups={this.props.groups}
-                    messages={this.props.messages}
-                    messagesArr={messagesArr}
-                />
+                <Switch>
+                    <Route 
+                        exact path='/groups/:groupId' 
+                        component={GroupShowMomentsContainer}
+                            
+                    />
+                    <Route 
+                        path='/groups/:groupId/messages'
+                        component={GroupShowMessagesContainer} 
+                    />
+                </Switch>
             </div>
         );
     }

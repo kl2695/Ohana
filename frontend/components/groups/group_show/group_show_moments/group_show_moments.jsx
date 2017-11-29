@@ -15,7 +15,6 @@ class GroupShowMoments extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
-        this.handleItemClick = this.handleItemClick.bind(this);
 
     }
 
@@ -56,6 +55,7 @@ class GroupShowMoments extends React.Component {
             maxSize: 1024 * 1024,
             maxFiles: 3,
         };
+        console.log(this.props);
 
         let { usersArr, groups, moments } = this.props;
 
