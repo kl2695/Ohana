@@ -28,7 +28,7 @@ const MainPage = (props) => {
                 <Route exact path='/groups' component={GroupsIndexContainer} />
                 <Route exact path='/groups/new' component={GroupFormContainer} />
                 <Route exact path='/groups/:groupId' component={GroupShowContainer} />
-                <Route exact path='/moments' component={MomentsIndexContainer} />
+                <Route exact path='/' component={MomentsIndexContainer} />
             </Switch>
 
         </div>

@@ -33,8 +33,8 @@ class NavBar extends React.Component {
                     <Menu className='nav-bar' inverted color='blue' tabular borderless icon>
                             <div className="right-nav-bar">
                                 <Menu.Item 
-                                    name='moments'
-                                    active={activeItem === 'moments'}
+                                    name=''
+                                    active={activeItem === ''}
                                     onClick={this.handleItemClick}
                                 >
                                     <Icon circular name='home'/>
