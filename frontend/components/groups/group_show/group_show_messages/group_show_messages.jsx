@@ -36,7 +36,7 @@ class GroupShowMessages extends React.Component {
                 return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
             }
         });
-        
+
         this.props.requestGroup(this.props.groupId);
 
     }
@@ -57,6 +57,10 @@ class GroupShowMessages extends React.Component {
 
     handleSubmit(event) {
         this.props.createMessage(this.state);
+        this.setState({body: ''});
+        const objDiv = document.getElementById("messages-container");
+        objDiv.scrollTop = objDiv.scrollHeight;
+        window.scrollTo(0, document.body.scrollHeight);
 
     }
 
@@ -79,7 +83,6 @@ class GroupShowMessages extends React.Component {
 
 
     render() {
-
 
         const basicOptions = {
             accept: 'image/*',
@@ -157,7 +160,7 @@ class GroupShowMessages extends React.Component {
                 </Container>
 
                 <Form onSubmit={this.handleSubmit}>
-                    <TextArea onChange={this.handleInput} autoHeight placeholder="Type a message..." />
+                    <TextArea onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.body}/>
                     <Button onSubmit={this.handleSubmit}>Send</Button>
                 </Form>
             </div>

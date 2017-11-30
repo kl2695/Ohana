@@ -65,8 +65,9 @@
     width: 33%; 
 }
 
-.messages-container{
+#messages-container{
     background-color: white; 
     height: 600px; 
     padding: 10px; 
+    overflow:scroll; 
 }
