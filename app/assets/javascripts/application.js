@@ -13,27 +13,5 @@
 //= require jquery 
 //= require jquery_ujs
 //= require rails-ujs
-//= require_tree ./channels
 //= require_tree .
 
-
-const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-
-app.get('/', function (req, res) {
-    res.sendFile('../../views/layouts/index.html');
-});
-
-app.get('/socket.io/socket.io.js', function (req, res) {
-    res.sendFile('../../../node_modules/socket.io-client/dist/socket.io.js');
-});
-
-
-io.on('connection', function (socket) {
-    console.log('a user connected');
-});
-
-http.listen(3000, function () {
-    console.log('listening on *:3000');
-});

@@ -20,7 +20,8 @@ export const receiveCurrentGroup = payload => ({
     type: RECEIVE_CURRENT_GROUP,
     groups: payload.groups, 
     users: payload.users, 
-    moments: payload.moments 
+    moments: payload.moments, 
+    messages: payload.messages,
 });
 
 export const receiveOneGroup = group => ({

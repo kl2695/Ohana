@@ -19,7 +19,6 @@ class MomentIndex extends React.Component{
     }
 
     render(){
-        console.log(this.props.currentUser);
         let moments; 
             if(this.props.moments.length > 0){
 

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :moments, only: [:create, :index, :show, :update, :destroy]
     resources :comments, only: [:create, :index, :update, :destroy]
     resources :likes, only: [:create, :destroy]
-    resources :messages, only: [:create]
+    resources :messages, only: [:create, :index, :show]
   end
 
 

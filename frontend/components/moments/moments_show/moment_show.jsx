@@ -38,7 +38,7 @@ class MomentShow extends React.Component {
                 </Feed.Label>
                 <Feed.Content>
                     <Feed.Summary>
-                        <Feed.User as={Link}to={`/users/${momentUser.id}`}>{users[moment.user_id].username}</Feed.User>
+                        <Feed.User as={Link}to={`/users/${momentUser.id}`}>{momentUser.username}</Feed.User>
                         <Feed.Date></Feed.Date>
                     </Feed.Summary>
                     <Feed.Extra className="feed-content"text>

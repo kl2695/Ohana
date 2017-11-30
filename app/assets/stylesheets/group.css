@@ -1,7 +1,23 @@
 .groupshow-container{
     display:flex; 
     justify-content: space-around;
-    margin: 0px 10px; 
+    flex-direction: column; 
+}
+
+.groupshow-left-bar {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-groupshow{
+    display: flex; 
+    flex-direction: column;
+}
+
+.groupshow-moments-container{
+    display: flex; 
+    justify-content: space-around; 
+
 }
 
 
@@ -17,10 +33,7 @@
     box-shadow: 1px 1px 1px 1px lightblue;
 }
 
-.groupshow-left-bar{
-   display: flex; 
-   flex-direction: column; 
-}
+
 .upload-button{
     border-radius: 3px; 
     padding: 10px; 
@@ -50,4 +63,10 @@
 
 .group-index-item-3{
     width: 33%; 
+}
+
+.messages-container{
+    background-color: white; 
+    height: 600px; 
+    padding: 10px; 
 }

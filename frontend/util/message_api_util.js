@@ -1,14 +1,14 @@
 
 export const fetchAllMessages = () => {
     return $.ajax({
-        url: 'api/users', 
+        url: '/api/users', 
         method: 'GET',
     });
 };
 
 export const createMessage = message => {
     return $.ajax({
-        url: 'api/messages', 
+        url: '/api/messages', 
         method: 'POST', 
         data: { message },
     });

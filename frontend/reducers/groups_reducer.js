@@ -1,6 +1,7 @@
 import { RECEIVE_ALL_GROUPS, RECEIVE_CURRENT_GROUP, RECEIVE_ONE_GROUP, REMOVE_GROUP } from "../actions/group_actions";
 import merge from 'lodash/merge';
 import { RECEIVE_USER } from '../actions/user_actions';
+import { RECEIVE_ALL_MESSAGES } from '../actions/message_actions';
 
 const groupsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -18,6 +19,8 @@ const groupsReducer = (state = {}, action) => {
             return merge({}, state, newState);
         case RECEIVE_USER: 
             return action.groups; 
+        case RECEIVE_ALL_MESSAGES: 
+            return merge({}, state, action.messages);
         default:
             return state;
     }

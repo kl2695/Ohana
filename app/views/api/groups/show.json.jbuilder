@@ -6,12 +6,15 @@ users = []
 
 @group.users.each do |user|
     users << user
-    user.moments.each do |moment| 
-        moment.comments.each do |comment| 
-            users << comment.author 
-        end 
+end 
+
+ @group.moments.each do |moment| 
+    users << moment.author 
+    moment.comments.each do |comment| 
+        users << comment.author 
     end 
 end 
+
 
 json.users do 
     users.uniq.each do |user|
@@ -23,12 +26,10 @@ end
 
 
 json.moments do
-    @group.users.each do |user| 
-        user.moments.each do |moment| 
-            json.set! moment.id do 
-                json.partial!('api/moments/moment', moment: moment)
-            end
-        end 
+    @group.moments.each do |moment|
+        json.set! moment.id do 
+            json.partial!('api/moments/moment', moment: moment)
+        end
     end 
 end 
 

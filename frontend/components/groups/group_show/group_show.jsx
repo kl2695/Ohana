@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Image, Header, Feed, Icon, Menu } from 'semantic-ui-react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../moments/moments_show/moment_show';
@@ -46,24 +46,25 @@ class GroupShow extends React.Component{
 
         return(
 
-            <div className='groupshow-container'>
-                <Menu className='nav-bar' tabular borderless>
-                    <div className="right-nav-bar">
-                        <Menu.Item
-                            name=''
-                            active={activeItem === ''}
-                            onClick={this.handleItemClick}
-                        >
-                        </Menu.Item>
+            <div className="groupshow-container">
+                <div className="left-groupshow">
+            
+                    <Menu className='nav-bar' tabular borderless>
+                            <Menu.Item
+                                name=''
+                                active={activeItem === ''}
+                                onClick={this.handleItemClick}
+                            >Moments
+                            </Menu.Item>
 
-                        <Menu.Item
-                            name='messages'
-                            active={activeItem === 'messages'}
-                            onClick={this.handleItemClick}
-                        >
-                        </Menu.Item>
-                    </div>
-                </Menu>
+                            <Menu.Item
+                                name='messages'
+                                active={activeItem === 'messages'}
+                                onClick={this.handleItemClick}
+                            >Messages
+                            </Menu.Item>
+                    </Menu>
+                </div>
                 <Switch>
                     <Route 
                         exact path='/groups/:groupId' 

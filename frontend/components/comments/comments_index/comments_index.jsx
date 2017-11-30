@@ -31,12 +31,10 @@ class CommentsIndex extends React.Component {
 
     clearBody(){
         this.setState({body: ''}); 
-        console.log('im here'); 
-        console.log(this.state.body);
     }
 
     redirectToUser(event){
-        this.props.history.push()
+        
     }
 
     render(){

@@ -64,7 +64,7 @@ class ProfileShow extends React.Component {
            
             let baseUrl = users[this.props.match.params.userId].img_url;
             imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
-            console.log(imgUrl);
+
             moments = moments.map(moment => (
                 <MomentShow
                     users={users}
