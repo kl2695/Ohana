@@ -1,10 +1,10 @@
 # Ohana
 
-[Ohana][https://kevinsfullstack.herokuapp.com] is a social media web application for friends to send messages to, share content with, and follow the activity of their close friends. The original idea behind Ohana (a hawaiian which roughly translates to "family") came from the recognization that most of today's current social media platforms encourage their users to interact with as many other users as possible. What's different about Ohana is that it's made for exactly the opposite purpose: interact and share only with the select group(s) of people you actually want to stay in touch with. Users can post "moments" with text and photos, upload pictures to their profile page, create groups with other users and message those groups, and like and comment on other users' posts. 
+[Ohana](https://kevinsfullstack.herokuapp.com) is a social media web application for friends to send messages to, share content with, and follow the activity of their close friends. The original idea behind Ohana (a hawaiian which roughly translates to "family") came from the recognization that most of today's current social media platforms encourage their users to interact with as many other users as possible. What's different about Ohana is that it's made for exactly the opposite purpose: interact and share only with the select group(s) of people you actually want to stay in touch with. Users can post "moments" with text and photos, upload pictures to their profile page, create groups with other users and message those groups, and like and comment on other users' posts. 
 
 Ohana is a personal project by Kevin Lee.
 
-![Ohana home page: https://kevinsfullstack.herokuapp.com][home page]
+![Ohana home page](https://kevinsfullstack.herokuapp.com)
 
 ## Features
 
