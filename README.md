@@ -29,15 +29,13 @@ The database schema can be found [here](https://github.com/kl2695/Ohana/wiki/Dat
 
 Chime is a single-page application built on Rails and React.js, with many dependencies in both the backend and the frontend.
 
-- [Backend technology][backend]
-- [Frontend technology][frontend]
-- [File storage][file storage] via Amazon Simple Storage Services (S3)
+- [Backend technology](https://github.com/kl2695/Ohana/blob/master/docs/backend.md)
+- [Frontend technology](https://github.com/kl2695/Ohana/blob/master/docs/frontend.md)
 
 ## Future Implementations
 
-Chime is only a few degrees above being considered an MVP.
-
-The features that will be added are listed in the [future implementations][future] outline.
+Ohana's full range of features is far from being complete. As of right now, only MVP features have been implemented. 
+The following is a list of features that plan to be implemented in the future: 
 
 [chime]: https://chime.audio
 [home page]: ./docs/images/home_page.png "Chime home page"
