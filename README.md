@@ -15,8 +15,11 @@ Ohana is a personal project by Kevin Lee.
 - Feed of user moments, comments, and likes 
 - Create groups of users with messaging and moments capability 
 
+
+### User Moments
 ![user moments](https://github.com/kl2695/Ohana/blob/master/docs/images/moments.png)
 
+### Group Chat
 ![group chat](https://github.com/kl2695/Ohana/blob/master/docs/images/group_chat.png)
 
 ## Project Design
