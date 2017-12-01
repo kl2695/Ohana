@@ -4,7 +4,7 @@
 
 Ohana is a personal project by Kevin Lee.
 
-![Ohana home page](https://kevinsfullstack.herokuapp.com)
+![Ohana Home Page](docs/home_page)
 
 ## Features
 
