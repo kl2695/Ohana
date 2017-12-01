@@ -4,7 +4,7 @@
 
 Ohana is a personal project by Kevin Lee.
 
-![Ohana Home Page](docs/home_page.png)
+![Ohana Home Page](https://github.com/kl2695/Ohana/blob/master/docs/images/home_page.png)
 
 ## Features
 
