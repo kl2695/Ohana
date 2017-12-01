@@ -5,6 +5,7 @@ import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import { Image, Header, Icon } from 'semantic-ui-react';
 import MomentShow from '../moments/moments_show/moment_show';
+import MomentsFormContainer from '../moments/moments_form/moments_form_container';
 
 class ProfileShow extends React.Component {
     constructor(props) {
@@ -78,7 +79,7 @@ class ProfileShow extends React.Component {
                     createLike={this.props.createLike}
                     currentUser={this.props.currentUser}
                 />
-            ));
+            )).reverse();
         }else{
             imgUrl = '';
         }
@@ -96,6 +97,7 @@ class ProfileShow extends React.Component {
                         />
                     </div>
                     <div className="profile-moments">
+                        <MomentsFormContainer />
                         {moments}
                     </div>
                 </div>

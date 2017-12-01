@@ -14,11 +14,16 @@ class MomentsForm extends React.Component {
                 img_url: '', 
                 user_id: this.props.currentUser.id,
                 render_bool: true,
+                group_id: null,
             };
 
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleInput = this.handleInput.bind(this); 
             this.onSuccess = this.onSuccess.bind(this);   
+        }
+
+        componentWillReceiveProps(newProps){
+            this.setState({group_id: newProps.currentGroupId});
         }
 
         componentDidMount(){
@@ -29,8 +34,9 @@ class MomentsForm extends React.Component {
             const moment = this.state; 
             delete moment.render_bool; 
             this.props.createMoment(moment)
-            .then(() => this.props.history.push('/moments'));
-            this.setState({render_bool:false});
+            .then(() => this.props.history.push('/'));
+            this.setState({ render_bool: false });
+            
            
         }
 

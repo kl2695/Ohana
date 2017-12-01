@@ -8,6 +8,10 @@ users = []
     users << user
 end 
 
+@group.messages.each do |message|
+    users<< message.user 
+end 
+
  @group.moments.each do |moment| 
     users << moment.author 
     moment.comments.each do |comment| 
@@ -36,7 +40,7 @@ end
 
 
 json.messages do 
-    @group.messages[0..30].each do |message|
+    @group.messages.reverse()[0..30].each do |message|
         json.set! message.id do 
             json.partial!('api/messages/message', message: message)
         end 

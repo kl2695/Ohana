@@ -20,9 +20,6 @@ class GroupIndex extends React.Component{
     
     render(){
         let groups;
-
-        console.log(this.props.groups);
-        console.log(this.props.groups.length);
         if(this.props.groups.length > 20){ 
             this.props.groups.pop(); 
             groups = this.props.groups.map(group => {
@@ -32,7 +29,6 @@ class GroupIndex extends React.Component{
                     }
                     return (
                     <div>
-                        <GroupFormContainer/>
                         <Item.Group divided>
                             <Item className="group-index-item-container">
                                 <div className="thumbnail">
@@ -61,6 +57,7 @@ class GroupIndex extends React.Component{
         }
         return(
             <div className="groups-index-container">
+                <GroupFormContainer />
                 {groups}
             </div>
         );

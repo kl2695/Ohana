@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
         return {
             currentUser: state.session.currentUser,
             errors: state.errors.session, 
-            moments: selectMoments(state),
+            moments: selectMoments(state).reverse(),
             users: state.entities.users, 
             comments: state.entities.comments 
         };

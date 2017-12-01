@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextArea } from 'semantic-ui-react';
+import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextArea, Input } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../../moments/moments_show/moment_show';
@@ -141,15 +141,14 @@ class GroupShowMessages extends React.Component {
                 <div className="messages-container-left">
                     <Container fluid id="messages-container" textAlign="left">
                         Messages
-                            <ChatView scrollLoadThreshold={100}
+                            <ChatView scrollLoadThreshold={50}
                             onInfiniteLoad={this.loadMoreHistory} flipped={true}> 
                                 {messages}
                             </ChatView>
                     </Container>
 
                     <Form onSubmit={this.handleSubmit}>
-                        <TextArea onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body}/>
-                        <Button onSubmit={this.handleSubmit}>Send</Button>
+                        <Input onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body}/>
                     </Form>
                 </div>
                 <div className="groupshow-sidebar">

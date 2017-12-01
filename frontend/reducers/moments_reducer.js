@@ -20,7 +20,11 @@ const momentsReducer = (state = {}, action) => {
             delete newState[action.moment.id]; 
             return merge({}, state, newState);
         case RECEIVE_CURRENT_GROUP: 
-            return action.moments; 
+            if(action.moments){
+                return action.moments;
+            }else{
+                return state; 
+            } 
         case RECEIVE_USER: 
             return action.moments; 
         case RECEIVE_ONE_COMMENT: 

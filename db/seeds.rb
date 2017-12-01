@@ -14,25 +14,44 @@ demo = User.new(username: 'demo', email: 'demo@gmail.com', first_name: 'demo', l
 demo.save
 
 
-100.times do |x|
-  User.create({username: Faker::Internet.user_name, email: Faker::Internet.email, first_name: Faker::Name.name, last_name: Faker::Name.name, password: Faker::Internet.password(6,10)})
+usersJson = ActiveSupport::JSON.decode(File.read('db/seeds/users.json'))
+users = []
+usersJson.each do |row|
+ users << User.create!(row)
 end
 
-50.times do |x|
-  Group.create({name: Faker::Team.name})
+groupsJson = ActiveSupport::JSON.decode(File.read('db/seeds/groups.json'))
+groups = [] 
+groupsJson.each do |row|
+  groups << Group.create!(row)
 end 
+
 
 200.times do |x|
-  GroupLink.create({group_id: rand(1..50), user_id: rand(1..100)} )
-end 
-200.times do |x|
-  Moment.create({group_id: rand(1..50), user_id: rand(1..100), body: Faker::RickAndMorty.quote} )
+  GroupLink.create({group_id: rand(1..25), user_id: rand(1..50)} )
 end 
 
-200.times do |x| 
-  Comment.create({user_id: rand(1..100), moment_id: rand(1..200), body: Faker::RickAndMorty.quote})
+momentsJson = ActiveSupport::JSON.decode(File.read('db/seeds/moments.json'))
+moments = [] 
+momentsJson.each do |row| 
+  moments << Moment.create!(row)
 end 
 
-1000.times do |x| 
-  Like.create({user_id: rand(1..100), moment_id: rand(1..200)})
+commentsJson = ActiveSupport::JSON.decode(File.read('db/seeds/comments.json'))
+comments = [] 
+commentsJson.each do |row| 
+  comments << Comment.create!(row)
+end 
+
+
+likesJson = ActiveSupport::JSON.decode(File.read('db/seeds/likes.json'))
+likes = [] 
+likesJson.each do |row|
+  likes << Like.create!(row)
+end 
+
+messagesJson = ActiveSupport::JSON.decode(File.read('db/seeds/messages.json'))
+messages = [] 
+messagesJson.each do |row| 
+  messages << Message.create!(row)
 end 

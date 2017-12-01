@@ -55,11 +55,7 @@ class MomentIndex extends React.Component {
             moments = [];
 
         }
-        let modal; 
-
-        if(this.state.clicked === true){
-            modal = <MomentsFormContainer/>;
-        }  
+        
         return (
             <div>
                 <MomentsFormContainer/>

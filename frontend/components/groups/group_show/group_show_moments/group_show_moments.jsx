@@ -4,6 +4,7 @@ import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../../moments/moments_show/moment_show';
 import SideBar from '../group_show_sidebar';
+import MomentsFormContainer from '../../../moments/moments_form/moments_form_container';
 
 
 class GroupShowMoments extends React.Component {
@@ -66,8 +67,6 @@ class GroupShowMoments extends React.Component {
         if (this.props.usersArr.length > 0) {
             let currentGroup = this.props.groups.currentGroup;
             name = groups.name;
-            let baseUrl = groups.img_url;
-            imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
 
             names = usersArr.map(user => (
                 <h2>{user.first_name} {user.last_name}</h2>
@@ -83,9 +82,15 @@ class GroupShowMoments extends React.Component {
                     createLike={this.props.createLike}
                     currentUser={this.props.currentUser}
                 />
-            ));
+            )).reverse();
 
-            if (groups.img_url !== "" && groups.img_url !== null) {
+            if (groups.img_url !== "" && groups.img_url) {
+                if(groups.img_url.includes('robohash')){
+                    imgUrl = groups.img_url; 
+                }else{
+                    let baseUrl = groups.img_url;
+                    imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
+                }
                 header = (
                     <div className="profile">
                         <img src={imgUrl} />
@@ -135,6 +140,7 @@ class GroupShowMoments extends React.Component {
                 </div>
 
                 <div className="moments">
+                    <MomentsFormContainer currentGroupId={this.props.groups.id}/>
                     {moments}
                 </div>
             </div>
