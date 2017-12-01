@@ -71,6 +71,7 @@ class ProfileShow extends React.Component {
 
             moments = moments.map(moment => (
                 <MomentShow
+                    key={moment.id}
                     users={users}
                     moment={moment}
                     createComment={this.props.createComment}

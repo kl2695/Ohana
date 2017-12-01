@@ -46,10 +46,17 @@ class GroupForm extends React.Component {
             maxFiles: 3,
         };
 
+        let trigger; 
+        if(this.props.navbar === true){
+            trigger = <p> Create A Group</p>;
+        }else{
+            trigger = <Button color="blue"> Create A Group </Button>;
+        }
+
 
         return(
        
-                <Modal trigger={<p> Create A Group</p>}>
+                <Modal trigger={trigger}>
                     <Modal.Header>Create A Group</Modal.Header>
                         <Modal.Content>
                             <Modal.Description>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Header, Icon, Image, Modal, Input, Form } from 'semantic-ui-react';
+import { Button, Header, Icon, Image, Modal, Input, Form} from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentsFormContainer from "./moments_form_container";
@@ -62,15 +62,21 @@ class MomentsForm extends React.Component {
                 );
 
             }else{
+                let trigger;
+                if(this.props.navbar === true){
+                    trigger = <p> Post a Moment </p>;
+                }else{
+                    trigger = <Form.Input label='Post a Moment' placeholder="What's on your mind?" />;
+                }
                 return(
                     
-                    <Modal trigger={<p> Post A Moment</p>}>
+                    <Modal trigger={trigger}>
                                                 <Modal.Header>Create A Moment</Modal.Header>
                                                     <Modal.Content>
                                                         <Modal.Description>
-                                                            <Form>
+                                                            <Form className="post-form">
                                                                 <label>Content
-                                                                    <Input onChange={this.handleInput} type='text'></Input>
+                                                                    <Input className="form-input"onChange={this.handleInput} type='text'></Input>
                                                                 </label>
                                                                 <ReactFilestack
                                                                     apikey={'ASwBXjnOHQ9DwYJeadUdZz'}

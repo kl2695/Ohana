@@ -76,6 +76,7 @@ class GroupShowMoments extends React.Component {
 
             moments = moments.map(moment => (
                 <MomentShow
+                    key={moment.id}
                     users={this.props.users}
                     moment={moment}
                     createComment={this.props.createComment}
@@ -83,8 +84,6 @@ class GroupShowMoments extends React.Component {
                     currentUser={this.props.currentUser}
                 />
             ));
-
-            console.log(groups.img_url);
 
             if (groups.img_url !== "" && groups.img_url !== null) {
                 header = (

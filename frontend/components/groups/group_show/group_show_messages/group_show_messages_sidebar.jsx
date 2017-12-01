@@ -44,7 +44,7 @@ class SideBar extends React.Component {
             </Menu.Item>
                     </Sidebar>
                     <Sidebar.Pusher>
-                            <Header as='h3'>{groupName}</Header>
+                            <Header as='h1'>{groupName}</Header>
                             <Image src='/assets/images/wireframe/paragraph.png' />
                     
                         

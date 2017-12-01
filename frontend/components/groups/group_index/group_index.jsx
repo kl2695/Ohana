@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Image, Item } from 'semantic-ui-react';
 import GroupIndexItem from './group_index_item';
+import GroupFormContainer from '../group_form/group_form_container';
 
 class GroupIndex extends React.Component{
     constructor(props){
@@ -20,8 +21,9 @@ class GroupIndex extends React.Component{
     render(){
         let groups;
 
-
-        if(this.props.groups.length > 4){ 
+        console.log(this.props.groups);
+        console.log(this.props.groups.length);
+        if(this.props.groups.length > 20){ 
             this.props.groups.pop(); 
             groups = this.props.groups.map(group => {
                 if(group.userIds.includes(this.props.currentUser.id)){
@@ -29,7 +31,8 @@ class GroupIndex extends React.Component{
                         group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
                     }
                     return (
-
+                    <div>
+                        <GroupFormContainer/>
                         <Item.Group divided>
                             <Item className="group-index-item-container">
                                 <div className="thumbnail">
@@ -49,7 +52,7 @@ class GroupIndex extends React.Component{
                             </Item>
                        
                         </Item.Group>
-                  
+                    </div>
                     );
                 }
             });

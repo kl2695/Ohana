@@ -153,6 +153,7 @@ class GroupShowMessages extends React.Component {
                     </Form>
                 </div>
                 <div className="groupshow-sidebar">
+                    <SideBar className="side-bar"groupName={this.props.groups.name} names={result}/>
                 </div>
             </div>
         );
@@ -162,5 +163,5 @@ class GroupShowMessages extends React.Component {
 export default GroupShowMessages;
 
 
-// {/* <SideBar className="overflow-scroll"groupName={this.props.groups.name} names={result}/> */ }
+
 

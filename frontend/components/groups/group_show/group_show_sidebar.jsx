@@ -18,8 +18,8 @@ class SideBar extends React.Component {
         const { names } = this.props; 
         const { visible } = this.state;
         return(
-        <div>
-            <Sidebar.Pushable as={Segment}>
+        <div className="side-bar">
+            <Sidebar.Pushable>
                 <Sidebar
                     as={Menu}
                     animation='overlay'
@@ -44,11 +44,9 @@ class SideBar extends React.Component {
             </Menu.Item>
                 </Sidebar>
                 <Sidebar.Pusher>
-                    <Segment basic>
-                        <Header as='h3'>Application Content</Header>
+                        <Header as='h1'>People</Header>
                         <Image src='/assets/images/wireframe/paragraph.png' />
                         { names }
-                    </Segment>
                 </Sidebar.Pusher>
             </Sidebar.Pushable>
         </div>

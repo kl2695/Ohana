@@ -87,7 +87,7 @@
 
 .groupshow-sidebar{
     width: 50%; 
-    overflow:scroll; 
+    font-size: 14px; 
 }
 
 .segment{
@@ -96,4 +96,10 @@
 
 .overflow-scroll{
     overflow: scroll;
+}
+
+.side-bar{
+    font-size: 14px; 
+    margin: 0px 20px; 
+    padding: 20px; 
 }
