@@ -24,9 +24,12 @@ export const receiveCurrentGroup = payload => ({
     messages: payload.messages,
 });
 
-export const receiveOneGroup = group => ({
+export const receiveOneGroup = payload => ({
     type: RECEIVE_ONE_GROUP, 
-    group 
+    groups: payload.groups, 
+    users: payload.users, 
+    moments: payload.moments, 
+    messages: payload.messages,
 });
 
 export const removeGroup = group => ({

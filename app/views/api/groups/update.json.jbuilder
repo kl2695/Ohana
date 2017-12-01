@@ -33,10 +33,10 @@ json.moments do
     end 
 end 
 
-
+@position ||= 30
 
 json.messages do 
-    @group.messages[0..30].each do |message|
+    @group.messages[0..@position].each do |message|
         json.set! message.id do 
             json.partial!('api/messages/message', message: message)
         end 

@@ -33,8 +33,8 @@ export const removeMoment = moment => ({
     moment
 });
 
-export const requestAllMoments = () => dispatch => {
-    return MomentApiUtil.fetchAllMoments()
+export const requestAllMoments = position => dispatch => {
+    return MomentApiUtil.fetchAllMoments(position)
         .fail(errors => dispatch(receiveMomentErrors(errors.responseJSON)))
         .then(moments => dispatch(receiveAllMoments(moments)));
 };

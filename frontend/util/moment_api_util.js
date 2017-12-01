@@ -1,9 +1,10 @@
 
 
-export const fetchAllMoments = () => {
+export const fetchAllMoments = position => {
     return $.ajax({
         url: '/api/moments',
         method: 'GET',
+        data: { position },
     });
 };
 

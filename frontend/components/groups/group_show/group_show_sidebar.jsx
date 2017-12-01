@@ -19,7 +19,6 @@ class SideBar extends React.Component {
         const { visible } = this.state;
         return(
         <div>
-            <Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
             <Sidebar.Pushable as={Segment}>
                 <Sidebar
                     as={Menu}

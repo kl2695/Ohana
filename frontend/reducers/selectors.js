@@ -22,10 +22,13 @@ export const selectUsers = state => {
     return users; 
 };
 
+
 export const selectMessages = state => {
     const messages = Object.keys(state.entities.messages).map(messageId => {
         return state.entities.messages[messageId]; 
     });
     return messages; 
 };
+
+
 

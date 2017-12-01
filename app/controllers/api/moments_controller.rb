@@ -12,6 +12,9 @@ class Api::MomentsController < ApplicationController
 
   def index 
     @moments = Moment.all 
+    if params[:moments]
+      @position = params[:moments][:position]
+    end
     render :index 
   end 
 
@@ -33,6 +36,6 @@ class Api::MomentsController < ApplicationController
 
   private 
   def moment_params 
-    params.require(:moment).permit(:id, :user_id, :group_id, :body, :img_url)
+    params.require(:moment).permit(:id, :user_id, :group_id, :body, :img_url, :position)
   end 
 end

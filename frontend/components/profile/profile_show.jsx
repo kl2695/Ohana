@@ -61,9 +61,13 @@ class ProfileShow extends React.Component {
         let { groups, moments, users } = this.props; 
         
         if(moments.length > 0){
-           
             let baseUrl = users[this.props.match.params.userId].img_url;
-            imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
+            if(baseUrl !== null && baseUrl !== ""){
+
+                imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
+            }else{
+                imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
+            }
 
             moments = moments.map(moment => (
                 <MomentShow
@@ -90,7 +94,7 @@ class ProfileShow extends React.Component {
                             onError={(e) => console.log(e)}
                         />
                     </div>
-                    <div className="moments">
+                    <div className="profile-moments">
                         {moments}
                     </div>
                 </div>

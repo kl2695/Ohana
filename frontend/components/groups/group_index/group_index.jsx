@@ -25,6 +25,9 @@ class GroupIndex extends React.Component{
             this.props.groups.pop(); 
             groups = this.props.groups.map(group => {
                 if(group.userIds.includes(this.props.currentUser.id)){
+                    if(!group.img_url){
+                        group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
+                    }
                     return (
 
                         <Item.Group divided>

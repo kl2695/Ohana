@@ -1,9 +1,12 @@
 import React from 'react';
-import { Grid, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextArea } from 'semantic-ui-react';
+import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextArea } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../../moments/moments_show/moment_show';
-import SideBar from '../group_show_sidebar';
+import SideBar from './group_show_messages_sidebar';
+import ChatView from 'react-chatview';
+import Promise from 'promise';
+
 
 
 class GroupShowMessages extends React.Component {
@@ -12,42 +15,54 @@ class GroupShowMessages extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            body: '', 
-            group_id: null
+            messages:[],
+            message:{
+                body: '', 
+                group_id: null
+            }, 
+            position: 30,
         };
 
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
-        this.onSuccess = this.onSuccess.bind(this);
+        this.loadMoreHistory = this.loadMoreHistory.bind(this);
 
     }
 
     componentDidMount() {
 
         const App = window.App; 
+        let fn = this; 
         App.messages = App.cable.subscriptions.create('MessagesChannel', {
 
             received: function (data) {
-                return $("#messages").append(this.renderMessage(data));
+                const message = this.renderMessage(data); 
+                const messages = fn.state.messages; 
+                messages.push(message);
+                return fn.setState({messages: messages});
             },
 
             renderMessage: function (data) {
-                return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+                return data.user + ": " + data.message;
             }
         });
 
         this.props.requestGroup(this.props.groupId);
 
     }
+
     componentWillReceiveProps(newProps) {
         const messagesArr = this.props.messagesArr.map(message => (
-            "<p> <b>" + this.props.users[message.user_id].username + ": </b>" + message.body + "</p>"
+            this.props.users[message.user_id].username + ": " + message.body 
         ));
-        $("#messages").append(messagesArr);
 
-        this.setState({group_id: newProps.groupId});
+        this.setState({messages:messagesArr,
+            message:{body:this.state.message.body,group_id: newProps.groupId},
+        });
     }
+
+
     
     componentWillUnmount() {
         const App = window.App; 
@@ -56,117 +71,96 @@ class GroupShowMessages extends React.Component {
 
 
     handleSubmit(event) {
-        this.props.createMessage(this.state);
-        this.setState({body: ''});
-        const objDiv = document.getElementById("messages-container");
-        objDiv.scrollTop = objDiv.scrollHeight;
-        window.scrollTo(0, document.body.scrollHeight);
+        this.props.createMessage(this.state.message);
+        this.setState({message:{body: '', group_id:this.state.message.group_id}});
 
+        
     }
 
     handleInput(event){
-        this.setState({body: event.target.value});
+        this.setState({message:{body: event.target.value, group_id: this.state.message.group_id}});
     }
 
-    onSuccess(result) {
-        const client = filestack.init('ASwBXjnOHQ9DwYJeadUdZz');
-        let cdnUrl = result.filesUploaded[0].url;
-
-        client.storeURL(cdnUrl);
-
-        let group = this.state;
-        group.img_url = cdnUrl;
-        this.props.updateGroup(group);
-
+    loadMoreHistory() {
+        return new Promise((resolve, reject) => {
+            this.props.updateGroup({
+                id: this.props.groupId,
+                name: this.props.groups.name,
+                img_url: this.props.groups.img_url,
+                position:this.state.position + 30
+            });
+            this.setState({position: this.state.position + 30});
+            resolve();
+        });
     }
+   
+    
 
+    
 
 
     render() {
 
-        const basicOptions = {
-            accept: 'image/*',
-            fromSources: ['local_file_system', 'facebook', 'googledrive', 'instagram', 'dropbox', 'imagesearch', 'webcam',],
-            maxSize: 1024 * 1024,
-            maxFiles: 3,
-        };
-
-        // let { usersArr, groups, moments } = this.props;
-
-        // let name;
-        // let imgUrl;
         let names; 
-        // let header;
+        let result =[]; 
+        if(this.props.users){
+            names = Object.keys(this.props.users).map(userId => {
+                let user = this.props.users[userId];
+                if(!user.img_url){
+                    user.img_url ='https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png';
+                }
+                return(
 
-        // if (this.props.usersArr.length > 0) {
-        //     let currentGroup = this.props.groups.currentGroup;
+                    <List.Item>
+                        <Image avatar src={user.img_url} />
+                        <List.Content>
+                            <List.Header as='a'>{user.username}</List.Header>
+                        </List.Content>
+                    </List.Item>
+                   
+                
+                );
+            });
 
-        //     name = groups.name;
-        //     let baseUrl = groups.img_url;
-        //     imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
+            for (let i = 0; i < names.length; i++) {
+                if (i > 5) {
+                    break;
+                } else {
+                    result.push(names[i]);
+                }
+            }
+       
+            
+        }
 
-        //     names = usersArr.map(user => (
-        //         <h2>{user.first_name} {user.last_name}</h2>
-        //     ));
-
-        //     moments = moments.map(moment => (
-        //         <MomentShow
-        //             users={this.props.users}
-        //             moment={moment}
-        //             createComment={this.props.createComment}
-        //             currentUser={this.props.currentUser}
-        //         />
-        //     ));
-
-        //     if (groups.img_url !== null) {
-        //         header = (
-        //             <div className="profile">
-        //                 <img src={imgUrl} />
-        //             </div>
-        //         );
-        //     } else {
-        //         header = (
-        //             <Header className="profile" as='h1' icon textAlign='center'>
-        //                 <Icon name='users' circular />
-        //                 <Header.Content>
-        //                     {name}
-
-        //                 </Header.Content>
-        //             </Header>
-        //         );
-        //     }
-
-        // } else {
-        //     name = '';
-        //     header = (
-        //         <Header className="profile" as='h1' icon textAlign='center'>
-        //             <Icon name='users' circular />
-        //             <Header.Content>
-        //                 {name}
-
-        //             </Header.Content>
-        //         </Header>
-
-        //     );
-        // }
-
+        const messages = this.state.messages.map(message => (
+            <div>{message}</div>
+        )).reverse();
         return (
-            <div>
-                <Container fluid className="messages-container">
-                    Messages
-                    <div id="messages">
+            <div className="groupshow-messages-container">
+                <div className="messages-container-left">
+                    <Container fluid id="messages-container" textAlign="left">
+                        Messages
+                            <ChatView scrollLoadThreshold={100}
+                            onInfiniteLoad={this.loadMoreHistory} flipped={true}> 
+                                {messages}
+                            </ChatView>
+                    </Container>
 
-                    </div>
-                </Container>
-
-                <Form onSubmit={this.handleSubmit}>
-                    <TextArea onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.body}/>
-                    <Button onSubmit={this.handleSubmit}>Send</Button>
-                </Form>
+                    <Form onSubmit={this.handleSubmit}>
+                        <TextArea onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body}/>
+                        <Button onSubmit={this.handleSubmit}>Send</Button>
+                    </Form>
+                </div>
+                <div className="groupshow-sidebar">
+                </div>
             </div>
         );
     }
 }
 
 export default GroupShowMessages;
+
+
+// {/* <SideBar className="overflow-scroll"groupName={this.props.groups.name} names={result}/> */ }
 

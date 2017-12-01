@@ -58,7 +58,6 @@ class GroupShowMoments extends React.Component {
         };
 
         let { usersArr, groups, moments } = this.props;
-        console.log(this.props);
         let name;
         let imgUrl;
         let names;
@@ -66,7 +65,6 @@ class GroupShowMoments extends React.Component {
 
         if (this.props.usersArr.length > 0) {
             let currentGroup = this.props.groups.currentGroup;
-            console.log("im here third loops");
             name = groups.name;
             let baseUrl = groups.img_url;
             imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
@@ -81,11 +79,14 @@ class GroupShowMoments extends React.Component {
                     users={this.props.users}
                     moment={moment}
                     createComment={this.props.createComment}
+                    createLike={this.props.createLike}
                     currentUser={this.props.currentUser}
                 />
             ));
 
-            if (groups.img_url !== null) {
+            console.log(groups.img_url);
+
+            if (groups.img_url !== "" && groups.img_url !== null) {
                 header = (
                     <div className="profile">
                         <img src={imgUrl} />

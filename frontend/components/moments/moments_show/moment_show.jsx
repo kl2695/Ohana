@@ -21,8 +21,6 @@ class MomentShow extends React.Component {
     }
 
     likeComment(event){
-        let flip = !this.state.liked; 
-        this.setState({ liked: flip });
         this.props.createLike({user_id:this.props.currentUser.id, moment_id: this.props.moment.id});
        
     }

@@ -31,7 +31,7 @@ const mapDispatchToProps = dispatch => {
         updateGroup: group => dispatch(updateGroup(group)),
         createComment: comment => dispatch(createComment(comment)),
         createLike: like => dispatch(createLike(like)), 
-        createMessage: message => dispatch(createMessage(message))
+        createMessage: message => dispatch(createMessage(message)),
     };
 };
 

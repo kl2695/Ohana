@@ -24,5 +24,4 @@ class Group < ApplicationRecord
     class_name: :Moment 
 
 
-
 end 

@@ -45,14 +45,16 @@ class CommentsIndex extends React.Component {
             replyFormClass = "hidden";
         }
 
-
         let comments = this.props.comments.map(comment => {
             let commentUser = this.props.users[comment.user_id]; 
+            if(!commentUser.img_url){
+                commentUser.img_url = 'https://image.flaticon.com/icons/svg/17/17004.svg'; 
+            }
             return(
 
             
                 <Comment>
-                    <Comment.Avatar/>
+                    <Comment.Avatar src={commentUser.img_url} />
                     <Comment.Content>
                         <Comment.Author as={Link}to={`/users/${commentUser.id}`}>{commentUser.username}</Comment.Author>
                         <Comment.Metadata>
@@ -68,14 +70,14 @@ class CommentsIndex extends React.Component {
         });
 
         return (
-            <Comment.Group minimal>
+            <Comment.Group>
                 <Header as='h3' dividing></Header>
                 {comments}
                 <Form className={replyFormClass}reply>
                     <Form.TextArea onChange={this.handleInput} value={this.state.body}/>
                     <Button onClick={this.handleSubmit}content='Add Reply' labelPosition='left' icon='edit' primary />
                 </Form>
-                </Comment.Group>
+            </Comment.Group>
         );
     }
 }

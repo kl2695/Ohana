@@ -1,3 +1,26 @@
+.group-index-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.group-index-item-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.group-index-item-1 {
+    width: 33%;
+}
+
+.group-index-item-2 {
+    width: 33%;
+}
+
+.group-index-item-3 {
+    width: 33%;
+}
+
 .groupshow-container{
     display:flex; 
     justify-content: space-around;
@@ -40,34 +63,37 @@
 }
 
 
-.group-index-container{
-    display: flex; 
-    flex-direction: column;
-}
-
-.group-index-item-container{
-    display: flex; 
-    align-items: center; 
-    width: 100%; 
-    
-}
 
 
-.group-index-item-1{
-    width: 33%; 
-}
-
-.group-index-item-2{
-    width: 33%; 
-}
-
-.group-index-item-3{
-    width: 33%; 
+.groupshow-messages-container{
+    display:flex; 
+    justify-content: space-between;
 }
 
 #messages-container{
     background-color: white; 
     height: 600px; 
     padding: 10px; 
+    display:flex; 
+    flex-direction: column;
+    justify-content: flex-end; 
+}
+
+.messages-container-left{
+    display:flex; 
+    flex-direction: column; 
+    width: 50%; 
+}
+
+.groupshow-sidebar{
+    width: 50%; 
     overflow:scroll; 
+}
+
+.segment{
+    overflow: scroll; 
+}
+
+.overflow-scroll{
+    overflow: scroll;
 }

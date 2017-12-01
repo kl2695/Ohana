@@ -12,13 +12,17 @@ const groupsReducer = (state = {}, action) => {
         case RECEIVE_CURRENT_GROUP:
             return action.groups; 
         case RECEIVE_ONE_GROUP:
-            newState[action.group.id] = action.group; 
+            newState[action.groups.id] = action.groups; 
             return merge({}, state, newState); 
         case REMOVE_GROUP:
             delete newState[action.group.id]; 
             return merge({}, state, newState);
         case RECEIVE_USER: 
-            return action.groups; 
+            if(action.groups){
+                return action.groups;
+            }else{
+                return state; 
+            }
         case RECEIVE_ALL_MESSAGES: 
             return merge({}, state, action.messages);
         default:
