@@ -24,11 +24,9 @@ Ohana is a personal project by Kevin Lee.
 
 ## Project Design
 
-Chime was designed and built in two weeks.
+Ohana was designed and built in two weeks.
 
-A [proposal][proposal] was drafted to help provide an implementation timeline during the development process.
-
-A [database schema][schema] was prepared alongside the design proposal.
+The database schema can be found [here](https://github.com/kl2695/Ohana/wiki/Database-Schema)
 
 ## Technology
 
