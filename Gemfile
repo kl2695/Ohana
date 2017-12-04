@@ -42,7 +42,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'pry-rails'
   gem 'spring'
-  gem 'web-console' '~> 2.0'
 end
 
 group :development do
