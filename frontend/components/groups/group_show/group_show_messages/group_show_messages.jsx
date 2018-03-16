@@ -78,6 +78,7 @@ class GroupShowMessages extends React.Component {
     }
 
     handleInput(event){
+        event.preventDefault(); 
         this.setState({message:{body: event.target.value, group_id: this.state.message.group_id}});
     }
 
