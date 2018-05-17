@@ -63,74 +63,59 @@ class SessionForm extends React.Component {
         let center; 
         let header; 
 
+        center = (
+            <div className='signup-container'>
+
+                <h1>Create a New Account</h1>
+
+                <Form onSubmit={this.handleSignup}>
+                    <Form.Field>
+                        <label>First Name</label>
+                        <Input className='input' size='small' placeholder='First Name' onChange={this.handleInput('firstName')} type='text' />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Last Name</label>
+                        <Input className='input' size='small' placeholder='Last Name' onChange={this.handleInput('lastName')} type='text' />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Email</label>
+                        <Input className='input' size='small' placeholder='Email' onChange={this.handleInput('email')} type='text' />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Username</label>
+                        <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Password</label>
+                        <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
+                    </Form.Field>
+                    <Form.Field>
+                        <Checkbox label='I agree to the Terms and Conditions' />
+                    </Form.Field>
+                    <Button color='red' size='small' type='submit'>Create Account</Button>
+                </Form>
+
+            </div>
+        );
+
+        header = (
+            <div className='signup-header'>
+                {errors}
+                <form>
+                    <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
+                    <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
+                    <Button onClick={this.handleLogin} size='small' color='red'>Log In</Button>
+                    <Button onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
+                </form>
+            </div>
+        );
+
         if(this.props.errors){
             errors = this.props.errors[0];
-
-            //header with link back to home page 
-            header = (
-            <div className="login-header">
-                <Link to="/">Home</Link>
-            </div>);
-
-            center = (
-                <div className='login-container'>
-                    {errors}
-                    <form class="login-form">
-                        <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
-                        <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                        <Button id='button'onClick={this.handleLogin} size='small' color='red'>Log In</Button>
-                        <Button id='button'onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
-                    </form>
-                </div>
-            );
         }else{
             errors = <p></p>;
-            header = (
-                <div className='signup-header'>
-                    {errors}
-                    <form>
-                        <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
-                        <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                        <Button onClick={this.handleLogin} size='small' color='red'>Log In</Button>
-                        <Button onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
-                    </form>
-                </div>
-            );
 
-            center = (
-                <div className='signup-container'>
-
-                    <h1>Create a New Account</h1>
-
-                    <Form onSubmit={this.handleSignup}>
-                        <Form.Field>
-                            <label>First Name</label>
-                            <Input className='input' size='small' placeholder='First Name' onChange={this.handleInput('firstName')} type='text' />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Last Name</label>
-                            <Input className='input' size='small' placeholder='Last Name' onChange={this.handleInput('lastName')} type='text' />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Email</label>
-                            <Input className='input' size='small' placeholder='Email' onChange={this.handleInput('email')} type='text' />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Username</label>
-                            <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Password</label>
-                            <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                        </Form.Field>
-                        <Form.Field>
-                            <Checkbox label='I agree to the Terms and Conditions' />
-                        </Form.Field>
-                        <Button color='red' size='small' type='submit'>Create Account</Button>
-                    </Form>
-
-                </div>
-            );
+           
         }
         
         return(
@@ -140,6 +125,7 @@ class SessionForm extends React.Component {
             <div className='session_form-container'>
 
                 {header}
+                {errors}
 
                 {center}
 

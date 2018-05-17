@@ -24,6 +24,8 @@ class LoginForm extends React.Component {
         this.handleSignup = this.handleSignup.bind(this);
     }
 
+  
+
     handleSignup(event) {
         event.preventDefault();
         this.props.signup(this.state)
@@ -54,6 +56,7 @@ class LoginForm extends React.Component {
     render() {
 
         let errors;
+        let header; 
         if (this.props.errors) {
             errors = this.props.errors[0];
 
@@ -61,20 +64,27 @@ class LoginForm extends React.Component {
             errors = <p></p>;
         }
 
+        header = (
+            <div className="login-header">
+                <Link to="/">Home</Link>
+            </div>);
+
         return (
 
 
 
             <div className='session_form-container'>
 
+                {header}
+    
                 <div className='login-container'>
                     {errors}
                     
-                    <form>
+                    <form className="login-form">
                         <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
                         <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                        <Button onClick={this.handleLogin} size='small' color='red'>Log In</Button>
-                        <Button onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
+                        <Button id='button'onClick={this.handleLogin} size='small' color='red'>Log In</Button>
+                        <Button id='button'onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
                     </form>
                 </div>
 
