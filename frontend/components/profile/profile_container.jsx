@@ -8,15 +8,15 @@ import { createLike } from '../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  
-    return {
+    console.log("im here ");
 
-    
-   moments: selectMoments(state),
-   userId: ownProps.match.params.userId, 
-   currentUser: state.session.currentUser, 
-   users: state.entities.users, 
-   groups: state.entities.groups 
+    console.log(state);
+    return {    
+        moments: selectMoments(state),
+        userId: ownProps.match.params.userId, 
+        currentUser: state.session.currentUser, 
+        users: state.entities.users, 
+        groups: state.entities.groups 
     };
 };
 

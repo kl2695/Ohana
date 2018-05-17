@@ -26,7 +26,11 @@ const momentsReducer = (state = {}, action) => {
                 return state; 
             } 
         case RECEIVE_USER: 
-            return action.moments; 
+            if(action.moments){
+                return action.moments; 
+            }else{
+                return [];
+            }
         case RECEIVE_ONE_COMMENT: 
             newState = state; 
             newState[action.comment.moment_id].comments.push(action.comment);

@@ -1,12 +1,17 @@
-.group-index-container {
+.groups-index-container {
     display: flex;
     flex-direction: column;
+    margin-top: 50px;
 }
 
 .group-index-item-container {
     display: flex;
     align-items: center;
     width: 100%;
+}
+
+.group-index-item {
+    margin: 20px;
 }
 
 .group-index-item-1 {
@@ -83,11 +88,13 @@
     display:flex; 
     flex-direction: column; 
     width: 50%; 
+    margin-right: 20px;
 }
 
 .groupshow-sidebar{
     width: 50%; 
     font-size: 14px; 
+    padding: 10px;
 }
 
 .segment{
@@ -101,5 +108,5 @@
 .side-bar{
     font-size: 14px; 
     margin: 0px 20px; 
-    padding: 20px; 
+    padding: 30px;
 }

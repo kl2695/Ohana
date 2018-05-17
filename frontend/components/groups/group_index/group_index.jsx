@@ -28,7 +28,7 @@ class GroupIndex extends React.Component{
                         group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
                     }
                     return (
-                    <div>
+                    <div className="group-index-item">
                         <Item.Group divided>
                             <Item className="group-index-item-container">
                                 <div className="thumbnail">

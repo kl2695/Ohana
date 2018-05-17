@@ -24,7 +24,14 @@ class ProfileShow extends React.Component {
     }
 
     componentWillReceiveProps(newProps){
-        this.setState(newProps.users[newProps.match.params.userId]);
+        if(newProps.userId != this.props.userId){
+
+            let newId = newProps.userId;
+
+            this.props.requestUser(newId);
+            this.setState(this.props.users[newId]);
+        }
+       
     }
 
 
