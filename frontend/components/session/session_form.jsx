@@ -24,6 +24,12 @@ class SessionForm extends React.Component {
         this.handleSignup = this.handleSignup.bind(this); 
     }
 
+    componentWillReceiveProps(newProps) {
+        if(newProps.errors){
+            this.props.history.push('/login'); 
+        }
+    }
+
     handleSignup(event) {
         event.preventDefault(); 
         this.props.signup(this.state)

@@ -9,7 +9,7 @@ import {
     Modal
 } from 'semantic-ui-react';
 
-class SessionForm extends React.Component {
+class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -67,7 +67,7 @@ class SessionForm extends React.Component {
 
             <div className='session_form-container'>
 
-                <div className='login-header'>
+                <div className='login-container'>
                     {errors}
                     
                     <form>
@@ -78,38 +78,6 @@ class SessionForm extends React.Component {
                     </form>
                 </div>
 
-                <div className='signup-container'>
-
-                    <h1>Create a New Account</h1>
-
-                    <Form onSubmit={this.handleSignup}>
-                        <Form.Field>
-                            <label>First Name</label>
-                            <Input className='input' size='small' placeholder='First Name' onChange={this.handleInput('firstName')} type='text' />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Last Name</label>
-                            <Input className='input' size='small' placeholder='Last Name' onChange={this.handleInput('lastName')} type='text' />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Email</label>
-                            <Input className='input' size='small' placeholder='Email' onChange={this.handleInput('email')} type='text' />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Username</label>
-                            <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Password</label>
-                            <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                        </Form.Field>
-                        <Form.Field>
-                            <Checkbox label='I agree to the Terms and Conditions' />
-                        </Form.Field>
-                        <Button color='red' size='small' type='submit'>Create Account</Button>
-                    </Form>
-
-                </div>
             </div>
         );
     }
@@ -117,4 +85,4 @@ class SessionForm extends React.Component {
 
 }
 
-export default withRouter(SessionForm); 
+export default withRouter(LoginForm); 
