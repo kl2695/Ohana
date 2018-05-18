@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextArea, Input } from 'semantic-ui-react';
+import { List, Image, Header, Link, Feed, Icon, Menu, Container, Form, Button, TextArea, Input } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../../moments/moments_show/moment_show';
@@ -115,7 +115,7 @@ class GroupShowMessages extends React.Component {
                     <List.Item>
                         <Image avatar src={user.img_url} />
                         <List.Content>
-                            <List.Header as='a'>{user.username}</List.Header>
+                            <List.Header as={Link}to={`/users/${userId}`}>{user.username}</List.Header>
                         </List.Content>
                     </List.Item>
                    

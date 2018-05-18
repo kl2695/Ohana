@@ -92,7 +92,7 @@ class SessionForm extends React.Component {
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions' />
                     </Form.Field>
-                    <Button color='red' size='small' type='submit'>Create Account</Button>
+                    <Button className= "button" size='small' type='submit'>Create Account</Button>
                 </Form>
 
             </div>
