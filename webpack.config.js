@@ -28,6 +28,7 @@ module.exports = {
     },
     plugins: plugins,
     module: {
+      
         loaders: [
             {
                 test: [/\.jsx?$/],
@@ -36,7 +37,16 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react']
                 }
-            }
+            }, 
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000'
+            },
+       
         ]
     },
     devtool: 'source-map',
