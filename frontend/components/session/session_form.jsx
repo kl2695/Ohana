@@ -92,7 +92,7 @@ class SessionForm extends React.Component {
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions' />
                     </Form.Field>
-                    <Button className= "button" size='small' type='submit'>Create Account</Button>
+                    <Button color='blue'size='small' type='submit'>Create Account</Button>
                 </Form>
 
             </div>
@@ -104,8 +104,8 @@ class SessionForm extends React.Component {
                 <form>
                     <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
                     <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                    <Button onClick={this.handleLogin} size='small' color='red'>Log In</Button>
-                    <Button onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
+                    <Button onClick={this.handleLogin} size='small'>Log In</Button>
+                    <Button onClick={this.handleDemoLogin} size='small' color='blue'>Demo Log In</Button>
                 </form>
             </div>
         );
