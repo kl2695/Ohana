@@ -80,15 +80,18 @@ class MomentsForm extends React.Component {
                     </div>
                     );
                 }
+
+                let size = "small";
+                
                 return(
                     
-                    <Modal className="moment-modal" trigger={trigger}>
+                    <Modal className="moment-modal" trigger={trigger} size={size}>
                         <Modal.Header>Create A Moment</Modal.Header>
                             <Modal.Content>
                                 <Modal.Description>
                                     <Form className="post-form">
                                         <TextArea className="form-input"onChange={this.handleInput} type='text' placeholder="What's on your mind?"></TextArea>
-                                        
+
                                         <ReactFilestack
                                             apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
                                             buttonText="Upload Picture"

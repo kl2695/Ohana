@@ -5,7 +5,18 @@
     position:relative;
 }
 
-.profile-pic{
+.profile-image-container{
     width: 50%; 
     margin: 50px; 
+    display: flex;
+    flex-direction: column; 
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 30px;
+}
+
+.profile-image {
+    border: 1px solid lightgray;
+    border-radius: 2px;
 }

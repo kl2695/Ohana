@@ -79,14 +79,14 @@ class ProfileShow extends React.Component {
 
                 if (baseUrl !== null && baseUrl !== "") {
 
-                    imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
+                    imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:600/' + baseUrl;
                 } else {
                     imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
                 }
 
                 profilePic = (
-                    <div className="profile-pic">
-                        <img src={imgUrl} />
+                    <div className="profile-image-container">
+                        <img className="profile-image"src={imgUrl} />
                         <ReactFilestack
                             apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
                             buttonText="Update Profile Picture"
