@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Header, Icon, Image, Modal, Input, Form} from 'semantic-ui-react';
+import { Button, Header, Icon, Image, Modal, Input, Form, TextArea} from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentsFormContainer from "./moments_form_container";
@@ -72,35 +72,40 @@ class MomentsForm extends React.Component {
                 if(this.props.navbar === true){
                     trigger = <p> Post a Moment </p>;
                 }else{
-                    trigger = <Form.Input label='Post a Moment' placeholder="What's on your mind?" />;
+                    trigger = (
+                    <div className="post-form">
+                        <Form>
+                            <TextArea label="Post a Moment" placeholder="What's on your mind?" />
+                        </Form>
+                    </div>
+                    );
                 }
                 return(
                     
-                    <Modal trigger={trigger}>
-                                                <Modal.Header>Create A Moment</Modal.Header>
-                                                    <Modal.Content>
-                                                        <Modal.Description>
-                                                            <Form className="post-form">
-                                                                <label>Content
-                                                                    <Input className="form-input"onChange={this.handleInput} type='text'></Input>
-                                                                </label>
-                                                                <ReactFilestack
-                                                                    apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                                                                    buttonText="Upload Picture"
-                                                                    buttonClass="classname"
-                                                                    options={basicOptions}
-                                                                    onSuccess={this.onSuccess}
-                                                                    onError={(e) => console.log(e)}
-                                                                    />
-                                                             </Form>
-                                                        </Modal.Description>
-                                                    </Modal.Content>
-                                                <Modal.Actions>
-                                                    <Button primary onClick={this.handleSubmit}>
-                                                        Create Moment <Icon name='right chevron' />
-                                                    </Button>
-                                                </Modal.Actions>
-                                            </Modal>
+                    <Modal className="moment-modal" trigger={trigger}>
+                        <Modal.Header>Create A Moment</Modal.Header>
+                            <Modal.Content>
+                                <Modal.Description>
+                                    <Form className="post-form">
+                                        <TextArea className="form-input"onChange={this.handleInput} type='text' placeholder="What's on your mind?"></TextArea>
+                                        
+                                        <ReactFilestack
+                                            apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                                            buttonText="Upload Picture"
+                                            buttonClass="filestack-buttons"
+                                            options={basicOptions}
+                                            onSuccess={this.onSuccess}
+                                            onError={(e) => console.log(e)}
+                                            />
+                                        </Form>
+                                </Modal.Description>
+                            </Modal.Content>
+                        <Modal.Actions>
+                            <Button primary onClick={this.handleSubmit}>
+                                Create Moment <Icon name='right chevron' />
+                            </Button>
+                        </Modal.Actions>
+                    </Modal>
                                     
                                 );
                             }

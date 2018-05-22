@@ -34,6 +34,10 @@ class MomentIndex extends React.Component {
         this.setState({clicked:true});
     }
 
+    scroll(){
+
+    }
+
 
     render() {
         let moments;
@@ -57,12 +61,14 @@ class MomentIndex extends React.Component {
         }
         
         return (
-            <div>
-                <MomentsFormContainer/>
+            <div className="moments-index-container">
+                
             
                 <ChatView className="moments"scrollLoadThreshold={50}
                     onInfiniteLoad={this.loadMoreHistory}>
+                    <MomentsFormContainer />
                     {moments}
+                
                 </ChatView>
             </div>
         );
