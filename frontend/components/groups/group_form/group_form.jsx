@@ -56,7 +56,7 @@ class GroupForm extends React.Component {
 
         return(
        
-                <Modal trigger={trigger}>
+                <Modal className="group-modal" trigger={trigger}>
                     <Modal.Header>Create A Group</Modal.Header>
                         <Modal.Content>
                             <Modal.Description>

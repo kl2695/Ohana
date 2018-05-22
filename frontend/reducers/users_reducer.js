@@ -10,8 +10,6 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_ALL_USERS:
             return action.users; 
         case RECEIVE_USER:
-        console.log("im here now");
-        console.log(action); 
             return action.users; 
         case RECEIVE_ALL_MOMENTS: 
             return action.users; 

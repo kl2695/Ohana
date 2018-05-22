@@ -58,6 +58,8 @@ class ProfileShow extends React.Component {
     }
 
     render() {
+
+
         const basicOptions = {
             accept: 'image/*',
             fromSources: ['local_file_system', 'facebook', 'googledrive', 'instagram', 'dropbox', 'imagesearch', 'webcam',],
@@ -66,16 +68,55 @@ class ProfileShow extends React.Component {
         };
 
         let imgUrl;
+        let profilePic; 
         let { groups, moments, users } = this.props; 
         
         if(moments.length > 0){
-            let baseUrl = users[this.props.match.params.userId].img_url;
-            if(baseUrl !== null && baseUrl !== ""){
+            let baseUrl; 
 
-                imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
+            if(this.props.match.params.userId == this.props.currentUser.id){
+                baseUrl = this.props.currentUser.img_url;
+
+                if (baseUrl !== null && baseUrl !== "") {
+
+                    imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
+                } else {
+                    imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
+                }
+
+                profilePic = (
+                    <div className="profile-pic">
+                        <img src={imgUrl} />
+                        <ReactFilestack
+                            apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                            buttonText="Update Profile Picture"
+                            buttonClass="classname"
+                            options={basicOptions}
+                            onSuccess={this.onSuccess}
+                            onError={(e) => console.log(e)}
+                        />
+                    </div>
+                );
+
             }else{
-                imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
+
+                baseUrl = users[this.props.match.params.userId].img_url;
+
+                if (baseUrl !== null && baseUrl !== "") {
+
+                    imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
+                } else {
+                    imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
+                }
+
+            
+                profilePic = (
+                    <div className="profile-pic">
+                        <img src={imgUrl} />
+                    </div>
+                );
             }
+
 
             moments = moments.map(moment => (
                 <MomentShow
@@ -90,19 +131,13 @@ class ProfileShow extends React.Component {
         }else{
             imgUrl = '';
         }
+
+
+
         return (
                 <div className="profile-container">
-                    <div className="profile profile-pic">
-                        <img src={imgUrl}/>
-                        <ReactFilestack
-                            apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                            buttonText="Update Profile Picture"
-                            buttonClass="classname"
-                            options={basicOptions}
-                            onSuccess={this.onSuccess}
-                            onError={(e) => console.log(e)}
-                        />
-                    </div>
+                    {profilePic}
+
                     <div className="profile-moments">
                         <MomentsFormContainer />
                         {moments}

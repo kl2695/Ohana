@@ -1,12 +1,11 @@
 .profile-container{
     margin: 15px;
     display: flex; 
-    flex-direction: column; 
-    align-items: flex-end; 
+    align-items: flex-start; 
     position:relative;
 }
 
 .profile-pic{
-    position: absolute; 
-    left: 10px;
+    width: 50%; 
+    margin: 50px; 
 }
