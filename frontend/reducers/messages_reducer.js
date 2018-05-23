@@ -1,10 +1,11 @@
 import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../actions/message_actions';
 import merge from 'lodash/merge';
-import { RECEIVE_CURRENT_GROUP, RECEIVE_ONE_GROUP } from '../actions/group_actions';
+import { RECEIVE_CURRENT_GROUP, RECEIVE_ONE_GROUP, RECEIVE_ALL_GROUPS } from '../actions/group_actions';
 
 const messagesReducer = (state = {}, action) => {
     Object.freeze(state); 
-    let newState; 
+    let newState = {}; 
+
     switch (action.type) {
         case RECEIVE_ALL_MESSAGES:
             return merge({}, state, action.messages); 
@@ -12,17 +13,16 @@ const messagesReducer = (state = {}, action) => {
             newState[action.message.id] = action.message; 
             return merge({}, state, newState);
         case RECEIVE_CURRENT_GROUP: 
-            if(action.messages){
-                return action.messages; 
-            }else{
-                return state; 
-            }
+            Object.assign(newState, state, {"currentMessages": action.messages});
+            return newState;
         case RECEIVE_ONE_GROUP: 
             if(action.messages){
                 return action.messages;
             }else{
                 return state; 
             }
+        case RECEIVE_ALL_GROUPS:
+            return merge({}, state, action.messages);
         default:
             return state; 
     }

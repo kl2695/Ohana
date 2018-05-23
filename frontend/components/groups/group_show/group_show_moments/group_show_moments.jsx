@@ -25,6 +25,7 @@ class GroupShowMoments extends React.Component {
     }
 
     componentDidMount() {
+        console.log("im calling you!!!");
         this.props.requestGroup(this.props.groupId);
     }
 
@@ -68,8 +69,6 @@ class GroupShowMoments extends React.Component {
         let header;
         let menu; 
 
-        console.log(this.props);
-
         const basicOptions = {
             accept: 'image/*',
             fromSources: ['local_file_system', 'facebook', 'googledrive', 'instagram', 'dropbox', 'imagesearch', 'webcam',],
@@ -77,13 +76,10 @@ class GroupShowMoments extends React.Component {
             maxFiles: 3,
         };
 
+
         if (this.state.currentGroup && moments) {
             let currentGroup = this.props.groups.currentGroup;
-            name = groups.name;
-
-
-            console.log(this.state.currentGroup.id);
-            
+            name = this.state.currentGroup.name;
 
 
             moments = moments.map(moment => (
@@ -128,7 +124,6 @@ class GroupShowMoments extends React.Component {
                         <Icon name='users' circular />
                         <Header.Content>
                             {name}
-
                         </Header.Content>
                     </Header>
                 );
@@ -143,7 +138,14 @@ class GroupShowMoments extends React.Component {
                     <Icon name='users' circular />
                     <Header.Content>
                         {name}
-
+                        <ReactFilestack
+                            apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                            buttonText="Update Group Picture"
+                            buttonClass="filestack-buttons"
+                            options={basicOptions}
+                            onSuccess={this.onSuccess}
+                            onError={(e) => console.log(e)}
+                        />
                     </Header.Content>
                 </Header>
 
@@ -152,18 +154,18 @@ class GroupShowMoments extends React.Component {
         }
 
         return(
-            <div className="groupshow-moments-container">
-                {menu}
-                <div className="groupshow-left-bar">
+            <div className="right-groupshow">
+                <div className="groupshow-header">
                     {header}
                     <ReactFilestack
                         apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
                         buttonText="Update Group Picture"
-                        buttonClass="upload-button"
+                        buttonClass="filestack-buttons"
                         options={basicOptions}
                         onSuccess={this.onSuccess}
                         onError={(e) => console.log(e)}
                     />
+                    {menu}
 
                 </div>
 

@@ -18,7 +18,7 @@ class GroupShowMessages extends React.Component {
         this.state = {
             groups: this.props.groups,
             currentGroup: this.props.currentGroup,
-            messages:[],
+            currentMessages:[],
             message:{
                 body: '', 
                 group_id: null
@@ -40,9 +40,9 @@ class GroupShowMessages extends React.Component {
 
             received: function (data) {
                 const message = this.renderMessage(data); 
-                const messages = fn.state.messages; 
+                const messages = fn.state.currentMessages; 
                 messages.push(message);
-                return fn.setState({messages: messages});
+                return fn.setState({currentMessages: messages});
             },
 
             renderMessage: function (data) {
@@ -55,48 +55,23 @@ class GroupShowMessages extends React.Component {
     }
 
   static getDerivedStateFromProps(nextProps, prevState, prevProps) {
-      console.log(nextProps);
-      console.log(prevProps);
-      let messagesArr;
 
-        if(nextProps.messagesArr){
-            messagesArr = nextProps.messagesArr.map(message => (
+        let currentMessagesArr;
+        console.log(nextProps);
+        
+        if(nextProps.currentMessagesArr){
+            currentMessagesArr = nextProps.currentMessagesArr.map(message => (
                 nextProps.users[message.user_id].username + ": " + message.body 
             ));
         }
-        console.log("im here!!!");
-        console.log(messagesArr);
 
-            return {
-            messages:messagesArr,
+        return {
+            currentMessages: currentMessagesArr,
             message:{body: prevState.message.body,group_id: nextProps.groupId},
             groups: nextProps.groups,
             currentGroup: nextProps.currentGroup,
-            };
-
+        };
     }
-
-    // componentDidUPdate(prevProps) {
-
-    //     const messagesArr = prevProps.messagesArr.map(message => (
-    //         prevProps.users[message.user_id].username + ": " + message.body 
-    //     ));
-    //     console.log("im here!!!");
-    //     console.log(messagesArr);
-
-    //         this.setState(function(prevState,props){
-    //             console.log(prevState);
-    //             console.log(props);
-            
-    //         return {
-    //         messages:messagesArr,
-    //         message:{body: prevState.message.body,group_id: props.groupId},
-    //         groups: props.groups,
-    //         currentGroup: props.currentGroup,
-    //         };
-    //     });
-
-    // }
 
 
     
@@ -130,21 +105,26 @@ class GroupShowMessages extends React.Component {
         });
 
     }
-   
-    
-
-    
-
 
     render() {
-        console.log("checking messages props");
-        console.log(this.props);
-        
-        let names; 
-        let result =[]; 
+
+        const basicOptions = {
+            accept: 'image/*',
+            fromSources: ['local_file_system', 'facebook', 'googledrive', 'instagram', 'dropbox', 'imagesearch', 'webcam',],
+            maxSize: 1024 * 1024,
+            maxFiles: 3,
+        };
+
+        let { usersArr, groups, moments } = this.props;
+        let name;
+        let imgUrl;
+        let names;
+        let header;
         let menu; 
+        let result =[]; 
 
         if(this.props.users && this.state.currentGroup){
+            name = this.state.currentGroup.name;
 
             menu = (
                 <Menu tabular borderless className='nav-bar'>
@@ -183,37 +163,72 @@ class GroupShowMessages extends React.Component {
                     result.push(names[i]);
                 }
             }
+
+            if (groups.img_url !== "" && groups.img_url) {
+                if (groups.img_url.includes('robohash')) {
+                    imgUrl = groups.img_url;
+                } else {
+                    let baseUrl = groups.img_url;
+                    imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
+                }
+                header = (
+                    <div className="profile">
+                        <img src={imgUrl} />
+                    </div>
+                );
+
+            } else {
+                header = (
+                    <Header className="profile" as='h1' icon textAlign='center'>
+                        <Icon name='users' circular />
+                        <Header.Content>
+                            {name}
+                        </Header.Content>
+                    </Header>
+                );
+            }
+
        
             
         }else{
             menu = <div></div>;
+            header = <div></div>;
         }
 
-        const messages = this.state.messages.map(message => (
+        const messages = this.state.currentMessages.map(message => (
             <div>{message}</div>
         )).reverse();
 
 
         return (
-            <div className="groupshow-messages-container">
-                {menu}
-                <div className="messages-container-left">
+            <div className="right-groupshow">
+                <div className="groupshow-header">
+                    {header}
+                    <ReactFilestack
+                        apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                        buttonText="Update Group Picture"
+                        buttonClass="filestack-buttons"
+                        options={basicOptions}
+                        onSuccess={this.onSuccess}
+                        onError={(e) => console.log(e)}
+                    />
+                    {menu}
+                </div>
+                
                     <Container fluid id="messages-container" textAlign="left">
                         Messages
-                            <ChatView scrollLoadThreshold={50}
+                        <ChatView scrollLoadThreshold={50}
                             onInfiniteLoad={this.loadMoreHistory} flipped={true}> 
-                                {messages}
-                            </ChatView>
+                            {messages}
+                        </ChatView>
+                        
+                        <Form onSubmit={this.handleSubmit}>
+                            <TextArea onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body} />
+                        </Form>
                     </Container>
 
-                    <Form onSubmit={this.handleSubmit}>
-                        <Input onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body}/>
-                    </Form>
+                    
                 </div>
-                <div className="groupshow-sidebar">
-                    <SideBar className="side-bar"groupName={this.props.groups.name} names={result}/>
-                </div>
-            </div>
         );
     }
 }

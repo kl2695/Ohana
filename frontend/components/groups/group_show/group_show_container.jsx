@@ -2,26 +2,28 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GroupShow from './group_show';
-import { requestGroup, updateGroup, requestAllGroups } from "../../../actions/group_actions";
 import { selectUsers, selectMoments, selectMessages, selectAllGroups } from "../../../reducers/selectors";
+import { requestGroup, updateGroup, requestAllGroups } from "../../../actions/group_actions";
 import { createComment } from '../../../actions/comment_actions';
 import { createLike } from '../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-console.log(state);
-return {
+    console.log("gropushowcontainer");
+    console.log(state);
+    return {
 
-    currentUser: state.session.currentUser,
-    errors: state.errors.groups, 
-    groupId: ownProps.match.params.groupId,
-    usersArr: selectUsers(state),
-    users: state.entities.users, 
-    groups: selectAllGroups(state),
-    currentGroup: state.entities.groups.currentGroup,
-    moments: selectMoments(state), 
-    messages: state.entities.messages,
-    messagesArr: selectMessages(state),
+        currentUser: state.session.currentUser,
+        errors: state.errors.groups, 
+        groupId: ownProps.match.params.groupId,
+        usersArr: selectUsers(state),
+        users: state.entities.users, 
+        groups: selectAllGroups(state),
+        currentGroup: state.entities.groups.currentGroup,
+        moments: selectMoments(state), 
+        messages: state.entities.messages,
+        messagesArr: selectMessages(state),
+
     };
 
 };

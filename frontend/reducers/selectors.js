@@ -30,5 +30,18 @@ export const selectMessages = state => {
     return messages; 
 };
 
+export const selectCurrentMessages = state => {
+    let messages = [];
+
+    console.log(state);
+
+    if(state.entities.messages.currentMessages){
+        messages = Object.keys(state.entities.messages.currentMessages).map(messageId => {
+            return state.entities.messages.currentMessages[messageId];
+        });
+    }
+    return messages;
+};
+
 
 

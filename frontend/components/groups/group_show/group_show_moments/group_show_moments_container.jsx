@@ -9,8 +9,8 @@ import { createLike } from '../../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("groupshowcontainer props");
-    console.log(ownProps);
+    console.log("groupshowcontainer state");
+    console.log(state);
 
     return {
 
@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
         groups: state.entities.groups,
         currentGroup: state.entities.groups.currentGroup,
         moments: selectMoments(state),
-        messages: state.entities.messages 
+        messages: state.entities.messages, 
     };
 
 };

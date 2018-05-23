@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GroupShowMessages from './group_show_messages';
 import { requestGroup, updateGroup } from '../../../../actions/group_actions';
-import { selectUsers, selectMoments, selectMessages } from '../../../../reducers/selectors';
+import { selectUsers, selectMoments, selectMessages, selectCurrentMessages } from '../../../../reducers/selectors';
 import { createComment } from '../../../../actions/comment_actions';
 import { createLike } from '../../../../actions/like_actions';
 import { createMessage } from '../../../../actions/message_actions';
@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
         groups: state.entities.groups,
         currentGroup: state.entities.groups.currentGroup,
         messages: state.entities.messages,
-        messagesArr: selectMessages(state),
+        currentMessagesArr: selectCurrentMessages(state),
     };
 
 };

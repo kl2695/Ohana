@@ -5,6 +5,8 @@ json.messages do
             json.partial!('api/messages/message', message: message)
         end 
     end 
+
+    json.currentMessages 'none'
 end 
 
 

@@ -4,8 +4,41 @@
     margin-top: 50px;
 }
 
+.groupshow-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .left-groupshow {
     display: flex;
+    border: 1px solid lightgray;
+    margin: 0;
+    background-color: white;
+    width: 40%;
+}
+
+.right-groupshow {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
+.groupshow-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+#messages-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 20px 20px 20px 20px;
+    padding: 20px;
 }
 .group-index-item-container {
     display: flex;
@@ -25,27 +58,8 @@
     width: 33%;
 }
 
-.group-index-item-3 {
-    width: 33%;
-}
-
-.groupshow-container{
-    display:flex; 
-    justify-content: space-around;
-    flex-direction: column; 
-}
-
-.groupshow-left-bar {
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-.groupshow-moments-container{
-    display: flex; 
-    justify-content: space-around; 
-
+.item-messages {
+    color: lightgray;
 }
 
 
@@ -75,27 +89,7 @@
     justify-content: space-between;
 }
 
-#messages-container{
-    background-color: white; 
-    height: 600px; 
-    padding: 10px; 
-    display:flex; 
-    flex-direction: column;
-    justify-content: flex-end; 
-}
 
-.messages-container-left{
-    display:flex; 
-    flex-direction: column; 
-    width: 50%; 
-    margin-right: 20px;
-}
-
-.groupshow-sidebar{
-    width: 50%; 
-    font-size: 14px; 
-    padding: 10px;
-}
 
 .segment{
     overflow: scroll; 

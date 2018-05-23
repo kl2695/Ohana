@@ -16,6 +16,7 @@ class GroupShow extends React.Component{
         this.state = {
             groups: this.props.groups,
             currentGroup: this.props.currentGroup,
+            messagesArr: this.props.messagesArr,
         };
     }
 
@@ -23,38 +24,54 @@ class GroupShow extends React.Component{
         this.props.requestAllGroups();
     }
 
-    componentWillReceiveProps(newProps) {
-        this.setState({groups:newProps.groups});
+    static getDerivedStateFromProps(props, state) {
+        return {
+            groups: props.groups,
+            messagesArr: props.messagesArr,
+        };
     }
 
     render(){
 
-        const { usersArr, messagesArr, users, moments, createComment, currentUser } = this.props; 
+        const { usersArr, messagesArr, messages, users, moments, createComment, currentUser } = this.props; 
         const {activeItem} = this.state; 
         let groups; 
 
 
        if(this.state.groups){
            groups = this.state.groups.slice(0, this.state.groups.length-1).map(group => {
+               let groupMessagesArr; 
+               let lastMessage;
+               for(let i=messagesArr.length-1; i>=0; i--){
+                   if(messagesArr[i].group_id === group.id){
+                        lastMessage = messagesArr[i].body;
+                        break;
+                   }
+               }
+
                if (group.userIds.includes(this.props.currentUser.id)) {
                    if (!group.img_url) {
                        group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
                    }
                    return (
                        <div className="group-index-item">
-                           <Item.Group divided>
+                           <Item.Group>
                                <Item className="group-index-item-container">
                                    <div className="thumbnail">
                                        <Item.Image size="tiny" src={group.img_url} />
                                    </div>
+
+
                                    <div className="group-index-item-1">
                                        <Item.Content verticalAlign="middle">
-                                           <Link 
-                                                to={`/groups/${group.id}`}
-                                                // onClick={this.handleItemClick}
-                                                // group={group}
-                                           >{group.name}
-                                           </Link>
+                                           <Item.Header>
+                                               <Link
+                                                    to={`/groups/${group.id}`}
+                                                    >{group.name}
+                                               </Link>
+                                           </Item.Header>
+                                           
+                                           <Item.Description className="item-messages">{lastMessage}</Item.Description>
                                        </Item.Content>
                                    </div>
                                </Item>
@@ -78,18 +95,18 @@ class GroupShow extends React.Component{
                     <div>
                         {groups}
                     </div>
-
-                    <Switch>
-                        <Route 
-                            exact path='/groups/:groupId' 
-                            component={GroupShowMomentsContainer}    
-                        />
-                        <Route 
-                            path='/groups/:groupId/messages'
-                            component={GroupShowMessagesContainer} 
-                        />
-                    </Switch>
                 </div>
+
+                <Switch>
+                    <Route 
+                        exact path='/groups/:groupId' 
+                        component={GroupShowMomentsContainer}    
+                    />
+                    <Route 
+                        path='/groups/:groupId/messages'
+                        component={GroupShowMessagesContainer} 
+                    />
+                </Switch>
             </div>
         );
     }
