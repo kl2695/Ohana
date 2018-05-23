@@ -7,7 +7,7 @@ const GroupIndexItem = (props) => {
 
     return (
         <div>
-            <Link to={`groups/${props.groupId}`}>{props.group.name}</Link>
+            <Link to={`/groups/${props.groupId}`}>{props.group.name}</Link>
         </div>
     );
 };

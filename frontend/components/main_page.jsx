@@ -6,7 +6,6 @@ import GroupsIndexContainer from './groups/group_index/groups_index_container';
 import GroupShowContainer from './groups/group_show/group_show_container';
 import GroupFormContainer from './groups/group_form/group_form_container';
 import MomentsIndexContainer from './moments/moments_index/moments_index_container';
-
 import { AuthRoute } from '../util/route_util';
 
 import {
@@ -25,9 +24,8 @@ const MainPage = (props) => {
 
             <Switch>
                 <Route exact path='/users/:userId' component={ProfileContainer} />
-                <Route exact path='/groups' component={GroupsIndexContainer} />
+                <Route path='/groups' component={GroupShowContainer} />
                 <Route exact path='/groups/new' component={GroupFormContainer} />
-                <Route path='/groups/:groupId' component={GroupShowContainer} />
                 <Route exact path='/' component={MomentsIndexContainer} />
             </Switch>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Image, Header, Feed, Icon, Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../../moments/moments_show/moment_show';
@@ -22,7 +23,7 @@ class GroupShowMoments extends React.Component {
 
     componentDidMount() {
         this.props.requestGroup(this.props.groupId);
-        this.setState(this.props.groups);
+        this.setState(this.props.groups[this.props.groupId]);
 
     }
 
@@ -51,6 +52,7 @@ class GroupShowMoments extends React.Component {
     render() {
 
 
+
         const basicOptions = {
             accept: 'image/*',
             fromSources: ['local_file_system', 'facebook', 'googledrive', 'instagram', 'dropbox', 'imagesearch', 'webcam',],
@@ -63,14 +65,13 @@ class GroupShowMoments extends React.Component {
         let imgUrl;
         let names;
         let header;
+        let menu; 
 
         if (this.props.usersArr.length > 0) {
             let currentGroup = this.props.groups.currentGroup;
             name = groups.name;
 
-            names = usersArr.map(user => (
-                <h2>{user.first_name} {user.last_name}</h2>
-            ));
+            
 
 
             moments = moments.map(moment => (
@@ -84,6 +85,18 @@ class GroupShowMoments extends React.Component {
                 />
             )).reverse();
 
+            menu = (
+                <Menu tabular borderless className='nav-bar'>
+                    <Menu.Item>
+                        <Link to={`/groups/${this.state.currentGroup.id}`}>Moments</Link>
+                    </Menu.Item>
+
+                    <Menu.Item>
+                        <Link to={`/groups/${this.state.currentGroup.id}/messages`}>Messages</Link>
+                    </Menu.Item>
+                </Menu>
+            ); 
+
             if (groups.img_url !== "" && groups.img_url) {
                 if(groups.img_url.includes('robohash')){
                     imgUrl = groups.img_url; 
@@ -96,6 +109,7 @@ class GroupShowMoments extends React.Component {
                         <img src={imgUrl} />
                     </div>
                 );
+
             } else {
                 header = (
                     <Header className="profile" as='h1' icon textAlign='center'>
@@ -107,6 +121,7 @@ class GroupShowMoments extends React.Component {
                     </Header>
                 );
             }
+            
 
         } else {
             name = '';
@@ -121,10 +136,12 @@ class GroupShowMoments extends React.Component {
                 </Header>
 
             );
+            menu = <div></div>;
         }
 
         return(
             <div className="groupshow-moments-container">
+                {menu}
                 <div className="groupshow-left-bar">
                     {header}
                     <ReactFilestack
@@ -135,7 +152,6 @@ class GroupShowMoments extends React.Component {
                         onSuccess={this.onSuccess}
                         onError={(e) => console.log(e)}
                     />
-                    <SideBar class='groupshow-sidebar' names={names} />
 
                 </div>
 

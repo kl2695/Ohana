@@ -1,32 +1,34 @@
 import React from 'react';
-import { Grid, Image, Header, Feed, Icon, Menu } from 'semantic-ui-react';
-import { Route, Switch } from 'react-router-dom';
+import { Grid, Image, Header, Feed, Icon, Menu, Item } from 'semantic-ui-react';
+import { Route, Switch, Link } from 'react-router-dom';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../moments/moments_show/moment_show';
 import SideBar from './group_show_sidebar';
 import GroupShowMomentsContainer from './group_show_moments/group_show_moments_container'; 
 import GroupShowMessagesContainer from './group_show_messages/group_show_messages_container';
+import GroupIndexItem from '../group_index/group_index_item';
 
 
 class GroupShow extends React.Component{
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            groups: this.props.groups,
+        };
+        
      
 
         this.handleItemClick = this.handleItemClick.bind(this);
     }
 
-
     componentDidMount() {
-        this.props.requestGroup(this.props.groupId);
-        this.setState(this.props.groups);
-        
+        this.props.requestAllGroups();
     }
 
+
     componentWillReceiveProps(newProps) {
-        this.setState(newProps.groups);
+        this.setState({groups:newProps.groups});
     }
 
 
@@ -34,48 +36,72 @@ class GroupShow extends React.Component{
     handleItemClick(e, { name }) {
         e.preventDefault();
         this.setState({ activeItem: name });
-        this.props.history.push(`/groups/${this.props.groupId}/${name}`);
+        this.props.history.push(`${this.state.groups.currentGroup.id}/${name}`);
     }
 
     
     render(){
 
-        const { usersArr, messagesArr, users, groups, moments, createComment, currentUser } = this.props; 
+        console.log(this.state);
+        
+        const { usersArr, messagesArr, users, moments, createComment, currentUser } = this.props; 
         const {activeItem} = this.state; 
+        let groups; 
 
+
+       if(this.state.groups){
+           groups = this.state.groups.slice(0, this.state.groups.length - 1).map(group => {
+               if (group.userIds.includes(this.props.currentUser.id)) {
+                   if (!group.img_url) {
+                       group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
+                   }
+                   return (
+                       <div className="group-index-item">
+                           <Item.Group divided>
+                               <Item className="group-index-item-container">
+                                   <div className="thumbnail">
+                                       <Item.Image size="tiny" src={group.img_url} />
+                                   </div>
+                                   <div className="group-index-item-1">
+                                       <Item.Content verticalAlign="middle">
+                                           <Link to={`/groups/${group.id}`}>{group.name}</Link>
+                                           {/* <GroupIndexItem className="group-index-item-content" group={group} groupId={group.id} /> */}
+                                       </Item.Content>
+                                   </div>
+                               </Item>
+
+                           </Item.Group>
+                       </div>
+                   );
+               }
+           });
+       }else{
+           groups = (
+               <div></div>
+           );
+       }
+     
 
         return(
 
             <div className="groupshow-container">
                 <div className="left-groupshow">
-            
-                    <Menu className='nav-bar' tabular borderless>
-                            <Menu.Item
-                                name=''
-                                active={activeItem === ''}
-                                onClick={this.handleItemClick}
-                            >Moments
-                            </Menu.Item>
-
-                            <Menu.Item
-                                name='messages'
-                                active={activeItem === 'messages'}
-                                onClick={this.handleItemClick}
-                            >Messages
-                            </Menu.Item>
-                    </Menu>
+                    <div>
+                        {groups}
+                    </div>
+                    
+                    <Switch>
+                        <Route 
+                            exact path='/groups/:groupId' 
+                            component={GroupShowMomentsContainer}
+                                
+                        />
+                        <Route 
+                            path='/groups/:groupId/messages'
+                            component={GroupShowMessagesContainer} 
+                        />
+                    </Switch>
                 </div>
-                <Switch>
-                    <Route 
-                        exact path='/groups/:groupId' 
-                        component={GroupShowMomentsContainer}
-                            
-                    />
-                    <Route 
-                        path='/groups/:groupId/messages'
-                        component={GroupShowMessagesContainer} 
-                    />
-                </Switch>
             </div>
         );
     }
