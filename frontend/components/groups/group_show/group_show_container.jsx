@@ -9,7 +9,7 @@ import { createLike } from '../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-
+console.log(state);
 return {
 
     currentUser: state.session.currentUser,
@@ -18,6 +18,7 @@ return {
     usersArr: selectUsers(state),
     users: state.entities.users, 
     groups: selectAllGroups(state),
+    currentGroup: state.entities.groups.currentGroup,
     moments: selectMoments(state), 
     messages: state.entities.messages,
     messagesArr: selectMessages(state),

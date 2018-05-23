@@ -15,6 +15,7 @@ class GroupShow extends React.Component{
         super(props);
         this.state = {
             groups: this.props.groups,
+            currentGroup: this.props.currentGroup,
         };
         
      
@@ -50,7 +51,7 @@ class GroupShow extends React.Component{
 
 
        if(this.state.groups){
-           groups = this.state.groups.slice(0, this.state.groups.length - 1).map(group => {
+           groups = this.state.groups.slice(0, this.state.groups.length-1).map(group => {
                if (group.userIds.includes(this.props.currentUser.id)) {
                    if (!group.img_url) {
                        group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
@@ -89,12 +90,11 @@ class GroupShow extends React.Component{
                     <div>
                         {groups}
                     </div>
-                    
+
                     <Switch>
                         <Route 
                             exact path='/groups/:groupId' 
-                            component={GroupShowMomentsContainer}
-                                
+                            component={GroupShowMomentsContainer}    
                         />
                         <Route 
                             path='/groups/:groupId/messages'

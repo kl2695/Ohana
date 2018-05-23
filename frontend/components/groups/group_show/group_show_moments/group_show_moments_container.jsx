@@ -9,9 +9,6 @@ import { createLike } from '../../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("groupshowmoments container, checking ownProps");
-    console.log(ownProps);
-
     return {
 
         currentUser: state.session.currentUser,
@@ -20,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
         usersArr: selectUsers(state),
         users: state.entities.users,
         groups: state.entities.groups,
+        currentGroup: state.entities.groups.currentGroup,
         moments: selectMoments(state),
         messages: state.entities.messages 
     };

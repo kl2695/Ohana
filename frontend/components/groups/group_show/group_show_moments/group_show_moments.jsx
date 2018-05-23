@@ -15,6 +15,7 @@ class GroupShowMoments extends React.Component {
         super(props);
         this.state = {
             groups: this.props.groups,
+            currentGroup: this.props.currentGroup,
         };
 
 
@@ -27,12 +28,14 @@ class GroupShowMoments extends React.Component {
         this.props.requestGroup(this.props.groupId);
     }
 
-    componentWillReceiveProps(newProps) {
-        this.setState(newProps.groups);
+    componentDidUpdate(prevProps, prevState) {
+        if(this.props.groupId != prevProps.groupId){
+            this.props.requestGroup(this.props.groupId);
+        }
     }
 
     handleSubmit(event) {
-        this.props.updateGroup(this.state);
+        this.props.updateGroup(this.state.groups.currentGroup);
     }
 
     onSuccess(result) {
@@ -51,6 +54,15 @@ class GroupShowMoments extends React.Component {
 
     render() {
 
+        let { usersArr, groups, moments } = this.props;
+        let name;
+        let imgUrl;
+        let names;
+        let header;
+        let menu; 
+
+        console.log("checking props groupshowmoments");
+        console.log(this.props);
 
 
         const basicOptions = {
@@ -60,19 +72,7 @@ class GroupShowMoments extends React.Component {
             maxFiles: 3,
         };
 
-        let { usersArr, groups, moments } = this.props;
-        let name;
-        let imgUrl;
-        let names;
-        let header;
-        let menu; 
-
-        console.log("checking groupshowmoments state");
-        console.log(this.state);
-        console.log("checking groupshowmoments props");
-        console.log(this.props);
-
-        if (this.state.groups.currentGroup) {
+        if (this.state.groups.currentGroup && moments) {
             let currentGroup = this.props.groups.currentGroup;
             name = groups.name;
 
@@ -93,11 +93,11 @@ class GroupShowMoments extends React.Component {
             menu = (
                 <Menu tabular borderless className='nav-bar'>
                     <Menu.Item>
-                        <Link to={`/groups/${this.state.groups.currentGroup.id}`}>Moments</Link>
+                        <Link to={`/groups/${this.state.currentGroup.id}`}>Moments</Link>
                     </Menu.Item>
 
                     <Menu.Item>
-                        <Link to={`/groups/${this.state.groups.currentGroup.id}/messages`}>Messages</Link>
+                        <Link to={`/groups/${this.state.currentGroup.id}/messages`}>Messages</Link>
                     </Menu.Item>
                 </Menu>
             ); 

@@ -17,6 +17,7 @@ class GroupShowMessages extends React.Component {
         super(props);
         this.state = {
             groups: this.props.groups,
+            currentGroup: this.props.currentGroup,
             messages:[],
             message:{
                 body: '', 
@@ -29,7 +30,6 @@ class GroupShowMessages extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.loadMoreHistory = this.loadMoreHistory.bind(this);
-
     }
 
     componentDidMount() {
@@ -55,8 +55,7 @@ class GroupShowMessages extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        console.log("checking newProps");
-        console.log(newProps);
+
         const messagesArr = this.props.messagesArr.map(message => (
             this.props.users[message.user_id].username + ": " + message.body 
         ));
@@ -64,7 +63,9 @@ class GroupShowMessages extends React.Component {
         this.setState({messages:messagesArr,
             message:{body:this.state.message.body,group_id: newProps.groupId},
             groups: newProps.groups,
+            currentGroup: newProps.currentGroup,
         });
+
     }
 
 
@@ -78,8 +79,6 @@ class GroupShowMessages extends React.Component {
     handleSubmit(event) {
         this.props.createMessage(this.state.message);
         this.setState({message:{body: '', group_id:this.state.message.group_id}});
-
-        
     }
 
     handleInput(event){
@@ -88,6 +87,7 @@ class GroupShowMessages extends React.Component {
     }
 
     loadMoreHistory() {
+
         return new Promise((resolve, reject) => {
             this.props.updateGroup({
                 id: this.props.groupId,
@@ -98,6 +98,7 @@ class GroupShowMessages extends React.Component {
             this.setState({position: this.state.position + 30});
             resolve();
         });
+
     }
    
     
@@ -107,22 +108,20 @@ class GroupShowMessages extends React.Component {
 
     render() {
 
-        console.log("checking messages state");
-        console.log(this.state);
-
         let names; 
         let result =[]; 
         let menu; 
 
         if(this.props.users){
+
             menu = (
                 <Menu tabular borderless className='nav-bar'>
                     <Menu.Item>
-                        <Link to={`/groups/${this.state.groups.currentGroup.id}`}>Moments</Link>
+                        <Link to={`/groups/${this.state.currentGroup.id}`}>Moments</Link>
                     </Menu.Item>
 
                     <Menu.Item>
-                        <Link to={`/groups/${this.state.groups.currentGroup.id}/messages`}>Messages</Link>
+                        <Link to={`/groups/${this.state.currentGroup.id}/messages`}>Messages</Link>
                     </Menu.Item>
                 </Menu>
             );
@@ -161,6 +160,7 @@ class GroupShowMessages extends React.Component {
         const messages = this.state.messages.map(message => (
             <div>{message}</div>
         )).reverse();
+
 
         return (
             <div className="groupshow-messages-container">

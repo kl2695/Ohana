@@ -10,9 +10,7 @@ const groupsReducer = (state = {}, action) => {
         case RECEIVE_ALL_GROUPS: 
             return action.groups; 
         case RECEIVE_CURRENT_GROUP:
-        console.log(action);
-            newState["currentGroup"] = action.groups; 
-            console.log(newState);
+            newState["currentGroup"] = action.groups;
             return merge({}, state, newState); 
         case RECEIVE_ONE_GROUP:
             newState[action.groups.id] = action.groups; 
