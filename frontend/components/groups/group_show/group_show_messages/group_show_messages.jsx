@@ -54,19 +54,49 @@ class GroupShowMessages extends React.Component {
 
     }
 
-    componentWillReceiveProps(newProps) {
+  static getDerivedStateFromProps(nextProps, prevState, prevProps) {
+      console.log(nextProps);
+      console.log(prevProps);
+      let messagesArr;
 
-        const messagesArr = this.props.messagesArr.map(message => (
-            this.props.users[message.user_id].username + ": " + message.body 
-        ));
+        if(nextProps.messagesArr){
+            messagesArr = nextProps.messagesArr.map(message => (
+                nextProps.users[message.user_id].username + ": " + message.body 
+            ));
+        }
+        console.log("im here!!!");
+        console.log(messagesArr);
 
-        this.setState({messages:messagesArr,
-            message:{body:this.state.message.body,group_id: newProps.groupId},
-            groups: newProps.groups,
-            currentGroup: newProps.currentGroup,
-        });
+            return {
+            messages:messagesArr,
+            message:{body: prevState.message.body,group_id: nextProps.groupId},
+            groups: nextProps.groups,
+            currentGroup: nextProps.currentGroup,
+            };
 
     }
+
+    // componentDidUPdate(prevProps) {
+
+    //     const messagesArr = prevProps.messagesArr.map(message => (
+    //         prevProps.users[message.user_id].username + ": " + message.body 
+    //     ));
+    //     console.log("im here!!!");
+    //     console.log(messagesArr);
+
+    //         this.setState(function(prevState,props){
+    //             console.log(prevState);
+    //             console.log(props);
+            
+    //         return {
+    //         messages:messagesArr,
+    //         message:{body: prevState.message.body,group_id: props.groupId},
+    //         groups: props.groups,
+    //         currentGroup: props.currentGroup,
+    //         };
+    //     });
+
+    // }
 
 
     
@@ -107,12 +137,14 @@ class GroupShowMessages extends React.Component {
 
 
     render() {
-
+        console.log("checking messages props");
+        console.log(this.props);
+        
         let names; 
         let result =[]; 
         let menu; 
 
-        if(this.props.users){
+        if(this.props.users && this.state.currentGroup){
 
             menu = (
                 <Menu tabular borderless className='nav-bar'>
