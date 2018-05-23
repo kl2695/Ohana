@@ -20,8 +20,6 @@ const momentsReducer = (state = {}, action) => {
             delete newState[action.moment.id]; 
             return merge({}, state, newState);
         case RECEIVE_CURRENT_GROUP: 
-        console.log(action);
-        console.log(state);
             if(action.moments){
                 return action.moments;
             }else{

@@ -28,8 +28,15 @@ class GroupShowMoments extends React.Component {
         this.props.requestGroup(this.props.groupId);
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if(this.props.groupId != prevProps.groupId){
+    static getDerivedStateFromProps(props, state) {
+        return { 
+            groups: props.groups, 
+            currentGroup: props.currentGroup 
+        };
+    }
+
+    componentDidUpdate(prevProps){
+        if (prevProps.groupId != this.props.groupId) {
             this.props.requestGroup(this.props.groupId);
         }
     }
@@ -61,9 +68,7 @@ class GroupShowMoments extends React.Component {
         let header;
         let menu; 
 
-        console.log("checking props groupshowmoments");
         console.log(this.props);
-
 
         const basicOptions = {
             accept: 'image/*',
@@ -72,10 +77,12 @@ class GroupShowMoments extends React.Component {
             maxFiles: 3,
         };
 
-        if (this.state.groups.currentGroup && moments) {
+        if (this.state.currentGroup && moments) {
             let currentGroup = this.props.groups.currentGroup;
             name = groups.name;
 
+
+            console.log(this.state.currentGroup.id);
             
 
 

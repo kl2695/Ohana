@@ -17,34 +17,18 @@ class GroupShow extends React.Component{
             groups: this.props.groups,
             currentGroup: this.props.currentGroup,
         };
-        
-     
-
-        this.handleItemClick = this.handleItemClick.bind(this);
     }
 
     componentDidMount() {
         this.props.requestAllGroups();
     }
 
-
     componentWillReceiveProps(newProps) {
         this.setState({groups:newProps.groups});
     }
 
-
-
-    handleItemClick(e, { name }) {
-        e.preventDefault();
-        this.setState({ activeItem: name });
-        this.props.history.push(`${this.state.groups.currentGroup.id}/${name}`);
-    }
-
-    
     render(){
 
-        console.log(this.state);
-        
         const { usersArr, messagesArr, users, moments, createComment, currentUser } = this.props; 
         const {activeItem} = this.state; 
         let groups; 
@@ -65,8 +49,12 @@ class GroupShow extends React.Component{
                                    </div>
                                    <div className="group-index-item-1">
                                        <Item.Content verticalAlign="middle">
-                                           <Link to={`/groups/${group.id}`}>{group.name}</Link>
-                                           {/* <GroupIndexItem className="group-index-item-content" group={group} groupId={group.id} /> */}
+                                           <Link 
+                                                to={`/groups/${group.id}`}
+                                                // onClick={this.handleItemClick}
+                                                // group={group}
+                                           >{group.name}
+                                           </Link>
                                        </Item.Content>
                                    </div>
                                </Item>

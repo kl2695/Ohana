@@ -10,14 +10,16 @@ import { createMessage } from '../../../../actions/message_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    return {
+    console.log(state);
 
+    return {
         currentUser: state.session.currentUser,
         errors: state.errors.groups,
         groupId: ownProps.match.params.groupId,
         usersArr: selectUsers(state),
         users: state.entities.users,
         groups: state.entities.groups,
+        currentGroup: state.entities.groups.currentGroup,
         messages: state.entities.messages,
         messagesArr: selectMessages(state),
     };

@@ -9,6 +9,9 @@ import { createLike } from '../../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+    console.log("groupshowcontainer props");
+    console.log(ownProps);
+
     return {
 
         currentUser: state.session.currentUser,
