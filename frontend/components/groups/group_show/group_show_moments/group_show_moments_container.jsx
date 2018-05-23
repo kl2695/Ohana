@@ -9,8 +9,8 @@ import { createLike } from '../../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("im herenow");
-    console.log(state);
+    console.log("groupshowmoments container, checking ownProps");
+    console.log(ownProps);
 
     return {
 

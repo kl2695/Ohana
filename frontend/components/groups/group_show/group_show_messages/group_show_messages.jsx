@@ -1,5 +1,6 @@
 import React from 'react';
-import { List, Image, Header, Link, Feed, Icon, Menu, Container, Form, Button, TextArea, Input } from 'semantic-ui-react';
+import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextArea, Input } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
 import MomentShow from '../../../moments/moments_show/moment_show';
@@ -15,6 +16,7 @@ class GroupShowMessages extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            groups: this.props.groups,
             messages:[],
             message:{
                 body: '', 
@@ -53,12 +55,15 @@ class GroupShowMessages extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
+        console.log("checking newProps");
+        console.log(newProps);
         const messagesArr = this.props.messagesArr.map(message => (
             this.props.users[message.user_id].username + ": " + message.body 
         ));
 
         this.setState({messages:messagesArr,
             message:{body:this.state.message.body,group_id: newProps.groupId},
+            groups: newProps.groups,
         });
     }
 
@@ -102,9 +107,26 @@ class GroupShowMessages extends React.Component {
 
     render() {
 
+        console.log("checking messages state");
+        console.log(this.state);
+
         let names; 
         let result =[]; 
+        let menu; 
+
         if(this.props.users){
+            menu = (
+                <Menu tabular borderless className='nav-bar'>
+                    <Menu.Item>
+                        <Link to={`/groups/${this.state.groups.currentGroup.id}`}>Moments</Link>
+                    </Menu.Item>
+
+                    <Menu.Item>
+                        <Link to={`/groups/${this.state.groups.currentGroup.id}/messages`}>Messages</Link>
+                    </Menu.Item>
+                </Menu>
+            );
+
             names = Object.keys(this.props.users).map(userId => {
                 let user = this.props.users[userId];
                 if(!user.img_url){
@@ -132,13 +154,17 @@ class GroupShowMessages extends React.Component {
             }
        
             
+        }else{
+            menu = <div></div>;
         }
 
         const messages = this.state.messages.map(message => (
             <div>{message}</div>
         )).reverse();
+
         return (
             <div className="groupshow-messages-container">
+                {menu}
                 <div className="messages-container-left">
                     <Container fluid id="messages-container" textAlign="left">
                         Messages

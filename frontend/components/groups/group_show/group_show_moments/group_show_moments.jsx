@@ -13,7 +13,9 @@ class GroupShowMoments extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            groups: this.props.groups,
+        };
 
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,8 +25,6 @@ class GroupShowMoments extends React.Component {
 
     componentDidMount() {
         this.props.requestGroup(this.props.groupId);
-        this.setState(this.props.groups[this.props.groupId]);
-
     }
 
     componentWillReceiveProps(newProps) {
@@ -67,7 +67,12 @@ class GroupShowMoments extends React.Component {
         let header;
         let menu; 
 
-        if (this.props.usersArr.length > 0) {
+        console.log("checking groupshowmoments state");
+        console.log(this.state);
+        console.log("checking groupshowmoments props");
+        console.log(this.props);
+
+        if (this.state.groups.currentGroup) {
             let currentGroup = this.props.groups.currentGroup;
             name = groups.name;
 
@@ -88,11 +93,11 @@ class GroupShowMoments extends React.Component {
             menu = (
                 <Menu tabular borderless className='nav-bar'>
                     <Menu.Item>
-                        <Link to={`/groups/${this.state.currentGroup.id}`}>Moments</Link>
+                        <Link to={`/groups/${this.state.groups.currentGroup.id}`}>Moments</Link>
                     </Menu.Item>
 
                     <Menu.Item>
-                        <Link to={`/groups/${this.state.currentGroup.id}/messages`}>Messages</Link>
+                        <Link to={`/groups/${this.state.groups.currentGroup.id}/messages`}>Messages</Link>
                     </Menu.Item>
                 </Menu>
             ); 
