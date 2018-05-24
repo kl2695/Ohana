@@ -9,8 +9,7 @@ import { createLike } from '../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("gropushowcontainer");
-    console.log(state);
+    
     return {
 
         currentUser: state.session.currentUser,

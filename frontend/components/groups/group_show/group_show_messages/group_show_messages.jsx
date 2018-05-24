@@ -223,7 +223,7 @@ class GroupShowMessages extends React.Component {
                         </ChatView>
                         
                         <Form onSubmit={this.handleSubmit}>
-                            <TextArea onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body} />
+                            <Input onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body} />
                         </Form>
                     </Container>
 

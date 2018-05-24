@@ -8,7 +8,6 @@ const groupsReducer = (state = {}, action) => {
     let newState = {}; 
     switch (action.type) {
         case RECEIVE_ALL_GROUPS: 
-            console.log(merge({}, action.groups, state));
             return merge({}, action.groups, state); 
         case RECEIVE_CURRENT_GROUP:
             newState["currentGroup"] = action.groups;
@@ -26,7 +25,7 @@ const groupsReducer = (state = {}, action) => {
                 return state; 
             }
         case RECEIVE_ALL_MESSAGES: 
-            return merge({}, state, action.messages);
+            return merge({}, state, action.groups);
         default:
             return state;
     }

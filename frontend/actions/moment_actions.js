@@ -16,7 +16,8 @@ export const receiveAllMoments = payload => ({
     type: RECEIVE_ALL_MOMENTS,
     users: payload.users, 
     moments: payload.moments, 
-    comments: payload.comments 
+    comments: payload.comments, 
+    messages: payload.messages, 
 });
 export const receiveCurrentMoment = moment => ({
     type: RECEIVE_ONE_MOMENT,

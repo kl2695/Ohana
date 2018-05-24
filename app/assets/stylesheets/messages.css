@@ -1,0 +1,16 @@
+.messages-sidebar {
+    display: flex;
+    border: 1px solid lightgray;
+    margin: 0;
+    background-color: white;
+    width: 40%;
+}
+
+#messages-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 20px 20px 20px 20px;
+    padding: 20px;
+}

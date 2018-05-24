@@ -21,6 +21,7 @@ class MomentIndex extends React.Component {
 
     componentDidMount() {
         this.props.requestAllMoments(); 
+        this.props.requestAllMessages(); 
     }
 
     loadMoreHistory() {

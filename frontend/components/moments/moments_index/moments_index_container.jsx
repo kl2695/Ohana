@@ -6,6 +6,7 @@ import { requestAllUsers } from "../../../actions/user_actions";
 import { clearSessionErrors } from "../../../actions/error_actions";
 import { createComment } from "../../../actions/comment_actions";
 import { createLike } from '../../../actions/like_actions';
+import { requestAllMessages } from '../../../actions/message_actions';
 import { selectMoments } from '../../../reducers/selectors';
 
 
@@ -24,7 +25,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
 
     return {
-        requestAllMoments: () => dispatch(requestAllMoments()), 
+        requestAllMoments: () => dispatch(requestAllMoments()),
+        requestAllMessages: () => dispatch(requestAllMessages()), 
         requestAllUsers: () => dispatch(requestAllUsers()), 
         createComment: comment => dispatch(createComment(comment)), 
         createLike: like => dispatch(createLike(like)),
