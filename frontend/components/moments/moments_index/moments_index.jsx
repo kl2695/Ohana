@@ -24,7 +24,8 @@ class MomentsIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestAllMoments(); 
+        this.props.requestAllMoments()
+        .then(()=>this.props.requestAllUsers());
     }
 
     loadMoreHistory() {
@@ -38,17 +39,12 @@ class MomentsIndex extends React.Component {
         this.setState({clicked:true});
     }
 
-    // onMessageSubmission(e){
-    //     e.preventDefault(); 
-    //     this.setState({messages:[]})
-    // }
 
     scroll(){
-
     }
 
-
     render() {
+
         let moments;
         let selected;
         let chats; 
@@ -85,7 +81,8 @@ class MomentsIndex extends React.Component {
                 });
                 return (<ChatBoxContainer selectedMessages={selectedMessages} 
                     onMessageSubmission={this.onMessageSubmission}
-                    groupId={groupId}/>);
+                    groupId={groupId}
+                    users={this.props.users}/>);
             });
         }
 

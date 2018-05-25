@@ -27,8 +27,6 @@ class ChatSideBar extends React.Component {
     }
 
     handleItemClick(groupId) {
-        console.log("checking groupid");
-        console.log(groupId);
         this.props.selectGroup(groupId);
     }
 

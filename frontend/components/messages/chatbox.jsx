@@ -19,8 +19,6 @@ class ChatBox extends React.Component {
             },
             position: 30,
         };
-        
-        console.log(this.state);
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
@@ -45,17 +43,20 @@ class ChatBox extends React.Component {
                 return data.user + ": " + data.message;
             }
         });
-
+        
     }
 
     static getDerivedStateFromProps(nextProps, prevState, prevProps) {
 
         let currentSelected;
+        console.log(nextProps);
 
         if (nextProps.selectedMessages) {
-            currentSelected = nextProps.selectedMessages.map(message => (
-                nextProps.users[message.user_id].username + ": " + message.body
-            ));
+            currentSelected = nextProps.selectedMessages.map(message => {
+                console.log(nextProps);
+                console.log(message);
+                return nextProps.users[message.user_id].username + ": " + message.body;
+            });
         }
 
         return {
@@ -74,27 +75,12 @@ class ChatBox extends React.Component {
 
 
     handleSubmit(event) {
-
         this.props.createMessage(this.state.message);
         this.setState({message: {body: '', group_id: this.state.message.group_id}});
-
-        // let newMessage = this.props.users[this.props.currentUser.id].username 
-        // + ": " + this.state.message.body;
-        // let messagesArr = this.state.currentMessages;
-        // messagesArr.push(newMessage); 
-
-
-        // this.setState(() => {
-        //     return { 
-        //             currentMessages: messagesArr,
-        //             message: { body: '', group_id: this.state.message.group_id },
-        //         }; 
-        // });
     }
 
     handleInput(event) {
         event.preventDefault();
-        console.log(this.state);
         this.setState({ message: { body: event.target.value, group_id: this.state.message.group_id } });
     }
 
@@ -115,7 +101,7 @@ class ChatBox extends React.Component {
 
     render() {
 
-        let { usersArr, groups } = this.props;
+
         let messages; 
 
      

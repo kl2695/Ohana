@@ -8,15 +8,12 @@ import { createMessage } from '../../actions/message_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("chatbox-container");
     console.log(ownProps);
-    console.log(state);
     return {
         currentUser: state.session.currentUser,
         errors: state.errors.groups,
         groupId: ownProps.groupId,
-        usersArr: selectUsers(state),
-        users: state.entities.users,
+        users: ownProps.users, 
         currentGroup: state.entities.groups.currentGroup,
         messages: state.entities.messages,
         selectedMessages: ownProps.selectedMessages,
