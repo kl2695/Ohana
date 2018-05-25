@@ -3,10 +3,16 @@
 }
 
 .moments-index-container{
+    display:flex; 
+    flex-direction:column;
      margin-left: 100px;
      margin-right: 100px;
      padding: 10px;
-     width: 60%;
+}
+
+.moments-index-top{
+    display: flex; 
+    justify-content: space-between;
 }
 
 .moments {

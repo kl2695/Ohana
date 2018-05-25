@@ -7,7 +7,7 @@ import { clearSessionErrors } from "../../../actions/error_actions";
 import { createComment } from "../../../actions/comment_actions";
 import { createLike } from '../../../actions/like_actions';
 import { requestAllMessages } from '../../../actions/message_actions';
-import { selectMoments } from '../../../reducers/selectors';
+import { selectMoments, selectMessages } from '../../../reducers/selectors';
 
 
 
@@ -18,7 +18,10 @@ const mapStateToProps = (state, ownProps) => {
             errors: state.errors.session, 
             moments: selectMoments(state).reverse(),
             users: state.entities.users, 
-            comments: state.entities.comments 
+            comments: state.entities.comments, 
+            selectedGroups: state.selected.groups, 
+            messages: state.entities.messages,
+            messagesArr: selectMessages(state),
         };
 };
 

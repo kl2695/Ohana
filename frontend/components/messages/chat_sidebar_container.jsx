@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ChatSideBar from './chat_sidebar';
 import { selectMessages, selectAllGroups } from '../../reducers/selectors';
-import { requestAllGroups } from '../../actions/group_actions';
+import { requestAllGroups, selectGroup } from '../../actions/group_actions';
+
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,6 +26,7 @@ const mapDispatchToProps = dispatch => {
 
     return {
         requestAllGroups: () => dispatch(requestAllGroups()),
+        selectGroup: (groupId) => dispatch(selectGroup(groupId)),
     };
 };
 

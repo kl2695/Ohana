@@ -7,79 +7,80 @@ import MomentFormContainer from '../moments/moments_form/moments_form_container'
 import createGroup from '../../actions/group_actions';
 
 class NavBar extends React.Component {
-            constructor(props){
-                super(props);
-                this.state = {};
-                this.handleItemClick = this.handleItemClick.bind(this);
-            }
+    constructor(props){
+        super(props);
+        this.state = {};
+        this.handleItemClick = this.handleItemClick.bind(this);
+    }
 
-            handleItemClick(e,{name}){
-                e.preventDefault();
-                this.setState({activeItem: name});
-                this.props.history.push(`/${name}`);
-            }
+    handleItemClick(e,{name}){
+        e.preventDefault();
+        this.setState({activeItem: name});
+        this.props.history.push(`/${name}`);
+    }
 
-            render(){
+    render(){
 
-               const basicOptions = {
+        const basicOptions = {
             accept: 'image/*',
             fromSources: ['facebook', 'gmail', 'github'],
             maxSize: 1024 * 1024,
             maxFiles: 3,
         };
 
-            const {activeItem} = this.state; 
-                return(
-                    <Menu className='nav-bar' borderless icon>
-                            <div className="right-nav-bar">
-                                <Menu.Item 
-                                    name=''
-                                    active={activeItem === ''}
-                                    onClick={this.handleItemClick}
-                                >
-                                    <Icon circular name='home'/>
-                                </Menu.Item>
+        const {activeItem} = this.state;
+         
+            return(
+                <Menu className='nav-bar' borderless icon>
+                        <div className="right-nav-bar">
+                            <Menu.Item 
+                                name=''
+                                active={activeItem === ''}
+                                onClick={this.handleItemClick}
+                            >
+                                <Icon circular name='home'/>
+                            </Menu.Item>
+                        
+                            <Menu.Item
+                                name='groups'
+                                active={activeItem === 'groups'}
+                                onClick={this.handleItemClick}
+                            >
+                                <Icon circular name='users' />
+                            </Menu.Item>
+
+                            <Menu.Item 
+                                name={`users/${this.props.currentUser.id}`}
+                            active={activeItem === `users/${this.props.currentUser.id}`}
+                                onClick={this.handleItemClick}
+                            >
+                                <Icon circular name='user' />
+                            </Menu.Item>
+
+                    <Dropdown text={this.props.currentUser.username}pointing className='link item'>
+                        <Dropdown.Menu>
+                            <Dropdown.Header>Personal</Dropdown.Header>
+                                    <Dropdown.Item >
+                                        <GroupFormContainer navbar={true}/>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item>
+                                        <MomentFormContainer navbar={true}/>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item>Send a Message</Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Header>Settings</Dropdown.Header>
+                                    <Dropdown.Item>Account Info</Dropdown.Item>
+                                    <Dropdown.Item>Privacy</Dropdown.Item>
+                                    <Dropdown.Item onClick={this.props.logout}>Logout</Dropdown.Item>
                             
-                                <Menu.Item
-                                    name='groups'
-                                    active={activeItem === 'groups'}
-                                    onClick={this.handleItemClick}
-                                >
-                                    <Icon circular name='users' />
-                                </Menu.Item>
-
-                                <Menu.Item 
-                                    name={`users/${this.props.currentUser.id}`}
-                                active={activeItem === `users/${this.props.currentUser.id}`}
-                                    onClick={this.handleItemClick}
-                                >
-                                    <Icon circular name='user' />
-                                </Menu.Item>
-
-                        <Dropdown text={this.props.currentUser.username}pointing className='link item'>
-                            <Dropdown.Menu>
-                                <Dropdown.Header>Personal</Dropdown.Header>
-                                        <Dropdown.Item >
-                                            <GroupFormContainer navbar={true}/>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item>
-                                            <MomentFormContainer navbar={true}/>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item>Send a Message</Dropdown.Item>
-                                        <Dropdown.Divider />
-                                        <Dropdown.Header>Settings</Dropdown.Header>
-                                        <Dropdown.Item>Account Info</Dropdown.Item>
-                                        <Dropdown.Item>Privacy</Dropdown.Item>
-                                        <Dropdown.Item onClick={this.props.logout}>Logout</Dropdown.Item>
-                             
-                               
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        </div>
-                    
-                        </Menu>
-                );
-            }
+                            
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    </div>
+                
+                    </Menu>
+            );
+        }
 
 }
 

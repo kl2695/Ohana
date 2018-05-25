@@ -6,11 +6,15 @@ import MomentShow from '../moments_show/moment_show';
 import ChatView from 'react-chatview';
 import Promise from 'promise';
 import MomentsFormContainer from '../moments_form/moments_form_container';
+import ChatSideBarContainer from '../../messages/chat_sidebar_container';
+import ChatBox from '../../messages/chatbox';
+import ChatBoxContainer from '../../messages/chatbox_container';
 
-class MomentIndex extends React.Component {
+class MomentsIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            messages: this.props.messages,
             position: 15,
             clicked: false,
         };
@@ -21,7 +25,6 @@ class MomentIndex extends React.Component {
 
     componentDidMount() {
         this.props.requestAllMoments(); 
-        this.props.requestAllMessages(); 
     }
 
     loadMoreHistory() {
@@ -35,6 +38,11 @@ class MomentIndex extends React.Component {
         this.setState({clicked:true});
     }
 
+    // onMessageSubmission(e){
+    //     e.preventDefault(); 
+    //     this.setState({messages:[]})
+    // }
+
     scroll(){
 
     }
@@ -42,6 +50,9 @@ class MomentIndex extends React.Component {
 
     render() {
         let moments;
+        let selected;
+        let chats; 
+
         if (this.props.moments.length > 0) {
             moments = this.props.moments.slice(0,this.state.position).map(moment => {
                 return (
@@ -60,17 +71,40 @@ class MomentIndex extends React.Component {
             moments = [];
 
         }
-        
+
+        if(this.props.selectedGroups){
+            selected = Object.keys(this.props.selectedGroups);
+            chats = selected.map(groupId => {
+                let selectedMessages = []; 
+                this.props.messagesArr.forEach(message => {
+                    
+                    if(message.group_id == groupId){
+                        selectedMessages.push(message);
+                    }
+
+                });
+                return (<ChatBoxContainer selectedMessages={selectedMessages} 
+                    onMessageSubmission={this.onMessageSubmission}
+                    groupId={groupId}/>);
+            });
+        }
+
+                
         return (
             <div className="moments-index-container">
+                <div className="moments-index-top">
+                    <ChatView className="moments"scrollLoadThreshold={50}
+                        onInfiniteLoad={this.loadMoreHistory}>
+                        <MomentsFormContainer />
+                        {moments}
+                    
+                    </ChatView>
+                    <ChatSideBarContainer/>
+                </div>
+                <div className="moments-index-chats-container">
+                    {chats}
+                </div>
                 
-            
-                <ChatView className="moments"scrollLoadThreshold={50}
-                    onInfiniteLoad={this.loadMoreHistory}>
-                    <MomentsFormContainer />
-                    {moments}
-                
-                </ChatView>
             </div>
         );
     }
@@ -78,4 +112,4 @@ class MomentIndex extends React.Component {
 
 }
 
-export default MomentIndex; 
+export default MomentsIndex; 

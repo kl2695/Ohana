@@ -57,7 +57,6 @@ class GroupShowMessages extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState, prevProps) {
 
         let currentMessagesArr;
-        console.log(nextProps);
         
         if(nextProps.currentMessagesArr){
             currentMessagesArr = nextProps.currentMessagesArr.map(message => (

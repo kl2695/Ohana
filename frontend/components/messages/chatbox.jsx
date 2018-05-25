@@ -1,101 +1,158 @@
 import React from 'react';
-import { Grid, Image, Header, Feed, Icon, Menu, Item } from 'semantic-ui-react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextArea, Input } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import ChatView from 'react-chatview';
+import Promise from 'promise';
+
+
 
 class ChatBox extends React.Component {
+
+
     constructor(props) {
         super(props);
         this.state = {
-            groups: this.props.groups,
-            currentGroup: this.props.currentGroup,
-            messagesArr: this.props.messagesArr,
+            currentMessages: this.props.selectedMessages,
+            message: {
+                body: '',
+                group_id: this.props.groupId,
+            },
+            position: 30,
         };
+        
+        console.log(this.state);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInput = this.handleInput.bind(this);
+        this.loadMoreHistory = this.loadMoreHistory.bind(this);
     }
 
     componentDidMount() {
-        this.props.requestAllGroups();
+
+        const App = window.App;
+        let fn = this;
+        App.messages = App.cable.subscriptions.create('MessagesChannel', {
+            
+            received: function (data) {
+                const message = this.renderMessage(data);
+                const messages = fn.state.currentMessages;
+               
+                messages.push(message);
+                return fn.setState({ currentMessages: messages });
+            },
+
+            renderMessage: function (data) {
+                return data.user + ": " + data.message;
+            }
+        });
+
     }
 
-    static getDerivedStateFromProps(props, state) {
+    static getDerivedStateFromProps(nextProps, prevState, prevProps) {
+
+        let currentSelected;
+
+        if (nextProps.selectedMessages) {
+            currentSelected = nextProps.selectedMessages.map(message => (
+                nextProps.users[message.user_id].username + ": " + message.body
+            ));
+        }
+
         return {
-            groups: props.groups,
-            messagesArr: props.messagesArr,
+            currentMessages: currentSelected,
+            message: { body: prevState.message.body, group_id: prevState.message.group_id },
+            groups: nextProps.groups,
         };
+    }
+
+
+
+    componentWillUnmount() {
+        const App = window.App;
+        App.messages.unsubscribe();
+    }
+
+
+    handleSubmit(event) {
+
+        this.props.createMessage(this.state.message);
+        this.setState({message: {body: '', group_id: this.state.message.group_id}});
+
+        // let newMessage = this.props.users[this.props.currentUser.id].username 
+        // + ": " + this.state.message.body;
+        // let messagesArr = this.state.currentMessages;
+        // messagesArr.push(newMessage); 
+
+
+        // this.setState(() => {
+        //     return { 
+        //             currentMessages: messagesArr,
+        //             message: { body: '', group_id: this.state.message.group_id },
+        //         }; 
+        // });
+    }
+
+    handleInput(event) {
+        event.preventDefault();
+        console.log(this.state);
+        this.setState({ message: { body: event.target.value, group_id: this.state.message.group_id } });
+    }
+
+    loadMoreHistory() {
+
+        return new Promise((resolve, reject) => {
+            this.props.updateGroup({
+                id: this.props.groupId,
+                name: this.props.groups.name,
+                img_url: this.props.groups.img_url,
+                position: this.state.position + 30
+            });
+            this.setState({ position: this.state.position + 30 });
+            resolve();
+        });
+
     }
 
     render() {
 
-        const { usersArr, messagesArr, messages, users, moments, createComment, currentUser } = this.props;
-        let groups;
-        let groupMessagesArr = {};
+        let { usersArr, groups } = this.props;
+        let messages; 
 
-
-        if (this.state.groups) {
-
-            // generate a hash table filled with arrays of messages corresponding to group id's
-
-            for (let i = 0; i < messagesArr.length; i++) {
-                let message = messagesArr[i];
-                let groupMessages = groupMessagesArr[messagesArr[i].group_id];
-
-                if (groupMessages) {
-                    groupMessages.push(message);
-                } else {
-                    groupMessages = [];
-                }
-            }
-
-            groups = this.state.groups.slice(0, this.state.groups.length - 1).map(group => {
-
-                if (group.userIds.includes(this.props.currentUser.id)) {
-                    if (!group.img_url) {
-                        group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
-                    }
-                    return (
-                        <div className="group-index-item">
-                            <Item.Group>
-                                <Item className="group-index-item-container">
-                                    <div className="thumbnail">
-                                        <Item.Image size="tiny" src={group.img_url} />
-                                    </div>
-
-
-                                    <div className="group-index-item-1">
-                                        <Item.Content verticalAlign="middle">
-                                            <Item.Header>
-                                                <Link
-                                                    to={`/groups/${group.id}`}
-                                                >{group.name}
-                                                </Link>
-                                            </Item.Header>
-                                        </Item.Content>
-                                    </div>
-                                </Item>
-
-                            </Item.Group>
-                        </div>
-                    );
-                }
-            });
-        } else {
-            groups = (
-                <div></div>
-            );
+     
+        if(this.state.currentMessages.length > 0){
+            messages = this.state.currentMessages.map(message => (
+                <div>{message}</div>
+            )).reverse();
+        }else{
+            messages = [];
         }
+        
 
 
         return (
+            <div className="right-groupshow">
+                
+
+                <Container fluid id="messages-container" textAlign="left">
+                    Messages
+                        <ChatView scrollLoadThreshold={50}
+                        onInfiniteLoad={this.loadMoreHistory} flipped={true}>
+                        {messages}
+                    </ChatView>
+
+                    <Form onSubmit={this.handleSubmit}>
+                        <Input onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body} />
+                    </Form>
+                </Container>
 
 
-            <div className="messages-sidebar">
-                <div>
-                    {groups}
-                </div>
             </div>
         );
     }
-
-
 }
 
-export default ChatBox; 
+export default ChatBox;
+
+
+
+

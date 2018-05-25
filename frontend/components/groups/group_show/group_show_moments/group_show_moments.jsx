@@ -25,7 +25,6 @@ class GroupShowMoments extends React.Component {
     }
 
     componentDidMount() {
-        console.log("im calling you!!!");
         this.props.requestGroup(this.props.groupId);
     }
 

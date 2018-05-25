@@ -10,6 +10,9 @@ class ChatSideBar extends React.Component {
             currentGroup: this.props.currentGroup,
             messagesArr: this.props.messagesArr,
         };
+
+        this.handleItemClick = this.handleItemClick.bind(this);
+
     }
 
     componentDidMount() {
@@ -23,6 +26,12 @@ class ChatSideBar extends React.Component {
         };
     }
 
+    handleItemClick(groupId) {
+        console.log("checking groupid");
+        console.log(groupId);
+        this.props.selectGroup(groupId);
+    }
+
     render() {
 
         const { usersArr, messagesArr, messages, users, moments, createComment, currentUser } = this.props;
@@ -32,25 +41,13 @@ class ChatSideBar extends React.Component {
 
         if (this.state.groups) {
 
-            // generate a hash table filled with arrays of messages corresponding to group id's
-
-            for(let i=0; i<messagesArr.length; i++){
-                let message = messagesArr[i];
-                let groupMessages = groupMessagesArr[messagesArr[i].group_id]; 
-                
-                if (groupMessages){
-                    groupMessages.push(message);
-                }else{
-                    groupMessages = []; 
-                }
-            }
-
             groups = this.state.groups.slice(0, this.state.groups.length - 1).map(group => {
                 
                 if (group.userIds.includes(this.props.currentUser.id)) {
                     if (!group.img_url) {
                         group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
                     }
+
                     return (
                         <div className="group-index-item">
                             <Item.Group>
@@ -62,11 +59,11 @@ class ChatSideBar extends React.Component {
 
                                     <div className="group-index-item-1">
                                         <Item.Content verticalAlign="middle">
-                                            <Item.Header>
-                                                <Link
-                                                    to={`/groups/${group.id}`}
-                                                >{group.name}
-                                                </Link>
+                                            <Item.Header 
+                                                groupId={group.id}
+                                                onClick={()=> this.handleItemClick(group.id)}
+                                            >
+                                                {group.name}                                               
                                             </Item.Header>
                                         </Item.Content>
                                     </div>
@@ -87,7 +84,7 @@ class ChatSideBar extends React.Component {
         return (
 
 
-            <div className="messages-sidebar">
+            <div className="chat-sidebar">
                 <div>
                     {groups}
                 </div>

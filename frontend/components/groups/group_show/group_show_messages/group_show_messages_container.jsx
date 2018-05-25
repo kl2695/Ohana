@@ -10,7 +10,6 @@ import { createMessage } from '../../../../actions/message_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state);
 
     return {
         currentUser: state.session.currentUser,

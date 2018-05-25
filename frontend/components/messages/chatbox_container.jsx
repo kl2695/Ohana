@@ -2,21 +2,24 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ChatBox from './chatbox';
-import { selectMessages, selectAllGroups } from '../../reducers/selectors';
-import { requestAllGroups } from '../../actions/group_actions';
+import { requestGroup } from '../../actions/group_actions';
+import { selectUsers, selectMoments, selectMessages, selectCurrentMessages } from '../../reducers/selectors';
+import { createMessage } from '../../actions/message_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-
+    console.log("chatbox-container");
+    console.log(ownProps);
+    console.log(state);
     return {
-
         currentUser: state.session.currentUser,
         errors: state.errors.groups,
-        groups: selectAllGroups(state),
+        groupId: ownProps.groupId,
+        usersArr: selectUsers(state),
+        users: state.entities.users,
         currentGroup: state.entities.groups.currentGroup,
         messages: state.entities.messages,
-        messagesArr: selectMessages(state),
-
+        selectedMessages: ownProps.selectedMessages,
     };
 
 };
@@ -24,7 +27,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
 
     return {
-        requestAllGroups: () => dispatch(requestAllGroups()),
+        requestGroup: groupId => dispatch(requestGroup(groupId)),
+        createMessage: message => dispatch(createMessage(message)),
     };
 };
 

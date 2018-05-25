@@ -51,6 +51,12 @@ export const requestGroup = (groupId) => dispatch => {
         .then(group => dispatch(receiveCurrentGroup(group)));
 };
 
+export const selectGroup = (groupId) => dispatch => {
+    return GroupApiUtil.fetchGroup(groupId)
+        .fail(errors => dispatch(receiveGroupErrors(errors.responseJSON)))
+        .then(group => dispatch(receiveOneGroup(group)));
+};
+
 export const createGroup = (formGroup) => dispatch => {
     return GroupApiUtil.createGroup(formGroup)
         .fail(errors => dispatch(receiveGroupErrors(errors.responseJSON)))
