@@ -24,9 +24,9 @@
 .moments-index-chats-container{
     display: flex; 
     position: absolute; 
-    height: 200px; 
+    height: 300px; 
     bottom: 0px; 
-    z-index: 4; 
+    z-index: 2; 
 }
 
 .chatbox-container {
@@ -36,15 +36,17 @@
     justify-content: flex-end;
     margin: 0 10px 0 10px;
     border: 1px solid lightgray; 
-    flex-basis: 300px;
+    border-radius: 2px; 
+    flex-basis: 250px;
     flex-grow: 0;
     flex-shrink: 0;
-    box-shadow: 50px 50px rgba(172, 33, 33, 0), 
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .20)
 
 }
 
 .chatbox-header {
     border-bottom: 1px solid lightgray;
+    border-radius: 2px;
     padding: 4px 10px 4px 10px; 
     background-color: #2185d0;
 }
