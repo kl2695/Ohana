@@ -214,7 +214,7 @@ class GroupShowMessages extends React.Component {
                     {menu}
                 </div>
                 
-                    <Container fluid id="messages-container" textAlign="left">
+                    <Container fluid className="messages-container" textAlign="left">
                         Messages
                         <ChatView scrollLoadThreshold={50}
                             onInfiniteLoad={this.loadMoreHistory} flipped={true}> 

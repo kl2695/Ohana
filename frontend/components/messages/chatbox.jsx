@@ -43,13 +43,12 @@ class ChatBox extends React.Component {
                 return data.user + ": " + data.message;
             }
         });
-        
+
     }
 
     static getDerivedStateFromProps(nextProps, prevState, prevProps) {
 
         let currentSelected;
-        console.log(nextProps);
 
         if (nextProps.selectedMessages) {
             currentSelected = nextProps.selectedMessages.map(message => {
@@ -116,22 +115,20 @@ class ChatBox extends React.Component {
 
 
         return (
-            <div className="right-groupshow">
+            
+            <div className="chatbox-container" textAlign="left">
+                <div className="chatbox-header">
+                    {this.props.group.name}
+                </div>
                 
+                    <ChatView className="chat-view"scrollLoadThreshold={50}
+                    onInfiniteLoad={this.loadMoreHistory} flipped={true}>
+                    {messages}
+                </ChatView>
 
-                <Container fluid id="messages-container" textAlign="left">
-                    Messages
-                        <ChatView scrollLoadThreshold={50}
-                        onInfiniteLoad={this.loadMoreHistory} flipped={true}>
-                        {messages}
-                    </ChatView>
-
-                    <Form onSubmit={this.handleSubmit}>
-                        <Input onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body} />
-                    </Form>
-                </Container>
-
-
+                <Form onSubmit={this.handleSubmit}>
+                    <Input onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body} />
+                </Form>
             </div>
         );
     }

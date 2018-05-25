@@ -71,6 +71,7 @@ class MomentsIndex extends React.Component {
         if(this.props.selectedGroups){
             selected = Object.keys(this.props.selectedGroups);
             chats = selected.map(groupId => {
+                let group = this.props.selectedGroups[groupId];
                 let selectedMessages = []; 
                 this.props.messagesArr.forEach(message => {
                     
@@ -82,6 +83,7 @@ class MomentsIndex extends React.Component {
                 return (<ChatBoxContainer selectedMessages={selectedMessages} 
                     onMessageSubmission={this.onMessageSubmission}
                     groupId={groupId}
+                    group={group}
                     users={this.props.users}/>);
             });
         }
@@ -101,7 +103,6 @@ class MomentsIndex extends React.Component {
                 <div className="moments-index-chats-container">
                     {chats}
                 </div>
-                
             </div>
         );
     }

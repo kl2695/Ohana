@@ -13,11 +13,16 @@
     background-color: white; 
 }
 
-#messages-container {
+.messages-container {
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     margin: 20px 20px 20px 20px;
     padding: 20px;
+}
+
+
+.chat-view {
+    padding: 10px; 
 }

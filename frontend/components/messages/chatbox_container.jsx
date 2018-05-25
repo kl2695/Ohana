@@ -8,17 +8,17 @@ import { createMessage } from '../../actions/message_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps);
+  
     return {
         currentUser: state.session.currentUser,
         errors: state.errors.groups,
         groupId: ownProps.groupId,
+        group: ownProps.group, 
         users: ownProps.users, 
         currentGroup: state.entities.groups.currentGroup,
         messages: state.entities.messages,
         selectedMessages: ownProps.selectedMessages,
     };
-
 };
 
 const mapDispatchToProps = dispatch => {
