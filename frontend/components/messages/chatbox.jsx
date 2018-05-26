@@ -52,8 +52,7 @@ class ChatBox extends React.Component {
 
         if (nextProps.selectedMessages) {
             currentSelected = nextProps.selectedMessages.map(message => {
-                console.log(nextProps);
-                console.log(message);
+                
                 return nextProps.users[message.user_id].username + ": " + message.body;
             });
         }

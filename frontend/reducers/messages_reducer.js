@@ -16,11 +16,7 @@ const messagesReducer = (state = {}, action) => {
             Object.assign(newState, state, {"currentMessages": action.messages});
             return newState;
         case RECEIVE_ONE_GROUP: 
-            if(action.messages){
-                return action.messages;
-            }else{
-                return state; 
-            }
+            return merge({}, state, action.messages);
         case RECEIVE_ALL_GROUPS:
             return merge({}, state, action.messages);
         default:
