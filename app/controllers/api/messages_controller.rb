@@ -6,7 +6,7 @@ class Api::MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
-       ActionCable.server.broadcast 'messages',
+       ActionCable.server.broadcast "messages_#{@message.group_id}",
         message: @message.body,
         user: @message.user.username
         head :ok

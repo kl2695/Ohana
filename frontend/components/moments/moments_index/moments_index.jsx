@@ -79,6 +79,7 @@ class MomentsIndex extends React.Component {
                         selectedMessages.push(message);
                     }
 
+
                 });
                 return (<ChatBoxContainer selectedMessages={selectedMessages} 
                     onMessageSubmission={this.onMessageSubmission}

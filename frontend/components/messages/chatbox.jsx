@@ -29,10 +29,14 @@ class ChatBox extends React.Component {
 
         const App = window.App;
         let fn = this;
-        App.messages = App.cable.subscriptions.create('MessagesChannel', {
-            
+        console.log(fn.state.message.group_id);
+
+        App.messages = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.state.message.group_id},
+        
+         {
             received: function (data) {
                 const message = this.renderMessage(data);
+                console.log("im here!!");
                 const messages = fn.state.currentMessages;
                
                 messages.push(message);
@@ -47,7 +51,7 @@ class ChatBox extends React.Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState, prevProps) {
-
+        
         let currentSelected;
 
         if (nextProps.selectedMessages) {
@@ -101,8 +105,6 @@ class ChatBox extends React.Component {
 
 
         let messages; 
-
-     
         if(this.state.currentMessages.length > 0){
             messages = this.state.currentMessages.map(message => (
                 <div>{message}</div>
