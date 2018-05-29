@@ -125,9 +125,13 @@ class ChatBox extends React.Component {
                     {messages}
                 </ChatView>
 
-                <Form onSubmit={this.handleSubmit}>
-                    <Input onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body} />
-                </Form>
+                <form className="chatbox-form"onSubmit={this.handleSubmit}>
+                    <input className="chatbox-input" 
+                    onChange={this.handleInput} 
+                    autoHeight placeholder="Type a message..." 
+                    value={this.state.message.body}
+                    autofocus />
+                </form>
             </div>
         );
     }

@@ -22,6 +22,18 @@
     padding: 20px;
 }
 
+.chatbox-form {
+    padding: 10px;
+    border-top: 1px solid lightgray; 
+}
+.chatbox-input {
+    border: none; 
+}
+
+.chatbox-input:focus {
+    outline:none; 
+}
+
 
 .chat-view {
     padding: 10px; 
