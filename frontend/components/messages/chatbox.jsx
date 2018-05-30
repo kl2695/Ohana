@@ -87,7 +87,6 @@ class ChatBox extends React.Component {
 
     handleClick(event){
         event.preventDefault(); 
-        console.log(this.props.groupId);
         this.props.deSelectGroup(this.props.groupId);
     }
 

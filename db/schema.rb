@@ -32,8 +32,7 @@ ActiveRecord::Schema.define(version: 20171128040617) do
     t.integer "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_group_links_on_group_id"
-    t.index ["user_id"], name: "index_group_links_on_user_id"
+    t.index ["user_id", "group_id"], name: "index_group_links_on_user_id_and_group_id", unique: true
   end
 
   create_table "groups", force: :cascade do |t|
@@ -47,12 +46,13 @@ ActiveRecord::Schema.define(version: 20171128040617) do
   create_table "likes", force: :cascade do |t|
     t.integer "moment_id", null: false
     t.integer "user_id", null: false
+    t.index ["moment_id", "user_id"], name: "index_likes_on_moment_id_and_user_id", unique: true
   end
 
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "group_id", null: false
-    t.string "body", null: false
+    t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_messages_on_group_id"

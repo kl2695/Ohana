@@ -26,9 +26,15 @@ groupsJson.each do |row|
   groups << Group.create!(row)
 end 
 
-
+group_links = Hash.new
 200.times do |x|
-  GroupLink.create({group_id: rand(1..25), user_id: rand(1..50)} )
+  group_id = rand(1..25)
+  user_id = rand(1..50)
+
+  if !group_links[{group_id: group_id, user_id:user_id}]
+    GroupLink.create({group_id: group_id, user_id: user_id})
+    group_links[{group_id:group_id, user_id:user_id}] = 1
+  end
 end 
 
 momentsJson = ActiveSupport::JSON.decode(File.read('db/seeds/moments.json'))
@@ -45,9 +51,12 @@ end
 
 
 likesJson = ActiveSupport::JSON.decode(File.read('db/seeds/likes.json'))
-likes = [] 
+likes = Hash.new 
 likesJson.each do |row|
-  likes << Like.create!(row)
+  if !likes[row]
+    Like.create!(row)
+    likes[row] = 1
+  end
 end 
 
 messagesJson = ActiveSupport::JSON.decode(File.read('db/seeds/messages.json'))
