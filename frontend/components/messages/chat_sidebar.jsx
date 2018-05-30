@@ -77,6 +77,12 @@ class ChatSideBar extends React.Component {
 
 
             <div className="chat-sidebar">
+                <div className="chat-sidebar-header"> 
+                    <Header>
+                        Contacts
+                    </Header>
+                </div>
+              
                 {groups}
             </div>
         );
