@@ -47,20 +47,14 @@ class ChatSideBar extends React.Component {
                     }
 
                     return (
-                        <div className="group-index-item">
+                        <div className="chat-sidebar-item" groupId={group.id}
+                            onClick={() => this.handleItemClick(group.id)}>
                             <Item.Group>
-                                <Item className="group-index-item-container">
-                                    <div className="thumbnail">
-                                        <Item.Image size="tiny" src={group.img_url} />
-                                    </div>
-
-
-                                    <div className="group-index-item-1">
+                                <Item className="chat-sidebar-item-container">
+                                    <Item.Image size="mini" src={group.img_url} circular rounded/>
+                                    <div className="chat-sidebar-item-1">
                                         <Item.Content verticalAlign="middle">
-                                            <Item.Header 
-                                                groupId={group.id}
-                                                onClick={()=> this.handleItemClick(group.id)}
-                                            >
+                                            <Item.Header >
                                                 {group.name}                                               
                                             </Item.Header>
                                         </Item.Content>
@@ -83,9 +77,7 @@ class ChatSideBar extends React.Component {
 
 
             <div className="chat-sidebar">
-                <div>
-                    {groups}
-                </div>
+                {groups}
             </div>
         );
     }

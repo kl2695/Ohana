@@ -7,10 +7,11 @@
 }
 
 .chat-sidebar {
-    display: flex; 
-    border: 1px solid lightgray; 
-    margin: 0; 
-    background-color: white; 
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    margin: 0;
+    background-color: rgb(233, 235, 238);
 }
 
 .messages-container {
@@ -32,6 +33,26 @@
 
 .chatbox-input:focus {
     outline:none; 
+}
+
+
+.chat-sidebar-item-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.chat-sidebar-item {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.chat-sidebar-item:hover {
+    background-color: rgb(222, 225, 228)
+}
+
+.chat-sidebar-item-1 {
+    width: 33%;
 }
 
 

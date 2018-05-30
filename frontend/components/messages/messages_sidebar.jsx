@@ -47,25 +47,25 @@ class MessagesSideBar extends React.Component {
                     return (
                         <div className="group-index-item">
                             <Item.Group>
-                                <Item className="group-index-item-container">
-                                    <div className="thumbnail">
-                                        <Item.Image size="tiny" src={group.img_url} />
-                                    </div>
+                                <Link to={`/groups/${group.id}`}>
+                                
+                                    <Item className="group-index-item-container">
+                                        <div className="thumbnail">
+                                            <Item.Image size="tiny" src={group.img_url} />
+                                        </div>
 
 
-                                    <div className="group-index-item-1">
-                                        <Item.Content verticalAlign="middle">
-                                            <Item.Header>
-                                                <Link
-                                                    to={`/groups/${group.id}`}
-                                                >{group.name}
-                                                </Link>
-                                            </Item.Header>
+                                        <div className="group-index-item-1">
+                                            <Item.Content verticalAlign="middle">
+                                                <Item.Header>
+                                                {group.name}
+                                                </Item.Header>
 
-                                            <Item.Description className="item-messages">{lastMessage}</Item.Description>
-                                        </Item.Content>
-                                    </div>
-                                </Item>
+                                                <Item.Description className="item-messages">{lastMessage}</Item.Description>
+                                            </Item.Content>
+                                        </div>
+                                    </Item>
+                                </Link>
 
                             </Item.Group>
                         </div>

@@ -34,12 +34,20 @@
 }
 
 .group-index-item {
-    margin: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 5px; 
 }
+
+.group-index-item:hover {
+    background-color: rgb(249, 251, 252)
+}
+
 
 .group-index-item-1 {
     width: 33%;
 }
+
 
 .group-index-item-2 {
     width: 33%;
