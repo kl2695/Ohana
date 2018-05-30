@@ -10,11 +10,11 @@ const selectedReducer = (state = {}, action) => {
         case RECEIVE_ONE_GROUP:
             newState["groups"] = {};
             newState["groups"][action.groups.id] = action.groups;
-            console.log(merge({}, state, newState));
             return merge({}, state, newState);
         case REMOVE_GROUP:
-            delete newState[action.group.id];
-            return merge({}, state, newState);
+            newState = merge({}, state); 
+            delete newState["groups"][action.group.groups.id];
+            return newState; 
         case RECEIVE_USER:
             if (action.groups) {
                 return action.groups;

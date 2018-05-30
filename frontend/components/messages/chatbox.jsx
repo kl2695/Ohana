@@ -22,6 +22,7 @@ class ChatBox extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.loadMoreHistory = this.loadMoreHistory.bind(this);
     }
 
@@ -29,14 +30,12 @@ class ChatBox extends React.Component {
 
         const App = window.App;
         let fn = this;
-        console.log(fn.state.message.group_id);
 
         App.messages = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.state.message.group_id},
-        
+
          {
             received: function (data) {
                 const message = this.renderMessage(data);
-                console.log("im here!!");
                 const messages = fn.state.currentMessages;
                
                 messages.push(message);
@@ -86,6 +85,12 @@ class ChatBox extends React.Component {
         this.setState({ message: { body: event.target.value, group_id: this.state.message.group_id } });
     }
 
+    handleClick(event){
+        event.preventDefault(); 
+        console.log(this.props.groupId);
+        this.props.deSelectGroup(this.props.groupId);
+    }
+
     loadMoreHistory() {
 
         return new Promise((resolve, reject) => {
@@ -120,6 +125,7 @@ class ChatBox extends React.Component {
             <div className="chatbox-container" textAlign="left">
                 <div className="chatbox-header">
                     {this.props.group.name}
+                    <Icon name="remove" onClick={this.handleClick}/>
                 </div>
                 
                     <ChatView className="chat-view"scrollLoadThreshold={50}

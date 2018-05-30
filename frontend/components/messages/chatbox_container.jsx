@@ -2,15 +2,13 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ChatBox from './chatbox';
-import { requestGroup } from '../../actions/group_actions';
+import { requestGroup, deSelectGroup } from '../../actions/group_actions';
 import { selectUsers, selectMoments, selectMessages, selectCurrentMessages } from '../../reducers/selectors';
 import { createMessage } from '../../actions/message_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
 
-    console.log("Im here1!");
-    console.log(ownProps);
   
     return {
         currentUser: state.session.currentUser,
@@ -29,6 +27,7 @@ const mapDispatchToProps = dispatch => {
     return {
         requestGroup: groupId => dispatch(requestGroup(groupId)),
         createMessage: message => dispatch(createMessage(message)),
+        deSelectGroup: groupId => dispatch(deSelectGroup(groupId)), 
     };
 };
 
