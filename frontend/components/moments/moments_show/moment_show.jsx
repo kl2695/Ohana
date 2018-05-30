@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Feed, Icon, Button, Embed, Divider } from 'semantic-ui-react';
+import { Grid, Image, Feed, Icon, Button, Embed, Divider, Comment } from 'semantic-ui-react';
 import CommentsIndex from '../../comments/comments_index/comments_index';
 
 class MomentShow extends React.Component {
@@ -28,42 +28,44 @@ class MomentShow extends React.Component {
     render(){
         const { users, moment, createComment, currentUser } = this.props; 
         const momentUser = users[moment.user_id]; 
-
+        console.log(momentUser);
+        console.log(moment);
         return (
             <Feed.Event className="feed-event">
                 <Feed.Label>
-
+                    <Image avatar src={momentUser.img_url} size="mini" circular rounded/>
+                    <Feed.User as={Link} to={`/users/${momentUser.id}`}>{momentUser.username}</Feed.User>
                 </Feed.Label>
-                <Feed.Content>
+                <Feed.Content className="feed-content">
                     <Feed.Summary>
-                        <Feed.User as={Link}to={`/users/${momentUser.id}`}>{momentUser.username}</Feed.User>
                         <Feed.Date></Feed.Date>
                     </Feed.Summary>
                     <Feed.Extra className="feed-content"text>
                         {moment.body}
                         <img src={moment.img_url}/>
-                    </Feed.Extra>
-                    <Divider />
-                    <Feed.Meta>
-                        <Feed.Like>
-                            <Icon name='like' />
-                            {moment.likes.length} likes 
-                        </Feed.Like>
-                    <Divider />
-                    </Feed.Meta>
-                    <Feed.Extra>
-                        <Button size="mini"onClick={this.likeComment}>Like</Button>
-                        <Button size="mini"onClick={this.toggleComments}>Comment</Button>
-                        <Button size="mini">Share</Button>
-
-                        <CommentsIndex createComment={this.props.createComment}
-                            moment={moment}
-                            currentUser={currentUser}
-                            comments={moment.comments}
-                            users={users}
-                            display={this.state.display}/>
-                    </Feed.Extra>
+                    </Feed.Extra>                
                 </Feed.Content>
+                <Feed.Meta className="feed-meta">
+                    <div className="feed-meta-item" onClick={this.likeComment}> <Icon name="like" color="blue"/>Like</div>
+                    <div className="feed-meta-item" size="mini" onClick={this.toggleComments}>
+                        <Icon name="comments"color="blue"/>
+                        Comment
+                        </div>
+                    <div className="feed-meta-item" size="mini"><Icon name="share" color="blue"/>Share</div>
+                </Feed.Meta>
+                <Feed.Extra className="feed-extra">
+                    <Feed.Like className="feed-like">
+                        <Icon name='like' />
+                        {moment.likes.length} likes
+                    </Feed.Like>
+                    <CommentsIndex createComment={this.props.createComment}
+                        moment={moment}
+                        currentUser={currentUser}
+                        comments={moment.comments}
+                        users={users}
+                        display={this.state.display}/>
+                </Feed.Extra>
+                
             </Feed.Event>
         );
     }

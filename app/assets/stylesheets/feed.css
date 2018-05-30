@@ -1,0 +1,27 @@
+.feed-meta {
+    display: flex;
+    border-top: 1px solid lightgray;
+    height: 40px;
+}
+
+.feed-meta-item {
+    line-height: 40px;
+    flex-grow: 1;
+    text-align: center;
+    vertical-align: baseline;
+    cursor: pointer;
+    color: #2185d0;
+}
+
+.feed-meta-item:hover {
+    background-color: rgb(230, 232, 233);
+}
+
+.feed-extra {
+    border-top: 1px solid lightgray;
+}
+
+.feed-like {
+    position: relative; 
+    top: 10px;
+}
