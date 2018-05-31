@@ -47,7 +47,11 @@ class GroupShowMessages extends React.Component {
             },
 
             renderMessage: function (data) {
-                return data.user + ": " + data.message;
+                return {
+                    body: data.message, 
+                    user_id: fn.props.currentUser.id, 
+                    group_id: fn.state.message.group_id,
+                };
             }
         });
 
@@ -57,16 +61,8 @@ class GroupShowMessages extends React.Component {
 
   static getDerivedStateFromProps(nextProps, prevState, prevProps) {
 
-        let currentMessagesArr;
-        
-        if(nextProps.currentMessagesArr){
-            currentMessagesArr = nextProps.currentMessagesArr.map(message => (
-                nextProps.users[message.user_id].username + ": " + message.body 
-            ));
-        }
-
         return {
-            currentMessages: currentMessagesArr,
+            currentMessages: nextProps.currentMessagesArr,
             message:{body: prevState.message.body,group_id: nextProps.groupId},
             groups: nextProps.groups,
             currentGroup: nextProps.currentGroup,
@@ -195,9 +191,33 @@ class GroupShowMessages extends React.Component {
             header = <div></div>;
         }
 
-        const messages = this.state.currentMessages.map(message => (
-            <div>{message}</div>
-        )).reverse();
+        const messages = this.state.currentMessages.map(message => {
+            
+            let text;
+            
+            console.log(message);
+
+            if(message.user_id === this.props.currentUser.id){
+                text = message.body;
+                return (
+                    <div className="message">
+                        <div className="message-text-current-user">
+                            {text}
+                        </div>
+                    </div>
+                );
+            }else{
+                text = this.props.users[message.user_id].username + ": " + message.body;
+                return (
+                    <div className="message">
+                        <div className="message-text">
+                            {text}
+                        </div>
+                    </div>
+                );
+            }
+           
+        }).reverse();
 
 
         return (

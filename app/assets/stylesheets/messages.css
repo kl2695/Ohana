@@ -22,6 +22,34 @@
     width: 100%;
 } 
 
+.message {
+    
+}
+
+.message-text {
+    border-radius: 20px;
+    margin-top: 5px;
+    padding: 10px;
+    background-color: rgb(233, 235, 238);
+    width: auto;
+    height: auto;
+    float:left;
+    clear: left;
+}
+
+.message-text-current-user {
+    border-radius: 20px;
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #2995e7;
+    width: auto;
+    height: auto;
+    float: right;
+    clear: right;
+    color: white;
+}
+
+
 
 
 
