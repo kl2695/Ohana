@@ -29,6 +29,7 @@ class Api::GroupsController < ApplicationController
     @position = group_params[:position].to_i
     
     update_params = {id: group_params[:id], name: group_params[:name],img_url:group_params[:img_url]}
+
     if @group.update_attributes(update_params)
       render :update
     else 

@@ -33,8 +33,6 @@ export const selectMessages = state => {
 export const selectCurrentMessages = state => {
     let messages = [];
 
-    console.log(state);
-
     if(state.entities.messages.currentMessages){
         messages = Object.keys(state.entities.messages.currentMessages).map(messageId => {
             return state.entities.messages.currentMessages[messageId];

@@ -53,8 +53,8 @@ class ChatBox extends React.Component {
         
         let currentSelected;
 
-        if (nextProps.selectedMessages) {
-            currentSelected = nextProps.selectedMessages.map(message => {
+        if (nextProps.currentMessagesArr) {
+            currentSelected = nextProps.currentMessagesArr.map(message => {
                 
                 return nextProps.users[message.user_id].username + ": " + message.body;
             });
@@ -95,8 +95,8 @@ class ChatBox extends React.Component {
         return new Promise((resolve, reject) => {
             this.props.updateGroup({
                 id: this.props.groupId,
-                name: this.props.groups.name,
-                img_url: this.props.groups.img_url,
+                name: this.props.group.name,
+                img_url: this.props.group.img_url,
                 position: this.state.position + 30
             });
             this.setState({ position: this.state.position + 30 });
@@ -127,8 +127,10 @@ class ChatBox extends React.Component {
                     <Icon name="remove" onClick={this.handleClick}/>
                 </div>
                 
-                    <ChatView className="chat-view"scrollLoadThreshold={50}
-                    onInfiniteLoad={this.loadMoreHistory} flipped={true}>
+                <ChatView className="chat-view"
+                    scrollLoadThreshold={50}
+                    onInfiniteLoad={this.loadMoreHistory} 
+                    flipped={true}>
                     {messages}
                 </ChatView>
 

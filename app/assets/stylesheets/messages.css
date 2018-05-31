@@ -3,8 +3,8 @@
     border: 1px solid lightgray;
     margin: 0;
     background-color: white;
-    width: 40%;
-    min-height: 800px;
+    width: 33%;
+    min-height: 745px;
 }
 
 
@@ -13,10 +13,29 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin: 20px 20px 20px 20px;
-    padding: 20px;
+    border-top: 1px solid lightgray;
 }
 
+.messages {
+    max-height: 595px;
+    padding: 20px;
+    width: 100%;
+} 
 
 
 
+
+.messages-form {
+    padding: 10px;
+    border-top: 1px solid lightgray;
+    background-color: white; 
+    height: 55px;
+}
+
+.messages-input {
+    border: none;
+}
+
+.messages-input:focus {
+    outline: none;
+}

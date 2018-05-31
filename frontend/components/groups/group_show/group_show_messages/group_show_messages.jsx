@@ -20,7 +20,7 @@ class GroupShowMessages extends React.Component {
             currentMessages:[],
             message:{
                 body: '', 
-                group_id: null
+                group_id: this.props.groupId,
             }, 
             position: 30,
         };
@@ -35,13 +35,15 @@ class GroupShowMessages extends React.Component {
 
         const App = window.App; 
         let fn = this; 
-        App.messages = App.cable.subscriptions.create('MessagesChannel', {
+        App.messages = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.state.message.group_id },
 
+        {
             received: function (data) {
-                const message = this.renderMessage(data); 
-                const messages = fn.state.currentMessages; 
+                const message = this.renderMessage(data);
+                const messages = fn.state.currentMessages;
+
                 messages.push(message);
-                return fn.setState({currentMessages: messages});
+                return fn.setState({ currentMessages: messages });
             },
 
             renderMessage: function (data) {
@@ -94,8 +96,8 @@ class GroupShowMessages extends React.Component {
         return new Promise((resolve, reject) => {
             this.props.updateGroup({
                 id: this.props.groupId,
-                name: this.props.groups.name,
-                img_url: this.props.groups.img_url,
+                name: this.props.currentGroup.name,
+                img_url: this.props.currentGroup.img_url,
                 position:this.state.position + 30
             });
             this.setState({position: this.state.position + 30});
@@ -213,18 +215,21 @@ class GroupShowMessages extends React.Component {
                     {menu}
                 </div>
                 
-                    <Container fluid className="messages-container" textAlign="left">
-                        Messages
-                        <ChatView scrollLoadThreshold={50}
-                            onInfiniteLoad={this.loadMoreHistory} flipped={true}> 
+                    <div className="messages-container" textAlign="left">
+                        <ChatView className="messages"
+                            scrollLoadThreshold={50}
+                            onInfiniteLoad={this.loadMoreHistory}
+                             flipped={true}> 
                             {messages}
                         </ChatView>
-                        
-                        <Form onSubmit={this.handleSubmit}>
-                            <Input onChange={this.handleInput} autoHeight placeholder="Type a message..." value={this.state.message.body} />
-                        </Form>
-                    </Container>
 
+                        <form className="messages-form" onSubmit={this.handleSubmit}>
+                            <input className="messages-input"
+                                onChange={this.handleInput}
+                                autoHeight placeholder="Type a message..."
+                                value={this.state.message.body} />
+                        </form>
+                    </div>
                     
                 </div>
         );
