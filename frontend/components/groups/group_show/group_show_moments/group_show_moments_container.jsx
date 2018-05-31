@@ -5,7 +5,7 @@ import GroupShowMoments from './group_show_moments';
 import { requestGroup, updateGroup } from "../../../../actions/group_actions";
 import { selectUsers, selectMoments } from "../../../../reducers/selectors";
 import { createComment } from '../../../../actions/comment_actions';
-import { createLike } from '../../../../actions/like_actions';
+import { createLike, deleteLike } from '../../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -32,7 +32,8 @@ const mapDispatchToProps = dispatch => {
         requestGroup: groupId => dispatch(requestGroup(groupId)),
         updateGroup: group => dispatch(updateGroup(group)),
         createComment: comment => dispatch(createComment(comment)),
-        createLike: like => dispatch(createLike(like))
+        createLike: like => dispatch(createLike(like)),
+        deleteLike: like => dispatch(deleteLike(like)),
     };
 };
 

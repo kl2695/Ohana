@@ -3,7 +3,6 @@ import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextAre
 import { Link } from 'react-router-dom';
 import ReactFilestack from 'filestack-react';
 import filestack from 'filestack-js';
-import MomentShow from '../../../moments/moments_show/moment_show';
 import SideBar from './group_show_messages_sidebar';
 import ChatView from 'react-chatview';
 import Promise from 'promise';

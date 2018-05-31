@@ -88,6 +88,7 @@ class GroupShowMoments extends React.Component {
                     moment={moment}
                     createComment={this.props.createComment}
                     createLike={this.props.createLike}
+                    deleteLike={this.props.deleteLike}
                     currentUser={this.props.currentUser}
                 />
             )).reverse();

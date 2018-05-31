@@ -21,8 +21,7 @@ class MomentShow extends React.Component {
     }
 
     likeComment(event){
-        this.props.createLike({user_id:this.props.currentUser.id, moment_id: this.props.moment.id});
-       
+        this.props.createLike({ user_id: this.props.currentUser.id, moment_id: this.props.moment.id });
     }
 
     render(){

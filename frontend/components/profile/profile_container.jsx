@@ -4,11 +4,11 @@ import ProfileShow from './profile_show';
 import {requestUser, requestAllUsers, updateUser} from '../../actions/user_actions';
 import { selectMoments } from '../../reducers/selectors';
 import { createComment } from '../../actions/comment_actions';
-import { createLike } from '../../actions/like_actions';
+import { createLike, deleteLike } from '../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    
+
     return {    
         moments: selectMoments(state),
         userId: ownProps.match.params.userId, 
@@ -24,6 +24,8 @@ const mapDispatchToProps = dispatch => ({
    updateUser: user => dispatch(updateUser(user)), 
    createComment: comment => dispatch(createComment(comment)), 
    createLike: like => dispatch(createLike(like)),
+   deleteLike: like => dispatch(deleteLike(like)),
+
 });
 
 export default withRouter(connect(
