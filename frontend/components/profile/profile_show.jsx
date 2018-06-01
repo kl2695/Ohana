@@ -59,11 +59,12 @@ class ProfileShow extends React.Component {
 
     render() {
 
-        let { groups, moments, users } = this.props; 
+        let { groups, users } = this.props; 
         let imgUrl;
         let baseUrl; 
         let profilePic;
         let updateButton;
+        let moments;
 
         const basicOptions = {
             accept: 'image/*',
@@ -85,14 +86,11 @@ class ProfileShow extends React.Component {
 
 
         // }
-        if(moments.length > 0){
-            
+        let user = users[this.props.match.params.userId]; 
 
+        if(user && this.props.moments.length > 0){
             if(this.props.match.params.userId == this.props.currentUser.id){
                 baseUrl = this.props.currentUser.img_url;
-
-                
-
                 updateButton = (
                     <ReactFilestack 
                         apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
@@ -103,19 +101,16 @@ class ProfileShow extends React.Component {
                         onError={(e) => console.log(e)}
                     />
                 );
-
-
-
             }else{
-
-                baseUrl = users[this.props.match.params.userId].img_url;
-
+                baseUrl = user.img_url;
             }
 
 
             if (baseUrl !== null && baseUrl !== "") {
                 imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
-            } else {
+            }else if(user.img_url.includes('robohash')){
+                imgUrl = user.img_url;
+            }else {
                 imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
             }
 
@@ -126,7 +121,7 @@ class ProfileShow extends React.Component {
             );
 
 
-            moments = moments.map(moment => (
+            moments = this.props.moments.map(moment => (
                 <MomentShow
                     key={moment.id}
                     users={users}
@@ -139,6 +134,7 @@ class ProfileShow extends React.Component {
             )).reverse();
         }else{
             imgUrl = '';
+            moments = <div></div>;
         }
 
 
