@@ -8,7 +8,16 @@
 .profile-left-container{
     display: flex; 
     flex-direction: column;
+}
 
+.profile-moments-container{
+    display:flex; 
+    justify-content:center; 
+}
+.profile-moments {
+    width: 100%;
+    margin: 10px 30px;
+    padding: 10px;
 }
 .profile-image-container{
     margin: 50px 50px 7px 50px;

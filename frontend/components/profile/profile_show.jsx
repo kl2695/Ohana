@@ -91,33 +91,34 @@ class ProfileShow extends React.Component {
         if(user && this.props.moments.length > 0){
             if(this.props.match.params.userId == this.props.currentUser.id){
                 baseUrl = this.props.currentUser.img_url;
-                updateButton = (
-                    <ReactFilestack 
-                        apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                        buttonText="Update Profile Picture"
-                        buttonClass="update-button"
-                        options={basicOptions}
-                        onSuccess={this.onSuccess}
-                        onError={(e) => console.log(e)}
-                    />
-                );
             }else{
                 baseUrl = user.img_url;
             }
 
-
-            if (baseUrl !== null && baseUrl !== "") {
-                imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
-            }else if(user.img_url.includes('robohash')){
+            if(user.img_url.includes('robohash')){
+                console.log("im here");
                 imgUrl = user.img_url;
+            }else if (baseUrl !== null && baseUrl !== "") {
+                imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
             }else {
                 imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
             }
 
             profilePic = (
                 <div className="profile-image-container">
-                    <img className="profile-image" src={imgUrl} />
+                    <img className="profile-image" src={imgUrl} width="350"height="350"/>
                 </div>
+            );
+
+            updateButton = (
+                <ReactFilestack
+                    apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                    buttonText="Update Profile Picture"
+                    buttonClass="update-button"
+                    options={basicOptions}
+                    onSuccess={this.onSuccess}
+                    onError={(e) => console.log(e)}
+                />
             );
 
 
@@ -145,11 +146,13 @@ class ProfileShow extends React.Component {
                         {profilePic}
                         {updateButton}
                     </div>
-                 
-                    <div className="profile-moments">
-                        <MomentsFormContainer />
-                        {moments}
+                    <div className="profile-moments-container">
+                        <div className="profile-moments">
+                            <MomentsFormContainer />
+                            {moments}
+                        </div>
                     </div>
+                    
                 </div>
         );
     }
