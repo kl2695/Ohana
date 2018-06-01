@@ -1,0 +1,55 @@
+
+
+.groupshow-container {
+    display: flex;
+}
+
+.right-groupshow {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.messages-sidebar {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    margin: 0;
+    background-color: white;
+    width: 33%;
+    min-height: 745px;
+    max-width: 350px;
+}
+
+.groupshow-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    max-height: 100px;
+    border-bottom: 1px solid lightgray;
+}
+
+.groupshow-nav-bar {
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+.groupshow-title {
+    margin-top: 10px;
+}
+
+.group-show-moments-container{
+    display: flex; 
+    justify-content: center;
+}
+
+.group-show-moments {
+    height: 100vh;
+    width: 70%;
+    margin-left: 150px; 
+    margin-right: 150px; 
+    margin-top: 50px; 
+    margin-bottom: 50px;
+}

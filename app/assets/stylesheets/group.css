@@ -4,36 +4,7 @@
     margin-top: 50px;
 }
 
-.groupshow-container {
-    display: flex;
-}
 
-
-
-.right-groupshow {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.groupshow-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    max-height: 100px;
-}
-
-.groupshow-nav-bar {
-    align-self: flex-end;
-    justify-content: flex-end;
-    
-}
-
-.groupshow-title {
-    margin-top: 10px;
-}
 
 .group-index-item-container {
     display: flex;

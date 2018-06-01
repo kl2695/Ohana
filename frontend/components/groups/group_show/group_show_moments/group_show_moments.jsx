@@ -77,10 +77,13 @@ class GroupShowMoments extends React.Component {
         return(
             <div className="right-groupshow">
                 {groupShowHeader}
-                <div className="moments">
-                    <MomentsFormContainer currentGroupId={groups.id}/>
-                    {moments}
+                <div className="group-show-moments-container">
+                    <div className="group-show-moments">
+                        <MomentsFormContainer currentGroupId={groups.id} />
+                        {moments}
+                    </div>
                 </div>
+              
             </div>
         );
     }
