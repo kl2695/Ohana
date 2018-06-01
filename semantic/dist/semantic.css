@@ -25395,6 +25395,10 @@ Floated Menu / Item
   margin-bottom: 0;
 }
 
+.ui.tabular.menu {
+  border-bottom: none;
+}
+
 /*******************************
          Site Overrides
 *******************************/

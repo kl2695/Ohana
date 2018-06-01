@@ -10,3 +10,7 @@
     background: linear-gradient( #105d97, #57a0d8);
     margin-bottom: 0; 
 }
+
+.ui.tabular.menu {
+  border-bottom: none; 
+}

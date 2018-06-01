@@ -31,6 +31,10 @@
     
 }
 
+.groupshow-title {
+    margin-top: 10px;
+}
+
 .group-index-item-container {
     display: flex;
     align-items: center;
