@@ -191,32 +191,52 @@ class GroupShowMessages extends React.Component {
             header = <div></div>;
         }
 
+        let prevUserId; 
         const messages = this.state.currentMessages.map(message => {
-            
-            let text;
-            
-            console.log(message);
+    
+            let text = message.body; 
+            let space;
+            let username; 
+            if(prevUserId && prevUserId!= message.user_id){
+                space = true;
+                username = this.props.users[message.user_id].username;
+            }
 
             if(message.user_id === this.props.currentUser.id){
-                text = message.body;
-                return (
-                    <div className="message">
+                prevUserId = message.user_id; 
+                if(space){
+                    return (
+                        <div className="message-text-current-user-margin">
+                            {text}
+                        </div>
+                    );
+                }else{
+                    return (
                         <div className="message-text-current-user">
                             {text}
                         </div>
-                    </div>
-                );
+                    );
+                }
             }else{
-                text = this.props.users[message.user_id].username + ": " + message.body;
-                return (
-                    <div className="message">
+                prevUserId = message.user_id; 
+                if (space) {
+                    return (
+                        <div>
+                            <div className="username">{username}</div>
+                            <div className="message-text-margin">
+                                {text}
+                            </div>
+                        </div>
+                       
+                    );
+                } else {
+                    return (
                         <div className="message-text">
                             {text}
                         </div>
-                    </div>
-                );
+                    );
+                }
             }
-           
         }).reverse();
 
 

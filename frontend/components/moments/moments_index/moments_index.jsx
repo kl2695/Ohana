@@ -73,11 +73,11 @@ class MomentsIndex extends React.Component {
             selected = Object.keys(this.props.selectedGroups);
             chats = selected.map(groupId => {
                 let group = this.props.selectedGroups[groupId];
-                let selectedMessages = []; 
+                let selectedMessages = {}; 
                 this.props.messagesArr.forEach(message => {
                     
                     if(message.group_id == groupId){
-                        selectedMessages.push(message);
+                        selectedMessages[message.id] = message; 
                     }
 
 

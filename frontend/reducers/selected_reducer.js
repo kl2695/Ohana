@@ -8,8 +8,11 @@ const selectedReducer = (state = {}, action) => {
     let newState = {};
     switch (action.type) {
         case RECEIVE_ONE_GROUP:
+            console.log(action);
             newState["groups"] = {};
             newState["groups"][action.groups.id] = action.groups;
+            newState["messages"] = {}; 
+            newState["messages"][action.groups.id] = action.messages; 
             return merge({}, state, newState);
         case REMOVE_GROUP:
             newState = merge({}, state); 

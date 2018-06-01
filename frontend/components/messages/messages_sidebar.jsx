@@ -83,9 +83,9 @@ class MessagesSideBar extends React.Component {
 
           
                 <div className="messages-sidebar">
-                    <div>
+            
                         {groups}
-                    </div>
+              
                 </div>
         );
     }

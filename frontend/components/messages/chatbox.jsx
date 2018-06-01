@@ -42,29 +42,34 @@ class ChatBox extends React.Component {
                 return fn.setState({ currentMessages: messages });
             },
 
-            renderMessage: function (data) {
-                return data.user + ": " + data.message;
-            }
+             renderMessage: function (data) {
+                 return {
+                     body: data.message,
+                     user_id: fn.props.currentUser.id,
+                     group_id: fn.state.message.group_id,
+                 };
+             }
         });
 
     }
 
     static getDerivedStateFromProps(nextProps, prevState, prevProps) {
-        
-        let currentSelected;
-
-        if (nextProps.currentMessagesArr) {
-            currentSelected = nextProps.currentMessagesArr.map(message => {
-                
-                return nextProps.users[message.user_id].username + ": " + message.body;
-            });
+        if(nextProps.newMessages){
+            return{
+                currentMessages: nextProps.newMessages,
+                message: { body: prevState.message.body, group_id: nextProps.groupId },
+                groups: nextProps.groups,
+                currentGroup: nextProps.currentGroup,
+            };
+        }else{
+            return {
+                currentMessages: nextProps.selectedMessages,
+                message: { body: prevState.message.body, group_id: nextProps.groupId },
+                groups: nextProps.groups,
+                currentGroup: nextProps.currentGroup,
+            };
         }
-
-        return {
-            currentMessages: currentSelected,
-            message: { body: prevState.message.body, group_id: prevState.message.group_id },
-            groups: nextProps.groups,
-        };
+       
     }
 
 
@@ -107,12 +112,58 @@ class ChatBox extends React.Component {
 
     render() {
 
-
         let messages; 
-        if(this.state.currentMessages.length > 0){
-            messages = this.state.currentMessages.map(message => (
-                <div>{message}</div>
-            )).reverse();
+        let currentMessages = this.state.currentMessages;
+        if(currentMessages){
+
+            let prevUserId;
+            messages = Object.keys(currentMessages).map(messageId => {
+                let message = currentMessages[messageId];
+
+                let text = message.body;
+                let space;
+                let username;
+                if (prevUserId && prevUserId != message.user_id) {
+                    space = true;
+                    username = this.props.users[message.user_id].username;
+                }
+
+                if (message.user_id === this.props.currentUser.id) {
+                    prevUserId = message.user_id;
+                    if (space) {
+                        return (
+                            <div className="message-text-current-user-margin">
+                                {text}
+                            </div>
+                        );
+                    } else {
+                        return (
+                            <div className="message-text-current-user">
+                                {text}
+                            </div>
+                        );
+                    }
+                } else {
+                    prevUserId = message.user_id;
+                    if (space) {
+                        return (
+                            <div>
+                                <div className="username">{username}</div>
+                                <div className="message-text-margin">
+                                    {text}
+                                </div>
+                            </div>
+
+                        );
+                    } else {
+                        return (
+                            <div className="message-text">
+                                {text}
+                            </div>
+                        );
+                    }
+                }
+            }).reverse();
         }else{
             messages = [];
         }

@@ -1,5 +1,6 @@
 .messages-sidebar {
     display: flex;
+    flex-direction: column;
     border: 1px solid lightgray;
     margin: 0;
     background-color: white;
@@ -17,6 +18,8 @@
 }
 
 .messages {
+    display: flex; 
+    flex-direction: column;
     max-height: 595px;
     padding: 20px;
     width: 100%;
@@ -27,27 +30,63 @@
 }
 
 .message-text {
-    border-radius: 20px;
-    margin-top: 5px;
+    border-radius: 15px;
+    margin-top: 2px;
     padding: 10px;
     background-color: rgb(233, 235, 238);
     width: auto;
     height: auto;
     float:left;
     clear: left;
+    max-width: 80%;
+}
+
+.message-text-margin {
+    border-radius: 15px;
+    margin-top: 2px;
+    padding: 10px;
+    background-color: rgb(233, 235, 238);
+    width: auto;
+    height: auto;
+    float:left;
+    clear: left;
+    max-width: 80%;
+    margin-bottom: 20px;
 }
 
 .message-text-current-user {
-    border-radius: 20px;
-    margin-top: 5px;
+    border-radius: 15px;
+    margin-top: 2px;
     padding: 10px;
     background-color: #2995e7;
     width: auto;
     height: auto;
     float: right;
-    clear: right;
+    clear: both;
     color: white;
+    max-width: 80%;
 }
+
+.message-text-current-user-margin {
+    border-radius: 15px;
+    margin-top: 2px;
+    padding: 10px;
+    background-color: rgb(233, 235, 238);
+    width: auto;
+    height: auto;
+    float: left;
+    clear: left;
+    max-width: 80%;
+    margin-bottom: 20px;
+}
+
+.username {
+    float: left; 
+    clear: left; 
+    color: rgb(172, 172, 172);
+    font-weight:200;
+}
+
 
 
 
