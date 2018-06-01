@@ -36,7 +36,9 @@ class ChatBox extends React.Component {
          {
             received: function (data) {
                 const message = this.renderMessage(data);
-                const messages = fn.state.currentMessages;
+                const messages = Object.keys(fn.state.currentMessages).map(messageId => (
+                    fn.state.currentMessages[messageId]
+                ));
                
                 messages.push(message);
                 return fn.setState({ currentMessages: messages });
@@ -123,6 +125,8 @@ class ChatBox extends React.Component {
                 let text = message.body;
                 let space;
                 let username;
+                console.log(message);
+                console.log(this.props);
                 if (prevUserId && prevUserId != message.user_id) {
                     space = true;
                     username = this.props.users[message.user_id].username;

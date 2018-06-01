@@ -94,7 +94,7 @@ class GroupShowMoments extends React.Component {
             )).reverse();
 
             menu = (
-                <Menu tabular borderless className='nav-bar'>
+                <Menu tabular borderless className='groupshow-nav-bar'>
                     <Menu.Item>
                         <Link to={`/groups/${this.state.currentGroup.id}`}>Moments</Link>
                     </Menu.Item>
@@ -114,14 +114,16 @@ class GroupShowMoments extends React.Component {
                 }
                 header = (
                     <div className="profile">
-                        <img src={imgUrl} />
+                        {/* <img src={imgUrl} /> */}
+                        <h1>{name}</h1>
+                        
                     </div>
                 );
 
             } else {
                 header = (
                     <Header className="profile" as='h1' icon textAlign='center'>
-                        <Icon name='users' circular />
+                        {/* <Icon name='users' circular /> */}
                         <Header.Content>
                             {name}
                         </Header.Content>
@@ -138,14 +140,14 @@ class GroupShowMoments extends React.Component {
                     <Icon name='users' circular />
                     <Header.Content>
                         {name}
-                        <ReactFilestack
+                        {/* <ReactFilestack
                             apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
                             buttonText="Update Group Picture"
                             buttonClass="filestack-buttons"
                             options={basicOptions}
                             onSuccess={this.onSuccess}
                             onError={(e) => console.log(e)}
-                        />
+                        /> */}
                     </Header.Content>
                 </Header>
 
@@ -157,14 +159,14 @@ class GroupShowMoments extends React.Component {
             <div className="right-groupshow">
                 <div className="groupshow-header">
                     {header}
-                    <ReactFilestack
+                    {/* <ReactFilestack
                         apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
                         buttonText="Update Group Picture"
                         buttonClass="filestack-buttons"
                         options={basicOptions}
                         onSuccess={this.onSuccess}
                         onError={(e) => console.log(e)}
-                    />
+                    /> */}
                     {menu}
 
                 </div>

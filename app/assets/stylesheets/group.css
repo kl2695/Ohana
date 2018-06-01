@@ -25,6 +25,11 @@
     max-height: 100px;
 }
 
+.groupshow-nav-bar {
+    align-self: flex-end;
+    justify-content: flex-end;
+    
+}
 
 .group-index-item-container {
     display: flex;
