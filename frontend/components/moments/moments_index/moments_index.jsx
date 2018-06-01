@@ -21,11 +21,13 @@ class MomentsIndex extends React.Component {
 
         this.loadMoreHistory = this.loadMoreHistory.bind(this);
         this.handleClick = this.handleClick.bind(this);
+
+        this.props.requestAllMoments()
+            .then(() => this.props.requestAllUsers());
     }
 
     componentDidMount() {
-        this.props.requestAllMoments()
-        .then(()=>this.props.requestAllUsers());
+
     }
 
     loadMoreHistory() {
@@ -82,8 +84,7 @@ class MomentsIndex extends React.Component {
 
 
                 });
-                return (<ChatBoxContainer selectedMessages={selectedMessages} 
-                    onMessageSubmission={this.onMessageSubmission}
+                return (<ChatBoxContainer selectedMessages={selectedMessages}
                     groupId={groupId}
                     group={group}
                     users={this.props.users}/>);

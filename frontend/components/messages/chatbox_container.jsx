@@ -14,11 +14,9 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.groups,
         groupId: ownProps.groupId,
         group: ownProps.group, 
-        users: state.entities.users, 
-        messages: state.entities.messages,
+        users: state.entities.users,
         selectedMessages: ownProps.selectedMessages,
         newMessages: state.selected.messages[ownProps.groupId],
-        currentMessagesArr: selectCurrentMessages(state),
     };
 };
 

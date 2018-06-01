@@ -31,6 +31,8 @@ class ChatBox extends React.Component {
         const App = window.App;
         let fn = this;
 
+        console.log(fn.state.message.group_id);
+
         App.messages = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.state.message.group_id},
 
          {
@@ -60,15 +62,11 @@ class ChatBox extends React.Component {
             return{
                 currentMessages: nextProps.newMessages,
                 message: { body: prevState.message.body, group_id: nextProps.groupId },
-                groups: nextProps.groups,
-                currentGroup: nextProps.currentGroup,
             };
         }else{
             return {
                 currentMessages: nextProps.selectedMessages,
                 message: { body: prevState.message.body, group_id: nextProps.groupId },
-                groups: nextProps.groups,
-                currentGroup: nextProps.currentGroup,
             };
         }
        
@@ -83,6 +81,7 @@ class ChatBox extends React.Component {
 
 
     handleSubmit(event) {
+        console.log(this.state);
         this.props.createMessage(this.state.message);
         this.setState({message: {body: '', group_id: this.state.message.group_id}});
     }
@@ -125,8 +124,7 @@ class ChatBox extends React.Component {
                 let text = message.body;
                 let space;
                 let username;
-                console.log(message);
-                console.log(this.props);
+
                 if (prevUserId && prevUserId != message.user_id) {
                     space = true;
                     username = this.props.users[message.user_id].username;
@@ -179,7 +177,7 @@ class ChatBox extends React.Component {
             <div className="chatbox-container" textAlign="left">
                 <div className="chatbox-header">
                     {this.props.group.name}
-                    <Icon name="remove" onClick={this.handleClick}/>
+                    <Icon className="remove-button"name="remove" onClick={this.handleClick}/>
                 </div>
                 
                 <ChatView className="chat-view"

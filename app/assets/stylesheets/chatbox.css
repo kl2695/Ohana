@@ -17,7 +17,7 @@
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .20);
     border-radius: 1px;
     padding: 4px 10px 15px 10px;
-    min-height: 30px;
+    min-height: 28px;
     background-color: #2185d0;
     cursor: pointer;
     display: flex;
@@ -32,6 +32,7 @@
 
 .chatbox-input {
     border: none;
+    width: 100%;
 }
 
 .chatbox-input:focus {
@@ -40,4 +41,8 @@
 
 .chat-view {
     padding: 10px;
+}
+
+.remove-button:hover {
+    color:white;
 }

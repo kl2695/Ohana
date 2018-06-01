@@ -92,6 +92,7 @@
 
 .messages-input {
     border: none;
+    width: 100%;
 }
 
 .messages-input:focus {
