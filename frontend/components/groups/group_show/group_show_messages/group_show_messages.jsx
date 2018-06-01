@@ -6,6 +6,7 @@ import filestack from 'filestack-js';
 import SideBar from './group_show_messages_sidebar';
 import ChatView from 'react-chatview';
 import Promise from 'promise';
+import GroupShowHeader from '../group_show_header/group_show_header';
 
 
 
@@ -15,7 +16,6 @@ class GroupShowMessages extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            groups: this.props.groups,
             currentGroup: this.props.currentGroup,
             currentMessages:[],
             message:{
@@ -103,95 +103,18 @@ class GroupShowMessages extends React.Component {
     }
 
     render() {
-
-        const basicOptions = {
-            accept: 'image/*',
-            fromSources: ['local_file_system', 'facebook', 'googledrive', 'instagram', 'dropbox', 'imagesearch', 'webcam',],
-            maxSize: 1024 * 1024,
-            maxFiles: 3,
-        };
-
-        let { usersArr, groups, moments } = this.props;
-        let name;
-        let imgUrl;
-        let names;
-        let header;
-        let menu; 
-        let result =[]; 
+        
+        let groupShowHeader; 
+        let prevUserId; 
 
         if(this.props.users && this.state.currentGroup){
-            name = this.state.currentGroup.name;
-
-            menu = (
-                <Menu tabular borderless className='nav-bar'>
-                    <Menu.Item>
-                        <Link to={`/groups/${this.state.currentGroup.id}`}>Moments</Link>
-                    </Menu.Item>
-
-                    <Menu.Item>
-                        <Link to={`/groups/${this.state.currentGroup.id}/messages`}>Messages</Link>
-                    </Menu.Item>
-                </Menu>
-            );
-
-            names = Object.keys(this.props.users).map(userId => {
-                let user = this.props.users[userId];
-                if(!user.img_url){
-                    user.img_url ='https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png';
-                }
-                return(
-
-                    <List.Item>
-                        <Image avatar src={user.img_url} />
-                        <List.Content>
-                            <List.Header as={Link}to={`/users/${userId}`}>{user.username}</List.Header>
-                        </List.Content>
-                    </List.Item>
-                   
-                
-                );
-            });
-
-            for (let i = 0; i < names.length; i++) {
-                if (i > 5) {
-                    break;
-                } else {
-                    result.push(names[i]);
-                }
-            }
-
-            if (groups.img_url !== "" && groups.img_url) {
-                if (groups.img_url.includes('robohash')) {
-                    imgUrl = groups.img_url;
-                } else {
-                    let baseUrl = groups.img_url;
-                    imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
-                }
-                header = (
-                    <div className="profile">
-                        <img src={imgUrl} />
-                    </div>
-                );
-
-            } else {
-                header = (
-                    <Header className="profile" as='h1' icon textAlign='center'>
-                        <Icon name='users' circular />
-                        <Header.Content>
-                            {name}
-                        </Header.Content>
-                    </Header>
-                );
-            }
-
-       
-            
+            let currentGroup = this.state.currentGroup; 
+            groupShowHeader = <GroupShowHeader currentGroup={currentGroup}/>;
         }else{
-            menu = <div></div>;
-            header = <div></div>;
+            groupShowHeader = <div></div>;
         }
 
-        let prevUserId; 
+       
         const messages = this.state.currentMessages.map(message => {
     
             let text = message.body; 
@@ -242,36 +165,24 @@ class GroupShowMessages extends React.Component {
 
         return (
             <div className="right-groupshow">
-                <div className="groupshow-header">
-                    {header}
-                    <ReactFilestack
-                        apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                        buttonText="Update Group Picture"
-                        buttonClass="filestack-buttons"
-                        options={basicOptions}
-                        onSuccess={this.onSuccess}
-                        onError={(e) => console.log(e)}
-                    />
-                    {menu}
-                </div>
-                
-                    <div className="messages-container" textAlign="left">
-                        <ChatView className="messages"
-                            scrollLoadThreshold={50}
-                            onInfiniteLoad={this.loadMoreHistory}
-                             flipped={true}> 
-                            {messages}
-                        </ChatView>
+                {groupShowHeader}
 
-                        <form className="messages-form" onSubmit={this.handleSubmit}>
-                            <input className="messages-input"
-                                onChange={this.handleInput}
-                                autoHeight placeholder="Type a message..."
-                                value={this.state.message.body} />
-                        </form>
-                    </div>
-                    
+                <div className="messages-container" textAlign="left">
+                    <ChatView className="messages"
+                        scrollLoadThreshold={50}
+                        onInfiniteLoad={this.loadMoreHistory}
+                            flipped={true}> 
+                        {messages}
+                    </ChatView>
+
+                    <form className="messages-form" onSubmit={this.handleSubmit}>
+                        <input className="messages-input"
+                            onChange={this.handleInput}
+                            autoHeight placeholder="Type a message..."
+                            value={this.state.message.body} />
+                    </form>
                 </div>
+            </div>
         );
     }
 }

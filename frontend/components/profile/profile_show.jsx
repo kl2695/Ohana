@@ -72,7 +72,19 @@ class ProfileShow extends React.Component {
             maxFiles: 3,
         };
         
-        
+        // if (groups.img_url !== "" && groups.img_url) {
+        //     if (groups.img_url.includes('robohash')) {
+        //         imgUrl = groups.img_url;
+        //     } else {
+        //         let baseUrl = groups.img_url;
+        //         imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
+        //     }
+
+
+        // } else {
+
+
+        // }
         if(moments.length > 0){
             
 
@@ -102,11 +114,8 @@ class ProfileShow extends React.Component {
 
 
             if (baseUrl !== null && baseUrl !== "") {
-
                 imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
-
             } else {
-
                 imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
             }
 
