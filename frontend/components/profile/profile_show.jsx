@@ -12,7 +12,6 @@ class ProfileShow extends React.Component {
         super(props);
         this.state = {};
 
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
     }
@@ -25,7 +24,6 @@ class ProfileShow extends React.Component {
 
     componentWillReceiveProps(newProps){
         if(newProps.userId != this.props.userId){
-
             let newId = newProps.userId;
 
             this.props.requestUser(newId);
@@ -35,9 +33,6 @@ class ProfileShow extends React.Component {
     }
 
 
-    handleSubmit(event) {
-        this.props.updateUser(this.state);
-    }
 
     handleInput(field) {
         return (event) => (
@@ -51,7 +46,7 @@ class ProfileShow extends React.Component {
  
         client.storeURL(cdnUrl);
 
-        let user = this.state; 
+        let user = this.props.users[this.props.match.params.userId];
         user.img_url = cdnUrl; 
         this.props.updateUser(user);
 
@@ -73,30 +68,12 @@ class ProfileShow extends React.Component {
             maxFiles: 3,
         };
         
-        // if (groups.img_url !== "" && groups.img_url) {
-        //     if (groups.img_url.includes('robohash')) {
-        //         imgUrl = groups.img_url;
-        //     } else {
-        //         let baseUrl = groups.img_url;
-        //         imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:400,height:800/' + baseUrl;
-        //     }
-
-
-        // } else {
-
-
-        // }
         let user = users[this.props.match.params.userId]; 
 
         if(user && this.props.moments.length > 0){
-            if(this.props.match.params.userId == this.props.currentUser.id){
-                baseUrl = this.props.currentUser.img_url;
-            }else{
-                baseUrl = user.img_url;
-            }
+            baseUrl = user.img_url;
 
             if(user.img_url.includes('robohash')){
-                console.log("im here");
                 imgUrl = user.img_url;
             }else if (baseUrl !== null && baseUrl !== "") {
                 imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
