@@ -17,6 +17,7 @@ class MomentsIndex extends React.Component {
             messages: this.props.messages,
             position: 15,
             clicked: false,
+            selected: [],
         };
 
         this.loadMoreHistory = this.loadMoreHistory.bind(this);
@@ -28,6 +29,24 @@ class MomentsIndex extends React.Component {
 
     componentDidMount() {
 
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.selectedGroups) {
+            let selected = prevState.selected;
+            Object.keys(nextProps.selectedGroups).forEach(groupId => {
+                if (!selected.includes(groupId)) {
+                    selected.push(groupId);
+                }
+            });
+            return {
+                selected: selected,
+            };
+        } else {
+            return {
+                selected: [],
+            };
+        }
     }
 
     loadMoreHistory() {
@@ -47,9 +66,7 @@ class MomentsIndex extends React.Component {
 
     render() {
 
-        let moments;
-        let selected;
-        let chats; 
+        let moments, selected, chats, prevChats; 
 
         if (this.props.moments.length > 0) {
             moments = this.props.moments.slice(0,this.state.position).map(moment => {
@@ -68,12 +85,13 @@ class MomentsIndex extends React.Component {
             );
         } else {
             moments = [];
-
         }
 
-        if(this.props.selectedGroups){
-            selected = Object.keys(this.props.selectedGroups);
-            chats = selected.map(groupId => {
+        if(this.state.selected.length > 0){
+           
+            console.log(this.state.selected);
+
+            chats = this.state.selected.map(groupId => {
                 let group = this.props.selectedGroups[groupId];
                 let selectedMessages = {}; 
                 this.props.messagesArr.forEach(message => {
@@ -81,8 +99,6 @@ class MomentsIndex extends React.Component {
                     if(message.group_id == groupId){
                         selectedMessages[message.id] = message; 
                     }
-
-
                 });
                 return (<ChatBoxContainer selectedMessages={selectedMessages}
                     groupId={groupId}

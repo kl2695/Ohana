@@ -31,10 +31,7 @@ class ChatBox extends React.Component {
         const App = window.App;
         let fn = this;
 
-        console.log(fn.state.message.group_id);
-
         App.messages = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.state.message.group_id},
-
          {
             received: function (data) {
                 const message = this.renderMessage(data);
@@ -54,7 +51,6 @@ class ChatBox extends React.Component {
                  };
              }
         });
-
     }
 
     static getDerivedStateFromProps(nextProps, prevState, prevProps) {
@@ -81,7 +77,6 @@ class ChatBox extends React.Component {
 
 
     handleSubmit(event) {
-        console.log(this.state);
         this.props.createMessage(this.state.message);
         this.setState({message: {body: '', group_id: this.state.message.group_id}});
     }
@@ -112,7 +107,6 @@ class ChatBox extends React.Component {
     }
 
     render() {
-
         let messages; 
         let currentMessages = this.state.currentMessages;
         if(currentMessages){
