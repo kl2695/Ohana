@@ -9,8 +9,8 @@ class Api::MessagesController < ApplicationController
        ActionCable.server.broadcast "messages_#{@message.group_id}",
         message: @message.body,
         user: @message.user.username
+
         head :ok
-      
     else 
       redirect_to api_group_url(@message.group_id)
     end

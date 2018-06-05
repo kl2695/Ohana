@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
             users: state.entities.users, 
             comments: state.entities.comments, 
             selectedGroups: state.selected.groups, 
-            messages: state.entities.messages,
+            messages: state.selected.messages,
             messagesArr: selectMessages(state),
         };
 };

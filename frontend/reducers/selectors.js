@@ -30,6 +30,7 @@ export const selectMessages = state => {
     return messages; 
 };
 
+
 export const selectCurrentMessages = state => {
     let messages = [];
 
