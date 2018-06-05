@@ -22,6 +22,7 @@ class LoginForm extends React.Component {
         this.handleLogin = this.handleLogin.bind(this);
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
         this.handleSignup = this.handleSignup.bind(this);
+        this.clearSessionErrors = this.clearSessionErrors.bind(this);
     }
 
   
@@ -53,20 +54,25 @@ class LoginForm extends React.Component {
         );
     }
 
+    clearSessionErrors() {
+        this.props.clearSessionErrors();
+    }
+
     render() {
 
         let errors;
         let header; 
         if (this.props.errors) {
-            errors = this.props.errors[0];
-
+            errors = <div className="errors">{this.props.errors[0]}</div>;
         } else {
             errors = <p></p>;
         }
 
         header = (
             <div className="login-header">
-                <Link to="/">Home</Link>
+                <Link to="/" onClick={this.clearSessionErrors}>
+                    <h1>Ohana</h1>
+                </Link>
             </div>);
 
         return (
@@ -81,8 +87,8 @@ class LoginForm extends React.Component {
                     {errors}
                     
                     <form className="login-form">
-                        <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
-                        <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
+                        <Input className='login-input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
+                        <Input className='login-input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
                         <Button id='button'onClick={this.handleLogin} size='small' color='red'>Log In</Button>
                         <Button id='button'onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
                     </form>

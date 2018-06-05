@@ -51,10 +51,11 @@
     justify-content: center; 
     border: 1px solid lightgray;
     border-radius: 3px;
+    margin-top: 50px;
     box-shadow: 2px 2px 2px 2px lightgrey;
     background-color: #ffffffd6;
     width: 600px;
-    height: 600px;
+    height: 400px;
     padding: 20px;
     transform: translateY(10%);
 }
@@ -64,16 +65,16 @@
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
-}
-
-.input-list{
-    list-style: none;
-    display:flex; 
-    flex-direction: column; 
     align-items: center;
-    position: relative;
+    width: 100%;
+    
 }
 
+.login-input {
+    margin: 2px;
+    padding: 7px;
+    width: 50%; 
+}
 .input{
     margin: 2px; 
     padding: 7px;
@@ -82,14 +83,17 @@
 #button{
     margin: 10px; 
     padding: 7px;
+    width: 47%; 
 }
 
- .button{
-    color: green;
-}
 
 .signup-button{
     position: absolute; 
     bottom: 40px; 
     right: 100px;
+}
+
+.errors{
+    color: red; 
+    align-self: center; 
 }

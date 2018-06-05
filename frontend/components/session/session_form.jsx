@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if(newProps.errors){
+        if(newProps.errors.length === 1){
             this.props.history.push('/login'); 
         }
     }
@@ -56,6 +56,8 @@ class SessionForm extends React.Component {
                 this.setState({[field]: event.target.value})
             );
         }
+
+    
 
     render() {
 
@@ -111,7 +113,9 @@ class SessionForm extends React.Component {
         );
 
         if(this.props.errors){
-            errors = this.props.errors[0];
+            errors = this.props.errors.map(error => (
+                <div className="errors">{error}</div>
+            ));
         }else{
             errors = <p></p>;
 

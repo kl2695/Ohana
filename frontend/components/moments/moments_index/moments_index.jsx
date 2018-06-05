@@ -33,15 +33,24 @@ class MomentsIndex extends React.Component {
 
     static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.selectedGroups) {
+            if(Object.keys(nextProps.selectedGroups).length > prevState.selected.length){
             let selected = prevState.selected;
             Object.keys(nextProps.selectedGroups).forEach(groupId => {
                 if (!selected.includes(groupId)) {
                     selected.push(groupId);
                 }
             });
-            return {
-                selected: selected,
-            };
+                return {
+                    selected: selected,
+                };
+            }else{
+                return {
+                    selected: Object.keys(nextProps.selectedGroups).map(groupId => (
+                        nextProps.selectedGroups[groupId]
+                    ))
+                };
+            }
+        
         } else {
             return {
                 selected: [],
@@ -65,6 +74,7 @@ class MomentsIndex extends React.Component {
     }
 
     render() {
+        console.log("momentsindexrendering!");
 
         let moments, selected, chats, prevChats; 
 
@@ -87,10 +97,10 @@ class MomentsIndex extends React.Component {
             moments = [];
         }
 
+        console.log(this.state);
+
         if(this.state.selected.length > 0){
            
-            console.log(this.state.selected);
-
             chats = this.state.selected.map(groupId => {
                 let group = this.props.selectedGroups[groupId];
                 let selectedMessages = {}; 
@@ -100,6 +110,8 @@ class MomentsIndex extends React.Component {
                         selectedMessages[message.id] = message; 
                     }
                 });
+
+                console.log(this.props.users);
                 return (<ChatBoxContainer selectedMessages={selectedMessages}
                     groupId={groupId}
                     group={group}
