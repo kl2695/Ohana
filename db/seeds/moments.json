@@ -15,13 +15,13 @@
         "user_id": 27,
         "group_id": 5,
         "body": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
-        "img_url": "https://robohash.org/praesentiumnemoducimus.bmp?size=50x50&set=set1"
+        "img_url": "https://picsum.photos/200/300/?image=0"
     },
     {
         "user_id": 30,
         "group_id": 13,
         "body": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?imamge=1"
     },
     {
         "user_id": 32,
@@ -33,7 +33,7 @@
         "user_id": 43,
         "group_id": 1,
         "body": "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=2"
     },
     {
         "user_id": 24,
@@ -123,7 +123,7 @@
         "user_id": 9,
         "group_id": 10,
         "body": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-        "img_url": "https://robohash.org/voluptatemconsequunturvoluptatibus.jpg?size=50x50&set=set1"
+        "img_url": "https://picsum.photos/200/300/?image=4"
     },
     {
         "user_id": 29,
@@ -141,13 +141,13 @@
         "user_id": 22,
         "group_id": 8,
         "body": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-        "img_url": "https://robohash.org/adisteconsequuntur.jpg?size=50x50&set=set1"
+        "img_url": "https://picsum.photos/200/300/?image=1002"
     },
     {
         "user_id": 44,
         "group_id": 17,
         "body": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-        "img_url": "https://robohash.org/eaqueutest.png?size=50x50&set=set1"
+        "img_url": "https://picsum.photos/200/300/?image=333"
     },
     {
         "user_id": 41,
@@ -177,25 +177,25 @@
         "user_id": 46,
         "group_id": 8,
         "body": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=44"
     },
     {
         "user_id": 17,
         "group_id": null,
         "body": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=800"
     },
     {
         "user_id": 9,
         "group_id": 24,
         "body": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-        "img_url": "https://robohash.org/voluptasiureimpedit.png?size=50x50&set=set1"
+        "img_url": "https://picsum.photos/200/300/?image=804"
     },
     {
         "user_id": 30,
         "group_id": 17,
         "body": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-        "img_url": "https://robohash.org/totametquis.png?size=50x50&set=set1"
+        "img_url": "https://picsum.photos/200/300/?image=324"
     },
     {
         "user_id": 9,
@@ -207,13 +207,13 @@
         "user_id": 14,
         "group_id": 13,
         "body": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=874"
     },
     {
         "user_id": 8,
         "group_id": 20,
         "body": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=1084"
     },
     {
         "user_id": 14,
@@ -231,7 +231,7 @@
         "user_id": 38,
         "group_id": null,
         "body": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=452"
     },
     {
         "user_id": 23,
@@ -243,7 +243,7 @@
         "user_id": 2,
         "group_id": 4,
         "body": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=187"
     },
     {
         "user_id": 44,
@@ -255,13 +255,13 @@
         "user_id": 9,
         "group_id": 22,
         "body": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=298"
     },
     {
         "user_id": 1,
         "group_id": 19,
         "body": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=212"
     },
     {
         "user_id": 28,
@@ -273,13 +273,13 @@
         "user_id": 17,
         "group_id": 17,
         "body": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=23"
     },
     {
         "user_id": 27,
         "group_id": 25,
         "body": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
-        "img_url": "https://robohash.org/numquamtemporeet.png?size=50x50&set=set1"
+        "img_url": "https://picsum.photos/200/300/?image=45"
     },
     {
         "user_id": 32,
@@ -291,7 +291,7 @@
         "user_id": 7,
         "group_id": 11,
         "body": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-        "img_url": null
+        "img_url": "https://picsum.photos/200/300/?image=89"
     },
     {
         "user_id": 44,
