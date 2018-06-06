@@ -30,19 +30,16 @@ class ChatBox extends React.Component {
 
         const App = window.App;
         let fn = this;
-
-        App.messages = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.state.message.group_id},
+        App["messages" + this.props.groupId.toString()]  = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.state.message.group_id},
          {
             received: function (data) {
                 const message = this.renderMessage(data);
                 const messages = Object.keys(fn.state.currentMessages).map(messageId => (
                     fn.state.currentMessages[messageId]
                 ));
-               
                 messages.push(message);
                 return fn.setState({ currentMessages: messages });
             },
-
              renderMessage: function (data) {
                  return {
                      body: data.message,
@@ -68,11 +65,37 @@ class ChatBox extends React.Component {
        
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.groupId != this.props.groupId){
+            const App = window.App;
+            let fn = this;
+            App.cable.subscriptions.remove(App["messages" + this.props.groupId.toString()]);
+            App["messages" + this.props.groupId.toString()] = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.props.groupId },
+                {
+                    received: function (data) {
+                        const message = this.renderMessage(data);
+                        const messages = Object.keys(fn.state.currentMessages).map(messageId => (
+                            fn.state.currentMessages[messageId]
+                        ));
+                        messages.push(message);
+                        return fn.setState({ currentMessages: messages });
+                    },
+                    renderMessage: function (data) {
+                        return {
+                            body: data.message,
+                            user_id: fn.props.currentUser.id,
+                            group_id: fn.state.message.group_id,
+                        };
+                    }
+                });
+        }
+    }
+
 
 
     componentWillUnmount() {
         const App = window.App;
-        App.messages.unsubscribe();
+        App.cable.subscriptions.remove(App["messages" + this.state.message.group_id.toString()]);
     }
 
 
@@ -87,7 +110,7 @@ class ChatBox extends React.Component {
     }
 
     handleClick(event){
-        event.preventDefault(); 
+        event.preventDefault();  
         this.props.deSelectGroup(this.props.groupId);
     }
 

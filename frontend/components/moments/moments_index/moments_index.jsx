@@ -38,13 +38,13 @@ class MomentsIndex extends React.Component {
                     }
                 });
             }else{
-                selected = prevState.selected.map(groupId => {
+                selected = [];
+                prevState.selected.forEach(groupId => {
                     if(nextProps.selectedGroups[groupId]){
-                        return groupId; 
+                         selected.push(groupId); 
                     }
                 });
             }
-            
             return {
                 selected: selected,
                 messages: nextProps.messages,
@@ -56,6 +56,7 @@ class MomentsIndex extends React.Component {
             };
         }
     }
+
 
     loadMoreHistory() {
         return new Promise((resolve, reject) => {

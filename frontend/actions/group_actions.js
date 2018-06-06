@@ -6,6 +6,7 @@ export const RECEIVE_ALL_GROUPS = 'RECEIVE_ALL_GROUPS';
 export const RECEIVE_CURRENT_GROUP = 'RECEIVE_CURRENT_GROUP';
 export const RECEIVE_ONE_GROUP = 'RECEIVE_ONE_GROUP';
 export const REMOVE_GROUP = 'REMOVE_GROUP';
+export const SELECT_ONE_GROUP = 'SELECT_ONE_GROUP';
 
 
 
@@ -34,6 +35,14 @@ export const receiveOneGroup = payload => ({
     messages: payload.messages,
 });
 
+export const selectOneGroup = payload => ({
+    type: SELECT_ONE_GROUP,
+    groups: payload.groups,
+    users: payload.users,
+    moments: payload.moments,
+    messages: payload.messages,
+});
+
 export const removeGroup = group => ({
     type: REMOVE_GROUP, 
     group 
@@ -54,7 +63,7 @@ export const requestGroup = (groupId) => dispatch => {
 export const selectGroup = (groupId) => dispatch => {
     return GroupApiUtil.fetchGroup(groupId)
         .fail(errors => dispatch(receiveGroupErrors(errors.responseJSON)))
-        .then(group => dispatch(receiveOneGroup(group)));
+        .then(group => dispatch(selectOneGroup(group)));
 };
 
 export const deSelectGroup = (groupId) => dispatch => {
