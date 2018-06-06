@@ -39,7 +39,7 @@ class MomentShow extends React.Component {
                     </Feed.Summary>
                     <Feed.Extra className="feed-content"text>
                         {moment.body}
-                        <img src={moment.img_url}/>
+                        <img className="moment-pictures"src={moment.img_url}/>
                     </Feed.Extra>                
                 </Feed.Content>
                 <Feed.Meta className="feed-meta">

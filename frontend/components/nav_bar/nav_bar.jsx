@@ -61,7 +61,7 @@ class NavBar extends React.Component {
                         <Dropdown.Menu>
                             <Dropdown.Header>Personal</Dropdown.Header>
                                     <Dropdown.Item >
-                                        <GroupFormContainer navbar={true}/>
+                                        Create A Group
                                     </Dropdown.Item>
                                     <Dropdown.Item>
                                         <MomentFormContainer navbar={true}/>

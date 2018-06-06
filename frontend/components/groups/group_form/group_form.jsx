@@ -48,7 +48,7 @@ class GroupForm extends React.Component {
 
         let trigger; 
         if(this.props.navbar === true){
-            trigger = <p> Create A Group</p>;
+            trigger = <div> Create A Group</div>;
         }else{
             trigger = <Button color="blue"> Create A Group </Button>;
         }
@@ -56,7 +56,7 @@ class GroupForm extends React.Component {
 
         return(
        
-                <Modal className="group-modal" trigger={trigger}>
+                <Modal className="moment-modal" trigger={trigger}>
                     <Modal.Header>Create A Group</Modal.Header>
                         <Modal.Content>
                             <Modal.Description>
@@ -67,7 +67,7 @@ class GroupForm extends React.Component {
                                     <ReactFilestack
                                         apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
                                         buttonText="Upload Picture"
-                                        buttonClass="classname"
+                                        buttonClass="filestack-buttons"
                                         options={basicOptions}
                                         onSuccess={this.onSuccess}
                                         onError={(e) => console.log(e)}

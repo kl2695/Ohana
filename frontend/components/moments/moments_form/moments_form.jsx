@@ -14,12 +14,15 @@ class MomentsForm extends React.Component {
                 img_url: '', 
                 user_id: this.props.currentUser.id,
                 render_bool: true,
+                open: false, 
                 group_id: null,
             };
 
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleInput = this.handleInput.bind(this); 
-            this.onSuccess = this.onSuccess.bind(this);   
+            this.onSuccess = this.onSuccess.bind(this); 
+            this.close = this.close.bind(this);
+            this.show = this.show.bind(this);
         }
 
         componentWillReceiveProps(newProps){
@@ -33,11 +36,16 @@ class MomentsForm extends React.Component {
         handleSubmit(event){
             const moment = this.state; 
             delete moment.render_bool; 
+            this.close();
             this.props.createMoment(moment)
             .then(() => this.props.history.push('/'));
-            this.setState({ render_bool: false });
-            
-           
+        }
+
+        show() {
+            this.setState({ open: true});
+        }
+        close() {
+            this.setState({ open: false });
         }
 
         handleInput(event){
@@ -62,7 +70,7 @@ class MomentsForm extends React.Component {
             maxFiles: 3,
         };
 
-            if(this.render_bool === false){
+            if(this.state.render_bool === false){
                 return (
                     <div></div>
                 );
@@ -70,10 +78,10 @@ class MomentsForm extends React.Component {
             }else{
                 let trigger;
                 if(this.props.navbar === true){
-                    trigger = <p> Post a Moment </p>;
+                    trigger = <div onClick={this.show}>Post a Moment </div>;
                 }else{
                     trigger = (
-                    <div className="post-form">
+                    <div className="post-form" onClick={this.show}>
                         <Form>
                             <TextArea label="Post a Moment" placeholder="What's on your mind?" />
                         </Form>
@@ -85,7 +93,8 @@ class MomentsForm extends React.Component {
                 
                 return(
                     
-                    <Modal className="moment-modal" trigger={trigger} size={size}>
+                <Modal className="moment-modal" open={this.state.open} trigger={trigger} size={size}>
+                        <i aria-hidden="true" class="close icon" onClick={this.close}></i>
                         <Modal.Header>Create A Moment</Modal.Header>
                             <Modal.Content>
                                 <Modal.Description>
@@ -105,7 +114,7 @@ class MomentsForm extends React.Component {
                             </Modal.Content>
                         <Modal.Actions>
                             <Button primary onClick={this.handleSubmit}>
-                                Create Moment <Icon name='right chevron' />
+                                Create Moment <Icon name='right chevron'/>
                             </Button>
                         </Modal.Actions>
                     </Modal>
