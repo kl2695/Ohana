@@ -14,14 +14,11 @@ import {
 const App = (props) => {
     
     return(
-       
        <Switch>
             <AuthRoute exact path="/signup" component={SessionFormContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <ProtectedRoute path="/" component={MainPage} user={props.user} />
        </Switch>
-    
-    
     );
       
 };

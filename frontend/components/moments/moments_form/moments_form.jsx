@@ -38,7 +38,8 @@ class MomentsForm extends React.Component {
             delete moment.render_bool; 
             this.close();
             this.props.createMoment(moment)
-            .then(() => this.props.history.push('/'));
+            .then(() => this.props.history.push('/'))
+            .then(() => this.setState({body: ''}));
         }
 
         show() {
@@ -83,7 +84,7 @@ class MomentsForm extends React.Component {
                     trigger = (
                     <div className="post-form" onClick={this.show}>
                         <Form>
-                            <TextArea label="Post a Moment" placeholder="What's on your mind?" />
+                            <TextArea label="Post a Moment" placeholder="What's on your mind?" value={this.state.body}/>
                         </Form>
                     </div>
                     );

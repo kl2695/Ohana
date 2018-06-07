@@ -61,40 +61,33 @@ class SessionForm extends React.Component {
 
     render() {
 
-        let errors; 
-        let center; 
-        let header; 
+        let errors, center, header, footer; 
 
         center = (
             <div className='signup-container'>
 
                 <h1>Create a New Account</h1>
 
-                <Form onSubmit={this.handleSignup}>
+                <Form className="signup-form"onSubmit={this.handleSignup}>
                     <Form.Field>
-                        <label>First Name</label>
-                        <Input className='input' size='small' placeholder='First Name' onChange={this.handleInput('firstName')} type='text' />
+                        <Input className='input' size='large' placeholder='First Name' onChange={this.handleInput('firstName')} type='text' />
                     </Form.Field>
                     <Form.Field>
-                        <label>Last Name</label>
-                        <Input className='input' size='small' placeholder='Last Name' onChange={this.handleInput('lastName')} type='text' />
+                        <Input className='input' size='large' placeholder='Last Name' onChange={this.handleInput('lastName')} type='text' />
                     </Form.Field>
                     <Form.Field>
-                        <label>Email</label>
-                        <Input className='input' size='small' placeholder='Email' onChange={this.handleInput('email')} type='text' />
+                        <Input className='input' size='large' placeholder='Email' onChange={this.handleInput('email')} type='text' />
                     </Form.Field>
                     <Form.Field>
-                        <label>Username</label>
-                        <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
+                        <Input className='input' size='large' placeholder='Username' onChange={this.handleInput('username')} type='text' />
                     </Form.Field>
                     <Form.Field>
-                        <label>Password</label>
-                        <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
+                        <Input className='input' size='large' placeholder='Password' onChange={this.handleInput('password')} type='password' />
                     </Form.Field>
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions' />
                     </Form.Field>
-                    <Button color='blue'size='small' type='submit'>Create Account</Button>
+                    <Button color='blue'size='large' type='submit' className="filestack-buttons">Create Account</Button>
                 </Form>
 
             </div>
@@ -102,6 +95,7 @@ class SessionForm extends React.Component {
 
         header = (
             <div className='signup-header'>
+                <h1>Ohana</h1>
                 {errors}
                 <form>
                     <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
@@ -112,6 +106,11 @@ class SessionForm extends React.Component {
             </div>
         );
 
+        footer = (
+            <div className="footer">
+                
+            </div>
+        );
         if(this.props.errors){
             errors = this.props.errors.map(error => (
                 <div className="errors">{error}</div>
@@ -132,7 +131,7 @@ class SessionForm extends React.Component {
                 {errors}
 
                 {center}
-
+                {footer}
                 
             </div>
         );

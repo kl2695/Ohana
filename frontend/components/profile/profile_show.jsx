@@ -60,6 +60,7 @@ class ProfileShow extends React.Component {
         let profilePic;
         let updateButton;
         let moments;
+        let name; 
 
         const basicOptions = {
             accept: 'image/*',
@@ -71,6 +72,7 @@ class ProfileShow extends React.Component {
         let user = users[this.props.match.params.userId]; 
 
         if(user && this.props.moments.length > 0){
+            name = user.first_name + " " + user.last_name; 
             baseUrl = user.img_url;
 
             if(user.img_url.includes('robohash')){
@@ -113,6 +115,7 @@ class ProfileShow extends React.Component {
         }else{
             imgUrl = '';
             moments = <div></div>;
+            name = "";
         }
 
 
@@ -120,6 +123,7 @@ class ProfileShow extends React.Component {
         return (
                 <div className="profile-container">
                     <div className="profile-left-container">
+                        <h1 className="profile-name">{name}</h1>
                         {profilePic}
                         {updateButton}
                     </div>

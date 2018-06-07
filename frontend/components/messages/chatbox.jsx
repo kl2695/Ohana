@@ -143,6 +143,8 @@ class ChatBox extends React.Component {
                 let username;
 
                 if (prevUserId && prevUserId != message.user_id) {
+                    console.log(message.user_id); 
+                    console.log(this.props.users);
                     space = true;
                     username = this.props.users[message.user_id].username;
                 }

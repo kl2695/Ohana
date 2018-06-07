@@ -20,7 +20,7 @@
     padding: 10px;
 }
 .profile-image-container{
-    margin: 50px 50px 7px 50px;
+    margin: 20px 50px 7px 50px;
     display: flex;
     background-color: white;
     border: 1px solid lightgray;
@@ -31,6 +31,10 @@
 .profile-image {
     border: 2px solid lightgray;
     border-radius: 2px;
+}
+
+.profile-name {
+    align-self: center; 
 }
 
 .update-button {
