@@ -18,8 +18,11 @@
     background-color: white;
     width: 33%;
     min-height: 745px;
+    max-height: 750px;
     max-width: 350px;
+    overflow-y: auto;
 }
+
 
 .groupshow-header {
     display: flex;
