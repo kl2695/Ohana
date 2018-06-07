@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import { Menu, Button, Icon, Dropdown, Modal, Image } from 'semantic-ui-react';
+import { Menu, Button, Icon, Dropdown, Modal, Image, Popup } from 'semantic-ui-react';
 import ReactFilestack from 'filestack-react';
 import GroupFormContainer from '../groups/group_form/group_form_container';
 import MomentFormContainer from '../moments/moments_form/moments_form_container';
@@ -33,29 +33,40 @@ class NavBar extends React.Component {
             return(
                 <Menu className='nav-bar' borderless icon>
                         <div className="right-nav-bar">
-                            <Menu.Item 
-                                name=''
-                                active={activeItem === ''}
-                                onClick={this.handleItemClick}
-                            >
-                                <Icon circular name='home'/>
-                            </Menu.Item>
-                        
-                            <Menu.Item
-                                name='groups'
-                                active={activeItem === 'groups'}
-                                onClick={this.handleItemClick}
-                            >
-                                <Icon circular name='users' />
-                            </Menu.Item>
-
-                            <Menu.Item 
-                                name={`users/${this.props.currentUser.id}`}
-                            active={activeItem === `users/${this.props.currentUser.id}`}
-                                onClick={this.handleItemClick}
-                            >
-                                <Icon circular name='user' />
-                            </Menu.Item>
+                            <Popup 
+                                trigger={<Menu.Item 
+                                    name=''
+                                    active={activeItem === ''}
+                                    onClick={this.handleItemClick}
+                                >
+                                    <Icon circular name='home'/>
+                                </Menu.Item>}
+                                content="See moments from all of your friends!"
+                                on='hover'
+                            />
+                            <Popup
+                                trigger={<Menu.Item
+                                    name='groups'
+                                    active={activeItem === 'groups'}
+                                    onClick={this.handleItemClick}
+                                >
+                                    <Icon circular name='users' />
+                                </Menu.Item>}
+                                content="Chat with your different groups of friends!"
+                                on='hover'
+                            />
+                            
+                            <Popup 
+                                trigger={<Menu.Item 
+                                    name={`users/${this.props.currentUser.id}`}
+                                active={activeItem === `users/${this.props.currentUser.id}`}
+                                    onClick={this.handleItemClick}
+                                >
+                                    <Icon circular name='user' />
+                                </Menu.Item>}
+                                content="Check out your own profile!"
+                                on='hover'
+                            />
 
                     <Dropdown text={this.props.currentUser.username}pointing className='link item'>
                         <Dropdown.Menu>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Header, Feed, Icon, Menu, Item } from 'semantic-ui-react';
+import { Grid, Image, Header, Feed, Icon, Menu, Popup, Item } from 'semantic-ui-react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 class ChatSideBar extends React.Component {
@@ -49,19 +49,25 @@ class ChatSideBar extends React.Component {
                     return (
                         <div className="chat-sidebar-item" groupId={group.id}
                             onClick={() => this.handleItemClick(group.id)}>
-                            <Item.Group>
-                                <Item className="chat-sidebar-item-container">
-                                    <Item.Image size="mini" src={group.img_url} circular rounded/>
-                                    <div className="chat-sidebar-item-1">
-                                        <Item.Content verticalAlign="middle">
-                                            <Item.Header >
-                                                {group.name}                                               
-                                            </Item.Header>
-                                        </Item.Content>
-                                    </div>
-                                </Item>
 
-                            </Item.Group>
+                            <Popup 
+                                trigger={<Item.Group>
+                                    <Item className="chat-sidebar-item-container">
+                                        <Item.Image size="mini" src={group.img_url} circular rounded/>
+                                        <div className="chat-sidebar-item-1">
+                                            <Item.Content verticalAlign="middle">
+                                                <Item.Header >
+                                                    {group.name}                                               
+                                                </Item.Header>
+                                            </Item.Content>
+                                        </div>
+                                    </Item>
+
+                                </Item.Group>}
+                                content="Click to start a conversation!"
+                                on="hover"
+                                position="left center"
+                            />
                         </div>
                     );
                 }

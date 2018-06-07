@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Header, Feed, Icon, Menu, Item } from 'semantic-ui-react';
+import { Grid, Image, Header, Feed, Icon, Menu, Item, Popup } from 'semantic-ui-react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 class MessagesSideBar extends React.Component {
@@ -46,28 +46,33 @@ class MessagesSideBar extends React.Component {
                     }
                     return (
                         <div className="group-index-item">
-                            <Item.Group>
-                                <Link to={`/groups/${group.id}`}>
-                                
-                                    <Item className="group-index-item-container">
-                                        <div className="thumbnail">
-                                            <Item.Image size="tiny" src={group.img_url} />
-                                        </div>
+                            <Popup
+                                trigger={<Item.Group>
+                                    <Link to={`/groups/${group.id}`}>
+                                    
+                                        <Item className="group-index-item-container">
+                                            <div className="thumbnail">
+                                                <Item.Image size="tiny" src={group.img_url} />
+                                            </div>
 
 
-                                        <div className="group-index-item-1">
-                                            <Item.Content verticalAlign="middle">
-                                                <Item.Header>
-                                                {group.name}
-                                                </Item.Header>
+                                            <div className="group-index-item-1">
+                                                <Item.Content verticalAlign="middle">
+                                                    <Item.Header>
+                                                    {group.name}
+                                                    </Item.Header>
 
-                                                <Item.Description className="item-messages">{lastMessage}</Item.Description>
-                                            </Item.Content>
-                                        </div>
-                                    </Item>
-                                </Link>
+                                                    <Item.Description className="item-messages">{lastMessage}</Item.Description>
+                                                </Item.Content>
+                                            </div>
+                                        </Item>
+                                    </Link>
 
-                            </Item.Group>
+                                </Item.Group>}
+                                content="Click to see moments and messages from this group!"
+                                on="hover"
+                                position="right center"
+                            />
                         </div>
                     );
                 }
