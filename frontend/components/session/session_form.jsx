@@ -107,7 +107,15 @@ class SessionForm extends React.Component {
         );
 
         footer = (
-            <div className="footer">
+            <div className="footer-container">
+                <div className="footer">
+                    <a className="footer-icons"href="https://github.com/kl2695/Ohana">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
+                    <a className="footer-icons"href="https://www.linkedin.com/in/kevin-lee-34a9aa2a/"> 
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                </div>  
                 
             </div>
         );

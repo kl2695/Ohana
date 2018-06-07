@@ -7,7 +7,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 810px;
+    height: 760px;
 }
 
 .login-header{
@@ -108,9 +108,19 @@
     align-self: center; 
 }
 
-.footer {
-    display: block;
+.footer-container {
     background-color: white; 
-    padding: 50px;
     width: 100%; 
+    border-top: 1px solid lightgray; 
+}
+
+.footer {
+    display: flex; 
+    justify-content: center; 
+    padding: 10px; 
+}
+
+.footer-icons{
+    margin-left: 10px; 
+    margin-right: 10px; 
 }
