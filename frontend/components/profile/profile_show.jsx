@@ -6,6 +6,8 @@ import filestack from 'filestack-js';
 import { Image, Header, Icon } from 'semantic-ui-react';
 import MomentShow from '../moments/moments_show/moment_show';
 import MomentsFormContainer from '../moments/moments_form/moments_form_container';
+import ChatSideBarContainer from '../messages/chat_sidebar_container'
+import ChatBoxContainer from '../messages/chatbox_container';
 
 class ProfileShow extends React.Component {
     constructor(props) {

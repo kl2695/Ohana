@@ -27,7 +27,7 @@ groupsJson.each do |row|
 end 
 
 group_links = Hash.new
-200.times do |x|
+500.times do |x|
   group_id = rand(1..25)
   user_id = rand(1..50)
 

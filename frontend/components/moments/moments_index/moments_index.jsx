@@ -7,7 +7,6 @@ import ChatView from 'react-chatview';
 import Promise from 'promise';
 import MomentsFormContainer from '../moments_form/moments_form_container';
 import ChatSideBarContainer from '../../messages/chat_sidebar_container';
-import ChatBox from '../../messages/chatbox';
 import ChatBoxContainer from '../../messages/chatbox_container';
 
 class MomentsIndex extends React.Component {
