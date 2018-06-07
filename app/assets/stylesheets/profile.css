@@ -40,13 +40,14 @@
 .update-button {
     width: 30%;
     border-radius: .28571429rem;
-    background-color: #2185d0;
+    background-color: #55acee;
     color: #fff;
     text-shadow: none;
     background-image: none;
     font-size: 1rem;
     border: none;
-    box-shadow: 0 0 0 0 rgba(34, 36, 38, .15);
+    box-shadow: 0 0 0 1px #3b88c3 inset,
+    0 2px 0 rgba(255, 255, 255, .15) inset;
     font-weight: 700;
     margin: .50em .25em 0 50px;
     padding: .8em .8em .8em;
@@ -58,4 +59,8 @@
     Arial,
     Helvetica,
     sans-serif;
+}
+
+h1 {
+    font-size: 30px; 
 }

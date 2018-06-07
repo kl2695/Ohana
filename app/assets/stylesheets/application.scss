@@ -47,3 +47,28 @@
     margin: 0px 10px; 
 }
 
+.filestack-buttons {
+    width: 30%;
+    border-radius: .28571429rem;
+    background-color: #55acee;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    font-size: 1rem;
+    border: none;
+    box-shadow: 0 0 0 1px #3b88c3 inset,
+    0 2px 0 rgba(255, 255, 255, .15) inset;
+    font-weight: 700;
+    margin: .50em .25em 0 0;
+    padding: .8em .4em .8em;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    font-family: Oswald, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.headers {
+    font-size: 40px; 
+    font-weight: 700; 
+    margin: 0; 
+}

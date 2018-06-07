@@ -95,7 +95,7 @@ class SessionForm extends React.Component {
 
         header = (
             <div className='signup-header'>
-                <h1>Ohana</h1>
+                <h1 className="headers">Ohana</h1>
                 {errors}
                 <form>
                     <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
