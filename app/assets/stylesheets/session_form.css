@@ -7,7 +7,23 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 760px;
+    height: 810px;
+}
+
+.login-container {
+    position: relative; 
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 2px 2px lightgrey;
+    background-color: #ffffffd6;
+    width: 600px;
+    height: 400px;
+    padding: 20px;
 }
 
 .login-header{
@@ -56,20 +72,7 @@
     margin-bottom: 2px; 
     
 }
-.login-container{
-    display: flex; 
-    flex-direction: column;
-    justify-content: center; 
-    border: 1px solid lightgray;
-    border-radius: 3px;
-    margin-top: 50px;
-    box-shadow: 2px 2px 2px 2px lightgrey;
-    background-color: #ffffffd6;
-    width: 600px;
-    height: 400px;
-    padding: 20px;
-    transform: translateY(10%);
-}
+
 
 
 .login-form{

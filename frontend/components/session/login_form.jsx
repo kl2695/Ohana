@@ -87,10 +87,11 @@ class LoginForm extends React.Component {
                     {errors}
                     
                     <form className="login-form">
-                        <Input className='login-input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
-                        <Input className='login-input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                        <Button id='button'onClick={this.handleLogin} size='small' color='red'>Log In</Button>
-                        <Button id='button'onClick={this.handleDemoLogin} size='small' color='red'>Demo Log In</Button>
+                        <h2>Log In</h2>
+                        <Input className='login-input' size='medium' placeholder='Username' onChange={this.handleInput('username')} type='text' />
+                        <Input className='login-input' size='medium' placeholder='Password' onChange={this.handleInput('password')} type='password' />
+                        <Button id='button'onClick={this.handleLogin} size='medium' color='blue'>Log In</Button>
+                        <Button id='button'onClick={this.handleDemoLogin} size='medium' color='blue'>Demo Log In</Button>
                     </form>
                 </div>
 
