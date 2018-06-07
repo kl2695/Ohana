@@ -2,29 +2,33 @@
 .moments-index-container{
     display:flex; 
     flex-direction:column;
-     margin-left: 200px;
      margin-right: 200px;
-     height: 745px;
+     height: 750px;
      overflow: hidden;
 }
+
 
 .moments-index-top{
     display: flex; 
     justify-content: space-between;
+    margin-left: 320px;
 }
 
 
 .moments-index-chats-container{
     display: flex; 
+    flex-direction: row-reverse; 
     position: absolute; 
     height: 340px; 
     bottom: 0px; 
     z-index: 2; 
+    margin-right: 260px;
 }
 
 .moments {
     height: 100vh;
-    width: 85%;
+    max-width: 85%;
+    max-height: auto;
 }
 
 
@@ -41,6 +45,7 @@
 
 .moment-pictures{
     max-width: 90%; 
+    margin-top: 15px; 
 }
 
 

@@ -4,16 +4,17 @@
     flex-direction: column;
     justify-content: flex-end;
     margin: 0 10px 0 10px;
-    border: 1px solid lightgray;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .20);
+    border-left: 1px solid rgb(221, 221, 221);
+    border-right: 1px solid rgb(221, 221, 221);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .20);
     border-radius: 2px;
     flex-basis: 280px;
     flex-grow: 0;
-    flex-shrink: 0;
+    flex-shrink: 1;
 }
 
 .chatbox-header {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid rgb(134, 134, 134);
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .20);
     border-radius: 1px;
     padding: 4px 10px 15px 10px;
