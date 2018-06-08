@@ -25,8 +25,6 @@ class LoginForm extends React.Component {
         this.clearSessionErrors = this.clearSessionErrors.bind(this);
     }
 
-  
-
     handleSignup(event) {
         event.preventDefault();
         this.props.signup(this.state)
@@ -59,7 +57,6 @@ class LoginForm extends React.Component {
     }
 
     render() {
-
         let errors;
         let header; 
         if (this.props.errors) {
@@ -76,13 +73,8 @@ class LoginForm extends React.Component {
             </div>);
 
         return (
-
-
-
             <div className='session_form-container'>
-
                 {header}
-    
                 <div className='login-container'>
                     {errors}
                     
@@ -94,12 +86,9 @@ class LoginForm extends React.Component {
                         <Button id='button'onClick={this.handleDemoLogin} size='medium' color='blue'>Demo Log In</Button>
                     </form>
                 </div>
-
             </div>
         );
     }
-
-
 }
 
 export default withRouter(LoginForm); 

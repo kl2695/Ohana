@@ -57,15 +57,11 @@ class SessionForm extends React.Component {
             );
         }
 
-    
-
     render() {
 
         let errors, center, header, footer; 
-
         center = (
             <div className='signup-container'>
-
                 <h1>Create a New Account</h1>
 
                 <Form className="signup-form"onSubmit={this.handleSignup}>
@@ -89,7 +85,6 @@ class SessionForm extends React.Component {
                     </Form.Field>
                     <Button color='blue'size='large' type='submit' className="filestack-buttons">Create Account</Button>
                 </Form>
-
             </div>
         );
 
@@ -116,7 +111,6 @@ class SessionForm extends React.Component {
                         <i class="fab fa-linkedin fa-2x"></i>
                     </a>
                 </div>  
-                
             </div>
         );
         if(this.props.errors){
@@ -125,27 +119,17 @@ class SessionForm extends React.Component {
             ));
         }else{
             errors = <p></p>;
-
-           
         }
         
         return(
-
-
-            
             <div className='session_form-container'>
-
                 {header}
                 {errors}
-
                 {center}
                 {footer}
-                
             </div>
         );
     }
-
-
 }
 
 export default withRouter(SessionForm); 

@@ -20,7 +20,6 @@ class NavBar extends React.Component {
     }
 
     render(){
-
         const basicOptions = {
             accept: 'image/*',
             fromSources: ['facebook', 'gmail', 'github'],
@@ -29,70 +28,67 @@ class NavBar extends React.Component {
         };
 
         const {activeItem} = this.state;
-         
             return(
                 <Menu className='nav-bar' borderless icon>
-                        <div className="right-nav-bar">
-                            <Popup 
-                                trigger={<Menu.Item 
-                                    name=''
-                                    active={activeItem === ''}
-                                    onClick={this.handleItemClick}
-                                >
-                                    <Icon circular name='home'/>
-                                </Menu.Item>}
-                                content="See moments from all of your friends!"
-                                on='hover'
-                            />
-                            <Popup
-                                trigger={<Menu.Item
-                                    name='groups'
-                                    active={activeItem === 'groups'}
-                                    onClick={this.handleItemClick}
-                                >
-                                    <Icon circular name='users' />
-                                </Menu.Item>}
-                                content="Chat with your different groups of friends!"
-                                on='hover'
-                            />
-                            
-                            <Popup 
-                                trigger={<Menu.Item 
-                                    name={`users/${this.props.currentUser.id}`}
-                                active={activeItem === `users/${this.props.currentUser.id}`}
-                                    onClick={this.handleItemClick}
-                                >
-                                    <Icon circular name='user' />
-                                </Menu.Item>}
-                                content="Check out your own profile!"
-                                on='hover'
-                            />
+                    <div className="right-nav-bar">
+                        <Popup 
+                            trigger={<Menu.Item 
+                                name=''
+                                active={activeItem === ''}
+                                onClick={this.handleItemClick}
+                            >
+                                <Icon circular name='home'/>
+                            </Menu.Item>}
+                            content="See moments from all of your friends!"
+                            on='hover'
+                        />
+                        <Popup
+                            trigger={<Menu.Item
+                                name='groups'
+                                active={activeItem === 'groups'}
+                                onClick={this.handleItemClick}
+                            >
+                                <Icon circular name='users' />
+                            </Menu.Item>}
+                            content="Chat with your different groups of friends!"
+                            on='hover'
+                        />
+                        
+                        <Popup 
+                            trigger={<Menu.Item 
+                                name={`users/${this.props.currentUser.id}`}
+                            active={activeItem === `users/${this.props.currentUser.id}`}
+                                onClick={this.handleItemClick}
+                            >
+                                <Icon circular name='user' />
+                            </Menu.Item>}
+                            content="Check out your own profile!"
+                            on='hover'
+                        />
 
-                    <Dropdown text={this.props.currentUser.username}pointing className='link item'>
-                        <Dropdown.Menu>
-                            <Dropdown.Header>Personal</Dropdown.Header>
-                                    <Dropdown.Item >
-                                        Create A Group
-                                    </Dropdown.Item>
-                                    <Dropdown.Item>
-                                        <MomentFormContainer navbar={true}/>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item>Send a Message</Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Header>Settings</Dropdown.Header>
-                                    <Dropdown.Item>Account Info</Dropdown.Item>
-                                    <Dropdown.Item>Privacy</Dropdown.Item>
-                                    <Dropdown.Item onClick={this.props.logout}>Logout</Dropdown.Item>
-                            
-                            
-                        </Dropdown.Menu>
-                    </Dropdown>
+                        <Dropdown text={this.props.currentUser.username}pointing className='link item'>
+                            <Dropdown.Menu>
+                                <Dropdown.Header>Personal</Dropdown.Header>
+                                        <Dropdown.Item >
+                                            Create A Group
+                                        </Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <MomentFormContainer navbar={true}/>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item>Send a Message</Dropdown.Item>
+                                        <Dropdown.Divider />
+                                        <Dropdown.Header>Settings</Dropdown.Header>
+                                        <Dropdown.Item>Account Info</Dropdown.Item>
+                                        <Dropdown.Item>Privacy</Dropdown.Item>
+                                        <Dropdown.Item onClick={this.props.logout}>Logout</Dropdown.Item>
+                                
+                                
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </div>
-                
-                    </Menu>
+                </Menu>
             );
         }
-
 }
 
 

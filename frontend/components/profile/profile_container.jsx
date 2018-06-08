@@ -8,7 +8,6 @@ import { createLike, deleteLike } from '../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-
     return {    
         moments: selectMoments(state),
         userId: ownProps.match.params.userId, 
@@ -25,7 +24,6 @@ const mapDispatchToProps = dispatch => ({
    createComment: comment => dispatch(createComment(comment)), 
    createLike: like => dispatch(createLike(like)),
    deleteLike: like => dispatch(deleteLike(like)),
-
 });
 
 export default withRouter(connect(

@@ -6,7 +6,7 @@ import filestack from 'filestack-js';
 import { Image, Header, Icon } from 'semantic-ui-react';
 import MomentShow from '../moments/moments_show/moment_show';
 import MomentsFormContainer from '../moments/moments_form/moments_form_container';
-import ChatSideBarContainer from '../messages/chat_sidebar_container'
+import ChatSideBarContainer from '../messages/chat_sidebar_container';
 import ChatBoxContainer from '../messages/chatbox_container';
 
 class ProfileShow extends React.Component {
@@ -18,7 +18,6 @@ class ProfileShow extends React.Component {
         this.onSuccess = this.onSuccess.bind(this);
     }
 
-
     componentDidMount(){
         this.props.requestUser(this.props.userId);
         this.setState(this.props.users[this.props.userId]);
@@ -27,14 +26,10 @@ class ProfileShow extends React.Component {
     componentWillReceiveProps(newProps){
         if(newProps.userId != this.props.userId){
             let newId = newProps.userId;
-
             this.props.requestUser(newId);
             this.setState(this.props.users[newId]);
         }
-       
     }
-
-
 
     handleInput(field) {
         return (event) => (
@@ -45,24 +40,15 @@ class ProfileShow extends React.Component {
     onSuccess(result) {
         const client = filestack.init('ASwBXjnOHQ9DwYJeadUdZz');
         let cdnUrl = result.filesUploaded[0].url;
- 
         client.storeURL(cdnUrl);
-
         let user = this.props.users[this.props.match.params.userId];
         user.img_url = cdnUrl; 
         this.props.updateUser(user);
-
     }
 
     render() {
-
         let { groups, users } = this.props; 
-        let imgUrl;
-        let baseUrl; 
-        let profilePic;
-        let updateButton;
-        let moments;
-        let name; 
+        let imgUrl, baseUrl, profilePic, updateButton, moments, name;
 
         const basicOptions = {
             accept: 'image/*',
@@ -102,7 +88,6 @@ class ProfileShow extends React.Component {
                 />
             );
 
-
             moments = this.props.moments.map(moment => (
                 <MomentShow
                     key={moment.id}
@@ -120,8 +105,6 @@ class ProfileShow extends React.Component {
             name = "";
         }
 
-
-
         return (
                 <div className="profile-container">
                     <div className="profile-left-container">
@@ -135,12 +118,9 @@ class ProfileShow extends React.Component {
                             {moments}
                         </div>
                     </div>
-                    
                 </div>
         );
     }
-
-
 }
 
 export default withRouter(ProfileShow); 

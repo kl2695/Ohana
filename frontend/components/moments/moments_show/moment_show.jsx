@@ -62,7 +62,6 @@ class MomentShow extends React.Component {
                         users={users}
                         display={this.state.display}/>
                 </Feed.Extra>
-                
             </Feed.Event>
         );
     }

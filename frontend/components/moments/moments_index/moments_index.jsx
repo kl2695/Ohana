@@ -48,14 +48,12 @@ class MomentsIndex extends React.Component {
                 selected: selected,
                 messages: nextProps.messages,
             };
-        
         } else {
             return {
                 selected: [],
             };
         }
     }
-
 
     loadMoreHistory() {
         return new Promise((resolve, reject) => {
@@ -68,12 +66,7 @@ class MomentsIndex extends React.Component {
         this.setState({clicked:true});
     }
 
-
-    scroll(){
-    }
-
     render() {
-
         let moments, selected, chats, prevChats; 
 
         if (this.props.moments.length > 0) {
@@ -95,7 +88,6 @@ class MomentsIndex extends React.Component {
             moments = [];
         }
 
-
         if(this.state.selected.length > 0){
             chats = this.state.selected.map(groupId => {
                 if(groupId){
@@ -107,11 +99,9 @@ class MomentsIndex extends React.Component {
                         group={group}
                         users={this.props.users} />);
                 }
-               
             });
         }
-
-                
+   
         return (
             <div className="moments-index-container">
                 <div className="moments-index-top">
@@ -119,7 +109,6 @@ class MomentsIndex extends React.Component {
                         onInfiniteLoad={this.loadMoreHistory}>
                         <MomentsFormContainer />
                         {moments}
-                    
                     </ChatView>
                     <ChatSideBarContainer/>
                 </div>
@@ -129,8 +118,6 @@ class MomentsIndex extends React.Component {
             </div>
         );
     }
-
-
 }
 
 export default MomentsIndex; 

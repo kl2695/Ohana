@@ -1,8 +1,5 @@
 import { RECEIVE_SESSION_ERRORS, CLEAR_SESSION_ERRORS, RECEIVE_GROUP_ERRORS } from "../actions/error_actions";
 
-
-
-
 const errorsReducer = (state = [], action) => {
     Object.freeze(state); 
     switch (action.type) {
