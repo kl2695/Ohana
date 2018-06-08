@@ -41,10 +41,11 @@ class GroupShowMoments extends React.Component {
     render() {
         let { groups, moments } = this.props;
         let name, groupShowHeader;
+        let currentGroupId; 
 
         if (this.state.currentGroup && moments) {
             let currentGroup = groups.currentGroup;
-
+            currentGroupId = currentGroup.id;
             moments = moments.map(moment => (
                 <MomentShow
                     key={moment.id}
@@ -67,7 +68,7 @@ class GroupShowMoments extends React.Component {
                 {groupShowHeader}
                 <div className="group-show-moments-container">
                     <div className="group-show-moments">
-                        <MomentsFormContainer currentGroupId={groups.id} />
+                        <MomentsFormContainer currentGroupId={currentGroupId} />
                         {moments}
                     </div>
                 </div>

@@ -62,13 +62,11 @@ class SessionForm extends React.Component {
         let errors, center, header, footer; 
         center = (
             <div className='signup-container'>
-                <h1>Create a New Account</h1>
+                <h1>Sign up for your free account</h1>
 
                 <Form className="signup-form"onSubmit={this.handleSignup}>
-                    <Form.Field>
+                    <Form.Field className="signup-field">
                         <Input className='input' size='large' placeholder='First Name' onChange={this.handleInput('firstName')} type='text' />
-                    </Form.Field>
-                    <Form.Field>
                         <Input className='input' size='large' placeholder='Last Name' onChange={this.handleInput('lastName')} type='text' />
                     </Form.Field>
                     <Form.Field>
@@ -78,7 +76,7 @@ class SessionForm extends React.Component {
                         <Input className='input' size='large' placeholder='Username' onChange={this.handleInput('username')} type='text' />
                     </Form.Field>
                     <Form.Field>
-                        <Input className='input' size='large' placeholder='Password' onChange={this.handleInput('password')} type='password' />
+                        <Input className='input' size='large' placeholder='Password (min. 6 characters)' onChange={this.handleInput('password')} type='password' />
                     </Form.Field>
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions' />
@@ -89,15 +87,17 @@ class SessionForm extends React.Component {
         );
 
         header = (
-            <div className='signup-header'>
-                <h1 className="headers">Ohana</h1>
-                {errors}
-                <form>
-                    <Input className='input' size='small' placeholder='Username' onChange={this.handleInput('username')} type='text' />
-                    <Input className='input' size='small' placeholder='Password' onChange={this.handleInput('password')} type='password' />
-                    <Button onClick={this.handleLogin} size='small'>Log In</Button>
-                    <Button onClick={this.handleDemoLogin} size='small' color='blue'>Demo Log In</Button>
-                </form>
+            <div className='signup-header-container'>
+                <div className='signup-header'>
+                    <h1 className="headers">Ohana</h1>
+                    {errors}
+                    <form>
+                        <Input className='input' size='mini' placeholder='Username' onChange={this.handleInput('username')} type='text' />
+                        <Input className='input' size='mini' placeholder='Password' onChange={this.handleInput('password')} type='password' />
+                        <Button onClick={this.handleLogin} size='mini'>Log In</Button>
+                        <Button onClick={this.handleDemoLogin} size='mini' color='blue'>Demo Log In</Button>
+                    </form>
+                </div>
             </div>
         );
 

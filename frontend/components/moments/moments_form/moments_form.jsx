@@ -25,16 +25,20 @@ class MomentsForm extends React.Component {
             this.show = this.show.bind(this);
         }
 
-        componentWillReceiveProps(newProps){
-            this.setState({group_id: newProps.currentGroupId});
+        static getDerivedStateFromProps(nextProps){
+            if(nextProps.currentGroupId){
+                return {group_id: nextProps.currentGroupId};
+            }else{
+                return null;
+                }
         }
 
         handleSubmit(event){
             const moment = this.state; 
+            console.log(moment);
             delete moment.render_bool; 
             this.close();
             this.props.createMoment(moment)
-            .then(() => this.props.history.push('/'))
             .then(() => this.setState({body: ''}));
         }
 
