@@ -5,7 +5,6 @@ class Api::SessionController < ApplicationController
       params[:user][:password]
     )
 
-
     if @user
       login(@user)
       render 'api/session/create'

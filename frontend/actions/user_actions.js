@@ -16,7 +16,6 @@ export const receiveUser = payload => ({
 });
 
 
-
 export const requestAllUsers = () => dispatch => {
     return UserApiUtil.fetchAllUsers()
             .then(users => dispatch(receiveAllUsers(users)));

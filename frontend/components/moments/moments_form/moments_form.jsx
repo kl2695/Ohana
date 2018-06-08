@@ -35,7 +35,6 @@ class MomentsForm extends React.Component {
 
         handleSubmit(event){
             const moment = this.state; 
-            console.log(moment);
             delete moment.render_bool; 
             this.close();
             this.props.createMoment(moment)

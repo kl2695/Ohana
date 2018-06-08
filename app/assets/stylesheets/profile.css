@@ -1,3 +1,9 @@
+.profile-moments-container {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
 .profile-container{
     margin: 15px;
     display: flex; 
@@ -10,10 +16,7 @@
     flex-direction: column;
 }
 
-.profile-moments-container{
-    display:flex; 
-    justify-content:center; 
-}
+
 .profile-moments {
     width: 100%;
     margin: 10px 30px;

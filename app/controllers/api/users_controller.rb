@@ -5,8 +5,7 @@ class Api::UsersController < ApplicationController
   
     if @user.save
       login(@user)
-      REDIS_INSTANCE.publish ‘user-created’, user: UserSerializer.new(@user).to_json
-      render :show 
+      render :new
     else 
       render json: @user.errors.full_messages, status: 422 
     end 

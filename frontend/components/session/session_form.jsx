@@ -25,7 +25,8 @@ class SessionForm extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if(newProps.errors.length === 1){
+        console.log(newProps);
+        if(newProps.errors && newProps.errors.length === 1){
             this.props.history.push('/login'); 
         }
     }
@@ -66,8 +67,8 @@ class SessionForm extends React.Component {
 
                 <Form className="signup-form"onSubmit={this.handleSignup}>
                     <Form.Field className="signup-field">
-                        <Input className='input' size='large' placeholder='First Name' onChange={this.handleInput('firstName')} type='text' />
-                        <Input className='input' size='large' placeholder='Last Name' onChange={this.handleInput('lastName')} type='text' />
+                        <Input className='input' size='large' placeholder='First Name' onChange={this.handleInput('first_name')} type='text' />
+                        <Input className='input' size='large' placeholder='Last Name' onChange={this.handleInput('last_name')} type='text' />
                     </Form.Field>
                     <Form.Field>
                         <Input className='input' size='large' placeholder='Email' onChange={this.handleInput('email')} type='text' />

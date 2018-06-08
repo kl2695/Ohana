@@ -4,7 +4,6 @@ import MomentForm from './moments_form';
 import { requestMoment, createMoment } from "../../../actions/moment_actions";
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps);
     return {
         currentUser: state.session.currentUser,
         errors: state.errors.groups,

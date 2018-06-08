@@ -48,7 +48,7 @@ class ProfileShow extends React.Component {
 
     render() {
         let { groups, users } = this.props; 
-        let imgUrl, baseUrl, profilePic, updateButton, moments, name;
+        let imgUrl, baseUrl, profilePic, updateButton, moments, name, momentForm;
 
         const basicOptions = {
             accept: 'image/*',
@@ -59,13 +59,13 @@ class ProfileShow extends React.Component {
         
         let user = users[this.props.match.params.userId]; 
 
-        if(user && this.props.moments.length > 0){
+        if(user){
             name = user.first_name + " " + user.last_name; 
             baseUrl = user.img_url;
 
             if(user.img_url.includes('robohash')){
                 imgUrl = user.img_url;
-            }else if (baseUrl !== null && baseUrl !== "") {
+            } else if (baseUrl !== null && baseUrl !== "" && baseUrl !== 'https://image.flaticon.com/icons/svg/17/17004.svg') {
                 imgUrl = 'https://process.filestackapi.com/ASwBXjnOHQ9DwYJeadUdZz/resize=width:600,height:1000/' + baseUrl;
             }else {
                 imgUrl = 'https://image.flaticon.com/icons/svg/17/17004.svg';
@@ -77,17 +77,29 @@ class ProfileShow extends React.Component {
                 </div>
             );
 
-            updateButton = (
-                <ReactFilestack
-                    apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
-                    buttonText="Update Profile Picture"
-                    buttonClass="update-button"
-                    options={basicOptions}
-                    onSuccess={this.onSuccess}
-                    onError={(e) => console.log(e)}
-                />
-            );
+            if(user.id === this.props.currentUser.id){
+                updateButton = (
+                    <ReactFilestack
+                        apikey={'ASwBXjnOHQ9DwYJeadUdZz'}
+                        buttonText="Update Profile Picture"
+                        buttonClass="update-button"
+                        options={basicOptions}
+                        onSuccess={this.onSuccess}
+                        onError={(e) => console.log(e)}
+                    />
+                );
 
+                momentForm = (
+                    <MomentsFormContainer />
+                );
+            }
+
+        }else{
+            imgUrl = '';
+            name = "";
+        }
+
+        if(this.props.moments.length > 0){
             moments = this.props.moments.map(moment => (
                 <MomentShow
                     key={moment.id}
@@ -100,9 +112,7 @@ class ProfileShow extends React.Component {
                 />
             )).reverse();
         }else{
-            imgUrl = '';
             moments = <div></div>;
-            name = "";
         }
 
         return (
@@ -114,7 +124,7 @@ class ProfileShow extends React.Component {
                     </div>
                     <div className="profile-moments-container">
                         <div className="profile-moments">
-                            <MomentsFormContainer />
+                            {momentForm}
                             {moments}
                         </div>
                     </div>
