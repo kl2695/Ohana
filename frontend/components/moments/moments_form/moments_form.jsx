@@ -29,10 +29,6 @@ class MomentsForm extends React.Component {
             this.setState({group_id: newProps.currentGroupId});
         }
 
-        componentDidMount(){
-           
-        }
-
         handleSubmit(event){
             const moment = this.state; 
             delete moment.render_bool; 
@@ -57,19 +53,17 @@ class MomentsForm extends React.Component {
         onSuccess (result){
             const client = filestack.init('ASwBXjnOHQ9DwYJeadUdZz');
             let cdnUrl = result.filesUploaded[0].url; 
-
             client.storeURL(cdnUrl);
-
             this.setState({img_url: cdnUrl});
         }
 
        render(){
            const basicOptions = {
-            accept: 'image/*',
-            fromSources: ['local_file_system','facebook','googledrive','instagram','dropbox','imagesearch','webcam',],
-            maxSize: 1024 * 1024,
-            maxFiles: 3,
-        };
+                accept: 'image/*',
+                fromSources: ['local_file_system','facebook','googledrive','instagram','dropbox','imagesearch','webcam',],
+                maxSize: 1024 * 1024,
+                maxFiles: 3,
+            };
 
             if(this.state.render_bool === false){
                 return (
@@ -131,13 +125,11 @@ class MomentsForm extends React.Component {
                         </Modal.Actions>
                     </Modal>
                                     
-                                );
-                            }
+                );
+        }
 
     }
  }
-
-
 
 
 export default MomentsForm; 

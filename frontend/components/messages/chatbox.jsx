@@ -7,8 +7,6 @@ import Promise from 'promise';
 
 
 class ChatBox extends React.Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -98,7 +96,6 @@ class ChatBox extends React.Component {
         App.cable.subscriptions.remove(App["messages" + this.state.message.group_id.toString()]);
     }
 
-
     handleSubmit(event) {
         this.props.createMessage(this.state.message);
         this.setState({message: {body: '', group_id: this.state.message.group_id}});
@@ -115,7 +112,6 @@ class ChatBox extends React.Component {
     }
 
     loadMoreHistory() {
-
         return new Promise((resolve, reject) => {
             this.props.updateGroup({
                 id: this.props.groupId,
@@ -126,7 +122,6 @@ class ChatBox extends React.Component {
             this.setState({ position: this.state.position + 30 });
             resolve();
         });
-
     }
 
     render() {
@@ -143,13 +138,9 @@ class ChatBox extends React.Component {
                 let username;
 
                 if (prevUserId && prevUserId != message.user_id) {
-                    console.log(message.user_id); 
-                    console.log(this.props.users);
                     space = true;
                     username = this.props.users[message.user_id].username;
                 }
-                console.log(message);
-                console.log(this.props);
                 if (message.user_id === this.props.currentUser.id) {
                     prevUserId = message.user_id;
                     if (space) {
@@ -189,9 +180,7 @@ class ChatBox extends React.Component {
         }else{
             messages = [];
         }
-        
-
-
+    
         return (
             
             <div className="chatbox-container" textAlign="left">

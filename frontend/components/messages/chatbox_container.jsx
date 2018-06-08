@@ -8,7 +8,6 @@ import { createMessage } from '../../actions/message_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-
     return {
         currentUser: state.session.currentUser,
         errors: state.errors.groups,
@@ -21,7 +20,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-
     return {
         requestGroup: groupId => dispatch(requestGroup(groupId)),
         createMessage: message => dispatch(createMessage(message)),

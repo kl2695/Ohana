@@ -33,10 +33,6 @@ class CommentsIndex extends React.Component {
         this.setState({body: ''}); 
     }
 
-    redirectToUser(event){
-        
-    }
-
     render(){
         let replyFormClass; 
         if(this.props.display === true){

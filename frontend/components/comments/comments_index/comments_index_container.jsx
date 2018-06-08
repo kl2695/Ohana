@@ -2,7 +2,6 @@
 import { connect } from "react-redux";
 import CommentsIndex from './comments_index';
 import { requestAllMoments } from "../../../actions/comment_actions";
-import { clearSessionErrors } from "../../../actions/error_actions";
 import {selectAllMoments} from '../../../reducers/selectors';
 
 

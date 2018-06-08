@@ -39,6 +39,32 @@
 .login-header a {
     color: white; 
 }
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.login-input {
+    margin: 2px;
+    padding: 7px;
+    width: 50%;
+}
+.signup-container {
+    width: 650px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 20px;  */
+    /* transform: translateY(10%); */
+    position: relative;
+    left: 230px;
+}
+
 .signup-header{
     display: flex; 
     justify-content: space-around; 
@@ -49,18 +75,6 @@
     color: white; 
 }
 
-.signup-container{
-    width: 650px; 
-    height: 600px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;
-    /* padding: 20px;  */
-    /* transform: translateY(10%); */
-    position: relative; 
-    left: 230px; 
-} 
-
 .signup-form {
     display: flex; 
     flex-direction: column; 
@@ -70,25 +84,14 @@
 
 .signup-component{
     margin-bottom: 2px; 
-    
 }
 
-
-
-.login-form{
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
-    width: 100%;
-    
+.signup-button {
+    position: absolute;
+    bottom: 40px;
+    right: 100px;
 }
 
-.login-input {
-    margin: 2px;
-    padding: 7px;
-    width: 50%; 
-}
 .input{
     padding: 7px;
 }
@@ -99,17 +102,6 @@
     width: 47%; 
 }
 
-
-.signup-button{
-    position: absolute; 
-    bottom: 40px; 
-    right: 100px;
-}
-
-.errors{
-    color: red; 
-    align-self: center; 
-}
 
 .footer-container {
     background-color: white; 
@@ -126,4 +118,9 @@
 .footer-icons{
     margin-left: 10px; 
     margin-right: 10px; 
+}
+
+.errors {
+    color: red;
+    align-self: center;
 }

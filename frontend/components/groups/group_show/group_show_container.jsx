@@ -9,9 +9,7 @@ import { createLike } from '../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    
     return {
-
         currentUser: state.session.currentUser,
         errors: state.errors.groups, 
         groupId: ownProps.match.params.groupId,
@@ -22,13 +20,11 @@ const mapStateToProps = (state, ownProps) => {
         moments: selectMoments(state), 
         messages: state.entities.messages,
         messagesArr: selectMessages(state),
-
     };
 
 };
 
 const mapDispatchToProps = dispatch => {
-
     return {
         requestAllGroups: () => dispatch(requestAllGroups()), 
         requestGroup: groupId => dispatch(requestGroup(groupId)), 

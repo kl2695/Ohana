@@ -21,7 +21,6 @@ class GroupForm extends React.Component {
             this.props.createGroup(this.state)
             .then(() => React.unmountComponentAtNode(GroupForm))
             .then(() => this.props.history.push('/groups'));
-           
         }
 
         handleInput(event){
@@ -52,7 +51,6 @@ class GroupForm extends React.Component {
         }else{
             trigger = <Button color="blue"> Create A Group </Button>;
         }
-
 
         return(
        

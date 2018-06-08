@@ -31,7 +31,10 @@
     max-height: auto;
 }
 
-
+.moment-show {
+    background-color: white;
+    border: 1px solid lightgray;
+}
 
 .moment-modal {
     position: absolute; 
@@ -47,7 +50,6 @@
     max-width: 90%; 
     margin-top: 15px; 
 }
-
 
 .post-form{
     display:flex; 

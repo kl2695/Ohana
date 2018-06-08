@@ -12,7 +12,6 @@ import { selectMoments, selectMessages } from '../../../reducers/selectors';
 
 
 const mapStateToProps = (state, ownProps) => {
-    
         return {
             currentUser: state.session.currentUser,
             errors: state.errors.session, 
@@ -26,7 +25,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-
     return {
         requestAllMoments: () => dispatch(requestAllMoments()),
         requestAllMessages: () => dispatch(requestAllMessages()), 

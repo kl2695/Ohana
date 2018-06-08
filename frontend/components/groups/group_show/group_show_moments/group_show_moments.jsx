@@ -3,12 +3,10 @@ import { Grid, Image, Header, Feed, Icon, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import MomentShow from '../../../moments/moments_show/moment_show';
 import MomentsFormContainer from '../../../moments/moments_form/moments_form_container';
-import GroupShowHeader from '../group_show_header/group_show_header';
+import GroupShowHeader from '../group_show_header';
 
 
 class GroupShowMoments extends React.Component {
-
-
     constructor(props){
         super(props);
         this.state = {
@@ -16,9 +14,7 @@ class GroupShowMoments extends React.Component {
             currentGroup: this.props.currentGroup,
         };
 
-
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     componentDidMount() {
@@ -42,12 +38,9 @@ class GroupShowMoments extends React.Component {
         this.props.updateGroup(this.state.groups.currentGroup);
     }
 
-
     render() {
         let { groups, moments } = this.props;
-        let name;
-        let groupShowHeader;
-
+        let name, groupShowHeader;
 
         if (this.state.currentGroup && moments) {
             let currentGroup = groups.currentGroup;
@@ -65,14 +58,9 @@ class GroupShowMoments extends React.Component {
             )).reverse();
             
             groupShowHeader = <GroupShowHeader currentGroup={currentGroup}/>;
-            
         } else {
             groupShowHeader = <div></div>;
         }
-
-       
-
-
 
         return(
             <div className="right-groupshow">
@@ -83,7 +71,6 @@ class GroupShowMoments extends React.Component {
                         {moments}
                     </div>
                 </div>
-              
             </div>
         );
     }

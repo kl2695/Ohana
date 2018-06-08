@@ -24,10 +24,8 @@ class MessagesSideBar extends React.Component {
     }
 
     render() {
-
         const { usersArr, messagesArr, messages, users, moments, createComment, currentUser } = this.props;
         let groups;
-
 
         if (this.state.groups) {
             groups = this.state.groups.slice(0, this.state.groups.length - 1).map(group => {
@@ -83,17 +81,12 @@ class MessagesSideBar extends React.Component {
             );
         }
 
-
         return (
-
-          
                 <div className="messages-sidebar">
                         {groups}
                 </div>
         );
     }
-
-
 }
 
 export default MessagesSideBar; 

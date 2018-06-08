@@ -16,10 +16,6 @@
     width: 100%;
 } 
 
-.message {
-    
-}
-
 .message-text {
     border-radius: 15px;
     margin-top: 2px;
@@ -77,11 +73,6 @@
     color: rgb(172, 172, 172);
     font-weight:200;
 }
-
-
-
-
-
 
 .messages-form {
     padding: 10px;

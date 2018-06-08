@@ -1,12 +1,8 @@
 import React from 'react';
 import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextArea, Input } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import ReactFilestack from 'filestack-react';
-import filestack from 'filestack-js';
-import SideBar from './group_show_messages_sidebar';
 import ChatView from 'react-chatview';
 import Promise from 'promise';
-import GroupShowHeader from '../group_show_header/group_show_header';
 
 
 
@@ -25,18 +21,15 @@ class GroupShowMessages extends React.Component {
             position: 30,
         };
 
-
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.loadMoreHistory = this.loadMoreHistory.bind(this);
     }
 
     componentDidMount() {
-
         const App = window.App; 
         let fn = this; 
         App.messages = App.cable.subscriptions.create({ channel: 'MessagesChannel', room: fn.state.message.group_id },
-
         {
             received: function (data) {
                 const message = this.renderMessage(data);
@@ -56,11 +49,9 @@ class GroupShowMessages extends React.Component {
         });
 
         this.props.requestGroup(this.props.groupId);
-
     }
 
   static getDerivedStateFromProps(nextProps, prevState, prevProps) {
-
         return {
             currentMessages: nextProps.currentMessagesArr,
             message:{body: prevState.message.body,group_id: nextProps.groupId},
@@ -69,13 +60,10 @@ class GroupShowMessages extends React.Component {
         };
     }
 
-
-    
     componentWillUnmount() {
         const App = window.App; 
         App.messages.unsubscribe(); 
     }
-
 
     handleSubmit(event) {
         this.props.createMessage(this.state.message);
@@ -88,7 +76,6 @@ class GroupShowMessages extends React.Component {
     }
 
     loadMoreHistory() {
-
         return new Promise((resolve, reject) => {
             this.props.updateGroup({
                 id: this.props.groupId,
@@ -103,9 +90,7 @@ class GroupShowMessages extends React.Component {
     }
 
     render() {
-        
-        let groupShowHeader; 
-        let prevUserId; 
+        let groupShowHeader, prevUserId; 
 
         if(this.props.users && this.state.currentGroup){
             let currentGroup = this.state.currentGroup; 
@@ -114,12 +99,9 @@ class GroupShowMessages extends React.Component {
             groupShowHeader = <div></div>;
         }
 
-       
         const messages = this.state.currentMessages.map(message => {
-    
             let text = message.body; 
-            let space;
-            let username; 
+            let space, username;
             if(prevUserId && prevUserId!= message.user_id){
                 space = true;
                 username = this.props.users[message.user_id].username;
@@ -161,8 +143,7 @@ class GroupShowMessages extends React.Component {
                 }
             }
         }).reverse();
-
-
+        
         return (
             <div className="right-groupshow">
                 {groupShowHeader}

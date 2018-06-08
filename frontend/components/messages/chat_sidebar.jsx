@@ -12,7 +12,6 @@ class ChatSideBar extends React.Component {
         };
 
         this.handleItemClick = this.handleItemClick.bind(this);
-
     }
 
     componentDidMount() {
@@ -32,15 +31,13 @@ class ChatSideBar extends React.Component {
 
     render() {
 
-        const { usersArr, messagesArr, messages, users, moments, createComment, currentUser } = this.props;
+        const { usersArr, messagesArr, messages, users, currentUser } = this.props;
         let groups;
         let groupMessagesArr = {}; 
-
 
         if (this.state.groups) {
 
             groups = this.state.groups.slice(0, this.state.groups.length - 1).map(group => {
-                
                 if (group.userIds.includes(this.props.currentUser.id)) {
                     if (!group.img_url) {
                         group.img_url = 'https://image.flaticon.com/icons/png/512/33/33308.png';
@@ -49,7 +46,6 @@ class ChatSideBar extends React.Component {
                     return (
                         <div className="chat-sidebar-item" groupId={group.id}
                             onClick={() => this.handleItemClick(group.id)}>
-
                             <Popup 
                                 trigger={<Item.Group>
                                     <Item className="chat-sidebar-item-container">
@@ -78,23 +74,17 @@ class ChatSideBar extends React.Component {
             );
         }
 
-
         return (
-
-
             <div className="chat-sidebar">
                 <div className="chat-sidebar-header"> 
                     <Header>
                         Contacts
                     </Header>
                 </div>
-              
                 {groups}
             </div>
         );
     }
-
-
 }
 
 export default ChatSideBar; 
