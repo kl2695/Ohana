@@ -6,7 +6,6 @@ class CommentsIndex extends React.Component {
     constructor(props){
         super(props); 
         if(this.props.moment){
-        
             this.state = {
                 user_id: this.props.currentUser.id,
                 moment_id: this.props.moment.id, 
@@ -42,7 +41,8 @@ class CommentsIndex extends React.Component {
         }
 
         let comments = this.props.comments.map(comment => {
-            let commentUser = this.props.users[comment.user_id]; 
+            let commentUser = this.props.users[comment.user_id] || this.props.currentUser; 
+            console.log(commentUser);
             if(!commentUser.img_url){
                 commentUser.img_url = 'https://image.flaticon.com/icons/svg/17/17004.svg'; 
             }

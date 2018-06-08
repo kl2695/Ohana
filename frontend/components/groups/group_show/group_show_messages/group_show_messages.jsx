@@ -3,6 +3,7 @@ import { List, Image, Header, Feed, Icon, Menu, Container, Form, Button, TextAre
 import { Link } from 'react-router-dom';
 import ChatView from 'react-chatview';
 import Promise from 'promise';
+import GroupShowHeader from '../group_show_header';
 
 
 

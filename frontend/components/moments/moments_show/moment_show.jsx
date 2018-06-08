@@ -25,7 +25,7 @@ class MomentShow extends React.Component {
     }
 
     render(){
-        const { users, moment, createComment, currentUser } = this.props; 
+        const { users, comments, moment, createComment, currentUser } = this.props; 
         const momentUser = users[moment.user_id]; 
         return (
             <Feed.Event className="feed-event">
