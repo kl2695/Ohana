@@ -8,7 +8,7 @@
     border-right: 1px solid rgb(221, 221, 221);
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .20);
     border-radius: 2px;
-    flex-basis: 280px;
+    flex-basis: 270px;
     flex-grow: 0;
     flex-shrink: 1;
 }
