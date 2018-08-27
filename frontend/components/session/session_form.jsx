@@ -25,7 +25,6 @@ class SessionForm extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        console.log(newProps);
         if(newProps.errors && newProps.errors.length === 1){
             this.props.history.push('/login'); 
         }
