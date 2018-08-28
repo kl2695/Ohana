@@ -18,9 +18,9 @@
 ### User Moments
 ![user moments](https://github.com/kl2695/Ohana/blob/master/docs/images/moments.png)
 
-User Moments by themselves were not particularly troublesome; however, I used moments in three separate contexts within my app: the moments feed, the group feed, and the user profile page, so making the moments component flexible enough to handle three different use cases with different inputs didn't require innovative solutions necessarily, it just required more careful attention to management of the state and passing down of props.
+The application uses moments in three separate contexts within my app: the moments feed, the group feed, and the user profile page, so making the moments component flexible enough to handle three different use cases with different inputs required careful attention to management of the state and passing down of props to components.
 
-One more tricky part of implementing moments was getting the moments feed to load in a reasonable amount of time, since I was essentially querying the database for the entire list of all users moments as well as each moment's corresponding list of comments and all users corresponding to those comments. To help make the app's UI a little more bearable, I implemented an infinite scroll feature, which I also used for the group chat. That topic is covered in more detail below:
+One challenge faced when implementing the moments feature was getting the moments feed to load in a reasonable amount of time, since the app essentially queries the database for the entire list of all users moments as well as each moment's corresponding list of comments and all users corresponding to those comments. To help make the user experience a little smoother, the app utilizes an infinite scroll component, which is also used for the group chat component. That topic is covered in more detail below. 
 
 ### Messenger 
 ![messenger](https://github.com/kl2695/Ohana/blob/master/docs/images/chats.png)
@@ -30,9 +30,9 @@ Users can also take advantage of a messenger module, similar to the one used by 
 ### Group Chat
 ![group chat](https://github.com/kl2695/Ohana/blob/master/docs/images/group_chat.png)
 
-The real-time chat was a particularly tough feature to implement. The first part consisted of setting up websocket connections with the backend. Rails uses a middleware called Redis essentially as a data store. Once the connection is established, the front end subscribes to a channel that is constantly listening to streams of data coming from Redis.
+The first part of the real time chat feature consisted of setting up websocket connections with the backend. Rails uses a middleware called Redis essentially as a data store. Once the connection is established, the front end subscribes to a channel that is constantly listening to streams of data coming from Redis.
 
-One of the challenges of creating this chat feature was adapting an implementation of web sockets to React. Upon mounting of the component, I created a subscription to the messages channel and I used a react component called React ChatView to implement the infinite scrolling feature. 
+One of the challenges of creating this chat feature was adapting an implementation of web sockets to React. Upon mounting of the component, a subscription to the messages channel is created and a react component called React ChatView is used to create the infinite scrolling functionality. 
 
 ```javascript
  componentDidMount() {
@@ -74,7 +74,7 @@ Whenever the scroll position of the div element went past the scroll threshold, 
         });
     }
 ```
-This meant that I was passing down params to my groups controller on the backend. Once the position was received as params on the backend, I used that position to conditionally return slices of messages as json objects back to the frontend. Here's a snippet from my rails backend group show view: 
+This means passing down params to the groups controller on the rails backend. Once the position was received as params on the backend, that position is used to conditionally return slices of messages as json objects back to the frontend. Here's a snippet from the rails backend group show view: 
 
 ```ruby 
 @position ||= 30
