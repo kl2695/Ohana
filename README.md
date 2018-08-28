@@ -22,6 +22,11 @@ User Moments by themselves were not particularly troublesome; however, I used mo
 
 One more tricky part of implementing moments was getting the moments feed to load in a reasonable amount of time, since I was essentially querying the database for the entire list of all users moments as well as each moment's corresponding list of comments and all users corresponding to those comments. To help make the app's UI a little more bearable, I implemented an infinite scroll feature, which I also used for the group chat. That topic is covered in more detail below:
 
+### Messenger 
+![messenger](https://github.com/kl2695/Ohana/blob/master/docs/images/chats.png)
+
+Users can also take advantage of a messenger module, similar to the one used by Facebook, except with groups instead of individual users. Click on the sidebar to select a group to chat with and start typing away! Just like facebook, the chats open up at the bottom of the screen while still allowing you to scroll through your moments feed. Any messages you send there will be updated in the full group chat window as well. Close them by clicking the x in the upper right part of the chat window. 
+
 ### Group Chat
 ![group chat](https://github.com/kl2695/Ohana/blob/master/docs/images/group_chat.png)
 
@@ -101,5 +106,4 @@ Ohana's full range of features is far from being complete. As of right now, only
 The following is a list of features that plan to be implemented in the future: 
 
 - shared files and photos 
-- separate popup chat sidebar 
 - embedded links,photos, videos 
