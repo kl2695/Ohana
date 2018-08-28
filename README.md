@@ -15,6 +15,7 @@ Ohana is a social media web application for friends to send messages to, share c
 - Like and comment on other users moments
 - Feed of user moments, comments, and likes 
 - Create groups of users with messaging and moments capability 
+- Chat sidebar on home page that allows users to message different groups in real time 
 
 
 ### User Moments
