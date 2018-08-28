@@ -21,7 +21,7 @@ Ohana is a social media web application for friends to send messages to, share c
 ### User Moments
 ![user moments](https://github.com/kl2695/Ohana/blob/master/docs/images/moments.png)
 
-The application uses moments in three separate contexts within my app: the moments feed, the group feed, and the user profile page, so making the moments component flexible enough to handle three different use cases with different inputs required careful attention to management of the state and passing down of props to components.
+The application uses moments in three separate contexts: the moments feed, the group feed, and the user profile page, so making the moments component flexible enough to handle three different use cases with different inputs required careful attention to management of the state and passing down of props to components.
 
 One challenge faced when implementing the moments feature was getting the moments feed to load in a reasonable amount of time, since the app essentially queries the database for the entire list of all users moments as well as each moment's corresponding list of comments and all users corresponding to those comments. To help make the user experience a little smoother, the app utilizes an infinite scroll component, which is also used for the group chat component. That topic is covered in more detail below. 
 
